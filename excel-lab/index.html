@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel &amp; MIS Laboratory - Commerce Lab</title>
+  <link rel="stylesheet" href="../css/commerce-core.css">
+  <link rel="stylesheet" href="../css/commerce-labs.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">
+        <span class="brand-badge">CL</span>
+        <div class="brand-text">
+          <span class="brand-title">Commerce Lab</span>
+          <span class="brand-sub">Excel &amp; MIS Studio</span>
+        </div>
+      </a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="../learn/index.html">Learn</a>
+        <a href="../accounting-lab/index.html">Accounting Lab</a>
+        <a href="../business-lab/index.html">Business Lab</a>
+        <a href="../tax-lab/index.html">Tax Lab</a>
+        <a href="index.html" class="active">Excel &amp; MIS</a>
+        <a href="../mis-lab/index.html">MIS Dashboard</a>
+        <a href="../calculators/index.html">Calculators</a>
+        <a href="../dashboard/index.html" class="nav-btn-highlight">Dashboard</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-4">
+    <div class="container">
+      <div class="lab-header">
+        <div class="badge-tag">Spreadsheet Intelligence</div>
+        <h1>Interactive Excel &amp; Business Formula Studio</h1>
+        <p class="text-muted">
+          Type real spreadsheet formulas in the formula bar below to compute business metrics on actual Indian commerce registers. Supports <code>SUM</code>, <code>AVERAGE</code>, <code>SUMIF</code>, <code>COUNTIF</code>, <code>XLOOKUP</code>, and financial arithmetic.
+        </p>
+      </div>
+
+      <!-- Quick Formula Bar -->
+      <div class="excel-formula-bar-container">
+        <div class="fx-label"><em>fx</em></div>
+        <input type="text" id="formulaInput" class="excel-formula-input" placeholder="Type a formula, e.g. =SUMIF(D2:D9, &quot;Smartphones&quot;, G2:G9) or =SUM(F2:F9)" value="=SUM(G2:G9)">
+        <button class="btn btn-primary" id="evaluateBtn">Run Formula (Enter)</button>
+      </div>
+
+      <!-- Quick Formula Chips -->
+      <div class="formula-chips-container mt-2">
+        <span class="text-xs text-muted">Try sample formulas:</span>
+        <button class="chip-btn" data-formula="=SUM(G2:G9)">=SUM(Total Sales)</button>
+        <button class="chip-btn" data-formula="=AVERAGE(G2:G9)">=AVERAGE(Ticket Size)</button>
+        <button class="chip-btn" data-formula="=SUMIF(D2:D9, &quot;Smartphones&quot;, G2:G9)">=SUMIF(Smartphones)</button>
+        <button class="chip-btn" data-formula="=COUNTIF(F2:F9, &quot;&gt;=10&quot;)">=COUNTIF(Qty &gt;= 10)</button>
+        <button class="chip-btn" data-formula="=XLOOKUP(&quot;INV-104&quot;, A2:A9, E2:E9)">=XLOOKUP(INV-104 City)</button>
+        <button class="chip-btn" data-formula="=50000 * 1.18">=50,000 * 1.18 (GST math)</button>
+      </div>
+
+      <!-- Formula Result Banner -->
+      <div class="formula-result-banner mt-3" id="formulaResultBanner">
+        <div class="result-badge badge-emerald">RESULT</div>
+        <div class="result-val" id="resultVal">Calculating...</div>
+        <div class="result-desc text-muted text-sm" id="resultDesc">Enter a formula to see output.</div>
+      </div>
+
+      <!-- Interactive Spreadsheet Grid -->
+      <div class="lab-card mt-4">
+        <div class="card-header d-flex justify-between align-center">
+          <div>
+            <h3>Live Business Register: Sales Master Dataset</h3>
+            <span class="text-xs text-muted">8 Rows &bull; Indian Retail Distribution</span>
+          </div>
+          <div>
+            <a href="../mis-lab/index.html" class="btn btn-outline btn-sm">Switch to MIS Dashboard 📊</a>
+          </div>
+        </div>
+
+        <div class="table-responsive mt-3">
+          <table class="excel-grid-table" id="salesTable">
+            <thead>
+              <tr>
+                <th class="cell-idx">#</th>
+                <th>A: Inv No</th>
+                <th>B: Date</th>
+                <th>C: Customer Name</th>
+                <th>D: Category</th>
+                <th>E: City</th>
+                <th class="text-right">F: Qty</th>
+                <th class="text-right">G: Unit Price (₹)</th>
+                <th class="text-right">H: Gross Amount (₹)</th>
+              </tr>
+            </thead>
+            <tbody id="salesTableBody">
+              <!-- Populated via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Real World Formula Challenges Section -->
+      <section class="mt-5">
+        <div class="section-header">
+          <h2>Practical Business Formula Challenges</h2>
+          <p class="text-muted">Solve these standard commercial reporting problems commonly asked in Class 12, B.Com, and corporate job tests:</p>
+        </div>
+
+        <div class="grid grid-3 gap-3" id="challengesContainer">
+          <!-- Populated from EXCEL_FORMULA_CHALLENGES -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer mt-5">
+    <div class="container text-center">
+      <p>Dedicated to Beneficial Knowledge (<em>'Ilm Nāfi'</em>) &bull; Designed for <strong>Yasir Rasool</strong> &bull; <a href="https://github.com/myasirdotin/" target="_blank">github.com/myasirdotin</a></p>
+      <p class="text-sm text-muted">&copy; 2026 Commerce Lab. Interactive Excel Engine.</p>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { SAMPLE_SALES_REGISTER, EXCEL_FORMULA_CHALLENGES } from '../js/data/excel-datasets.js';
+    import { ExcelFormulaEngine } from '../js/excel-engine.js';
+    import { Toast, ProgressStore } from '../js/core.js';
+
+    const engine = new ExcelFormulaEngine(SAMPLE_SALES_REGISTER);
+
+    const salesTableBody = document.getElementById('salesTableBody');
+    const formulaInput = document.getElementById('formulaInput');
+    const evaluateBtn = document.getElementById('evaluateBtn');
+    const resultVal = document.getElementById('resultVal');
+    const resultDesc = document.getElementById('resultDesc');
+    const formulaResultBanner = document.getElementById('formulaResultBanner');
+    const challengesContainer = document.getElementById('challengesContainer');
+
+    // Populate Table
+    salesTableBody.innerHTML = SAMPLE_SALES_REGISTER.map((r, idx) => {
+      const gross = r.qty * r.unitPrice;
+      return `
+        <tr>
+          <td class="cell-idx">${idx + 1}</td>
+          <td class="font-mono"><strong>${r.invNo}</strong></td>
+          <td>${r.date}</td>
+          <td>${r.customer}</td>
+          <td><span class="badge-tag">${r.category}</span></td>
+          <td>${r.city}</td>
+          <td class="text-right font-mono">${r.qty}</td>
+          <td class="text-right font-mono">₹${r.unitPrice.toLocaleString('en-IN')}</td>
+          <td class="text-right font-mono font-semibold">₹${gross.toLocaleString('en-IN')}</td>
+        </tr>
+      `;
+    }).join('');
+
+    function runFormula(expr) {
+      const out = engine.evaluate(expr);
+      if (out.success) {
+        resultVal.textContent = out.formatted || out.result;
+        resultVal.className = 'result-val text-emerald';
+        resultDesc.textContent = `Formula: ${expr} evaluated successfully against the register.`;
+        Toast.show('Formula evaluated!', 'success');
+        ProgressStore.recordLabActivity('Excel Formula Studio');
+      } else {
+        resultVal.textContent = 'ERROR';
+        resultVal.className = 'result-val text-red';
+        resultDesc.textContent = out.error;
+        Toast.show(out.error, 'error');
+      }
+    }
+
+    evaluateBtn.addEventListener('click', () => runFormula(formulaInput.value));
+    formulaInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') runFormula(formulaInput.value);
+    });
+
+    document.querySelectorAll('.chip-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const form = btn.getAttribute('data-formula');
+        formulaInput.value = form;
+        runFormula(form);
+      });
+    });
+
+    // Render Challenges
+    challengesContainer.innerHTML = EXCEL_FORMULA_CHALLENGES.map(ch => `
+      <div class="lab-card">
+        <h4>${ch.title}</h4>
+        <p class="text-sm text-muted mt-1">${ch.description}</p>
+        <div class="mt-3">
+          <div class="text-xs text-muted"><strong>Target Formula:</strong> <code>${ch.targetFormula}</code></div>
+          <div class="text-xs text-muted mt-1"><strong>Expected:</strong> <span class="text-emerald font-semibold">${ch.expectedResult}</span></div>
+        </div>
+        <div class="mt-3 d-flex justify-between align-center">
+          <button class="btn btn-outline btn-xs test-challenge-btn" data-formula="${ch.targetFormula}">Test Formula</button>
+          <span class="text-xs text-muted">💡 ${ch.hint}</span>
+        </div>
+      </div>
+    `).join('');
+
+    challengesContainer.addEventListener('click', (e) => {
+      if (e.target.classList.contains('test-challenge-btn')) {
+        const f = e.target.getAttribute('data-formula');
+        formulaInput.value = f;
+        runFormula(f);
+        window.scrollTo({ top: 120, behavior: 'smooth' });
+      }
+    });
+
+    // Run default
+    runFormula(formulaInput.value);
+  </script>
+</body>
+</html>

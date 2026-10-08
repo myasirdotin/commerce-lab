@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commerce Lab - Learn Accounts. Understand Business. Build Financial Skills.</title>
+  <meta name="description" content="Production-grade educational platform for Commerce, Accounting, Business, Taxation, Excel, MIS Reporting, and Financial Literacy.">
+  <link rel="stylesheet" href="css/commerce-core.css">
+  <link rel="stylesheet" href="css/commerce-labs.css">
+</head>
+<body>
+  <!-- Global Navigation Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <span class="brand-badge">CL</span>
+        <div class="brand-text">
+          <span class="brand-title">Commerce Lab</span>
+          <span class="brand-sub">Practical Accounting & Business</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="learn/index.html">Learn</a>
+        <a href="accounting-lab/index.html">Accounting Lab</a>
+        <a href="business-lab/index.html">Business Lab</a>
+        <a href="tax-lab/index.html">Tax Lab</a>
+        <a href="excel-lab/index.html">Excel & MIS</a>
+        <a href="textbooks/index.html">Textbooks</a>
+        <a href="calculators/index.html">Calculators</a>
+        <a href="cheatsheets/index.html">Cheatsheets</a>
+        <a href="projects/index.html">Projects</a>
+        <a href="quiz/index.html">Quiz</a>
+        <a href="teacher-hub/index.html">Teacher Hub</a>
+        <a href="dashboard/index.html" class="nav-btn-highlight">Dashboard</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-badge">✦ Interactive Commerce & Accounting Education</div>
+        <h1 class="hero-title">Learn Accounts. Understand Business. <span class="text-gradient">Build Financial Skills.</span></h1>
+        <p class="hero-subtitle">
+          A rigorous, practical learning platform for Accounting, Commerce, Business, Taxation, Excel, MIS Reporting, and financial decision-making. Designed for students from Class 8 to B.Com, teachers, and ambitious entrepreneurs.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="learn/index.html" class="btn btn-primary btn-lg">Start Learning</a>
+          <a href="accounting-lab/index.html" class="btn btn-outline btn-lg">Explore Accounting Lab</a>
+          <a href="excel-lab/index.html" class="btn btn-secondary btn-lg">Open Excel & MIS Lab</a>
+        </div>
+
+        <!-- Quick Pathway Selector -->
+        <div class="pathway-picker-card">
+          <div class="picker-header">
+            <h3>🧭 Where are you on your journey?</h3>
+            <p>Select your background and goal to get an instant tailored curriculum:</p>
+          </div>
+          <div class="picker-options" id="pathwayOptions">
+            <button class="pathway-pill" data-pathway="foundations">“I am completely new to accounting”</button>
+            <button class="pathway-pill" data-pathway="school">“I am studying Class 11 or 12 Commerce”</button>
+            <button class="pathway-pill" data-pathway="practical">“I want to master practical accounting”</button>
+            <button class="pathway-pill" data-pathway="tax">“I want to learn GST and taxation”</button>
+            <button class="pathway-pill" data-pathway="excel">“I want to become good at Excel & MIS”</button>
+            <button class="pathway-pill" data-pathway="business">“I want to learn business analysis & entrepreneurship”</button>
+            <button class="pathway-pill" data-pathway="teacher">“I am a teacher looking for classroom tools”</button>
+          </div>
+
+          <div id="pathwayRecommendation" class="pathway-result-card" style="display: none;">
+            <div class="rec-icon" id="recIcon">📚</div>
+            <div class="rec-content">
+              <h4 id="recTitle">Recommended Pathway</h4>
+              <p id="recDesc">Description here</p>
+              <div class="rec-topics" id="recTopics"></div>
+            </div>
+            <a href="#" id="recActionBtn" class="btn btn-primary">Start This Pathway →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fundamental Pillars Grid -->
+    <section class="section py-5 bg-surface">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Core Interactive Laboratories</h2>
+          <p class="section-subtitle">Learn the <em>why</em> behind every debit, credit, margin, and formula through dynamic simulations.</p>
+        </div>
+
+        <div class="grid grid-3 gap-4">
+          <!-- Accounting Lab -->
+          <div class="feature-card">
+            <div class="feature-icon bg-emerald-light">⚖️</div>
+            <h3>Interactive Accounting Simulator</h3>
+            <p>Enter transactions and watch the double-entry accounting cycle happen in real time: Accounting Equation, Journal entries, T-accounts, Trial Balance, and Final Accounts.</p>
+            <ul class="feature-list">
+              <li>✓ Live Accounting Equation verification</li>
+              <li>✓ "Explain this Entry" pedagogical breakdowns</li>
+              <li>✓ Traditional Golden Rules & Modern ALCRE classification</li>
+            </ul>
+            <a href="accounting-lab/index.html" class="feature-link">Launch Accounting Lab →</a>
+          </div>
+
+          <!-- Excel & MIS Lab -->
+          <div class="feature-card">
+            <div class="feature-icon bg-blue-light">📊</div>
+            <h3>Excel & MIS Reporting Lab</h3>
+            <p>Manipulate real-world Indian business datasets (Sales register, expense ledgers) using a live in-browser formula engine supporting SUMIF, XLOOKUP, and KPI dashboards.</p>
+            <ul class="feature-list">
+              <li>✓ Real spreadsheet formula evaluator</li>
+              <li>✓ Automated KPI card generation (Revenue, Margin, AOV)</li>
+              <li>✓ Receivables aging schedule and product breakdowns</li>
+            </ul>
+            <a href="excel-lab/index.html" class="feature-link">Launch Excel & MIS Lab →</a>
+          </div>
+
+          <!-- Tax Lab -->
+          <div class="feature-card">
+            <div class="feature-icon bg-amber-light">🏛️</div>
+            <h3>India Tax & GST Lab</h3>
+            <p>Master Indian taxation fundamentals with versioned rules for FY 2024-25. Simulate Input Tax Credit (ITC) offsetting, calculate CGST/SGST/IGST, and understand small business compliance.</p>
+            <ul class="feature-list">
+              <li>✓ Official CBIC and Income Tax Dept citations</li>
+              <li>✓ Visual Input vs. Output GST credit pipeline</li>
+              <li>✓ Presumptive taxation & composition scheme guides</li>
+            </ul>
+            <a href="tax-lab/index.html" class="feature-link">Launch Tax Lab →</a>
+          </div>
+
+          <!-- Business Lab -->
+          <div class="feature-card">
+            <div class="feature-icon bg-purple-light">🏬</div>
+            <h3>Business & Unit Economics Lab</h3>
+            <p>Understand how real small businesses operate. Experiment with break-even analysis, fixed vs variable costs, profit margins, markups, and working capital cycles.</p>
+            <ul class="feature-list">
+              <li>✓ Small business scenarios: Clothing shop, Grocery, Restaurant</li>
+              <li>✓ Dynamic Break-Even Point (BEP) chart and slider</li>
+              <li>✓ Cash flow gap & working capital stress simulator</li>
+            </ul>
+            <a href="business-lab/index.html" class="feature-link">Launch Business Lab →</a>
+          </div>
+
+          <!-- 16 Financial Calculators -->
+          <div class="feature-card">
+            <div class="feature-icon bg-teal-light">🧮</div>
+            <h3>16 Educational Calculators</h3>
+            <p>Not just raw numbers—every calculator displays step-by-step mathematical working, formula notation, and practical business interpretations for managers.</p>
+            <ul class="feature-list">
+              <li>✓ Profit & Loss, Margin vs. Markup, Break-Even</li>
+              <li>✓ Depreciation (SLM & WDV), Working Capital, Quick Ratio</li>
+              <li>✓ Loan EMI, Inventory Turnover, Operating Margin</li>
+            </ul>
+            <a href="calculators/index.html" class="feature-link">Open Calculators Hub →</a>
+          </div>
+
+          <!-- Textbooks & Text-to-Speech -->
+          <div class="feature-card">
+            <div class="feature-icon bg-indigo-light">📖</div>
+            <h3>Interactive Textbooks & SVG Models</h3>
+            <p>Structured chapters covering beginner terminology to final accounts, illustrated with embedded SVG diagrams and built-in speech narration for accessible learning.</p>
+            <ul class="feature-list">
+              <li>✓ 17 structured textbook chapters</li>
+              <li>✓ Embedded vector diagrams & visual accounting flows</li>
+              <li>✓ Clean reader mode with text-to-speech audio</li>
+            </ul>
+            <a href="textbooks/index.html" class="feature-link">Browse Textbooks →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Pathways Overview -->
+    <section class="section py-5">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge-tag">Structured Curricula</span>
+          <h2 class="section-title">6 Master Learning Pathways</h2>
+          <p class="section-subtitle">Each pathway follows an active pedagogy: Concept → Real Example → Interactive Exercise → Practice → Quiz.</p>
+        </div>
+
+        <div class="grid grid-2 gap-4">
+          <div class="pathway-card">
+            <div class="pathway-num">01</div>
+            <div>
+              <h3>Accounting Foundations</h3>
+              <p>Terminology, the Accounting Equation, classification of assets/liabilities/capital, and the fundamental rules of debit and credit.</p>
+              <a href="learn/index.html#pathway-1" class="text-link">Explore Pathway 1 →</a>
+            </div>
+          </div>
+
+          <div class="pathway-card">
+            <div class="pathway-num">02</div>
+            <div>
+              <h3>Financial Accounting</h3>
+              <p>Journal entries, compound journals, T-account posting, Trial Balance balancing, Cash Book, BRS, and depreciation methods.</p>
+              <a href="learn/index.html#pathway-2" class="text-link">Explore Pathway 2 →</a>
+            </div>
+          </div>
+
+          <div class="pathway-card">
+            <div class="pathway-num">03</div>
+            <div>
+              <h3>Financial Statements</h3>
+              <p>Trading Account, Profit & Loss Account, and Balance Sheet. Understand Cost of Goods Sold (COGS), Gross Profit, and Owner's Equity.</p>
+              <a href="learn/index.html#pathway-3" class="text-link">Explore Pathway 3 →</a>
+            </div>
+          </div>
+
+          <div class="pathway-card">
+            <div class="pathway-num">04</div>
+            <div>
+              <h3>Business & Entrepreneurship</h3>
+              <p>Business models, fixed vs. variable costs, break-even unit analysis, pricing strategies, cash flow management, and customer profitability.</p>
+              <a href="learn/index.html#pathway-4" class="text-link">Explore Pathway 4 →</a>
+            </div>
+          </div>
+
+          <div class="pathway-card">
+            <div class="pathway-num">05</div>
+            <div>
+              <h3>Taxation Lab (India)</h3>
+              <p>Direct vs. indirect taxes, GST slabs (0%, 5%, 12%, 18%, 28%), Input Tax Credit offsetting, TDS rules, and small business presumptive schemes.</p>
+              <a href="learn/index.html#pathway-5" class="text-link">Explore Pathway 5 →</a>
+            </div>
+          </div>
+
+          <div class="pathway-card">
+            <div class="pathway-num">06</div>
+            <div>
+              <h3>Excel for Commerce & MIS</h3>
+              <p>Master business formulas (SUMIF, COUNTIF, XLOOKUP, IF) and build executive MIS reporting dashboards with KPIs and aging schedules.</p>
+              <a href="learn/index.html#pathway-6" class="text-link">Explore Pathway 6 →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student & Teacher Quote / Philosophy -->
+    <section class="quote-banner py-5 bg-navy text-white">
+      <div class="container text-center max-w-750">
+        <blockquote class="site-quote">
+          “Accounting is not the mechanical memorization of debits and credits. It is the language through which commercial activity, human stewardship, and business reality are communicated with integrity.”
+        </blockquote>
+        <div class="quote-author">— The Commerce Lab Educational Council</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Production Quality Educational Footer Dedicated to Yasir Rasool -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-brand">
+            <span class="brand-badge">CL</span>
+            <span class="footer-brand-title">Commerce Lab</span>
+          </div>
+          <p class="footer-desc">
+            An open educational platform dedicated to commerce literacy, double-entry bookkeeping, business simulation, Indian taxation, and spreadsheet craftsmanship.
+          </p>
+          <div class="footer-dedication">
+            <p><strong>Dedicated to Beneficial Knowledge (<em>'Ilm Nāfi'</em>), Digital Stewardship &amp; Craftsmanship.</strong></p>
+            <p class="designer-credit">Designed for <strong>Yasir Rasool</strong> &bull; <a href="https://github.com/myasirdotin/" target="_blank" rel="noopener">github.com/myasirdotin</a></p>
+          </div>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Interactive Labs</h4>
+          <ul>
+            <li><a href="accounting-lab/index.html">Accounting Simulator</a></li>
+            <li><a href="excel-lab/index.html">Excel Formula Lab</a></li>
+            <li><a href="mis-lab/index.html">MIS Executive Dashboard</a></li>
+            <li><a href="tax-lab/index.html">India GST & Tax Lab</a></li>
+            <li><a href="business-lab/index.html">Business Break-Even Lab</a></li>
+            <li><a href="calculators/index.html">16 Financial Calculators</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Learning Hub</h4>
+          <ul>
+            <li><a href="learn/index.html">Master Curriculum</a></li>
+            <li><a href="textbooks/index.html">Textbook Library</a></li>
+            <li><a href="cheatsheets/index.html">Cheatsheets & Rules</a></li>
+            <li><a href="projects/index.html">Practical Projects</a></li>
+            <li><a href="quiz/index.html">Concept Quizzes</a></li>
+            <li><a href="teacher-hub/index.html">Teacher Hub & Rubrics</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Compliance & Standards</h4>
+          <ul>
+            <li><a href="tax-lab/index.html#disclaimer">Tax FY 2024-25 Notes</a></li>
+            <li><a href="https://cbic-gst.gov.in" target="_blank" rel="noopener">CBIC GST Portal ↗</a></li>
+            <li><a href="https://incometax.gov.in" target="_blank" rel="noopener">Income Tax Portal ↗</a></li>
+            <li><a href="dashboard/index.html">Student Progress Portal</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Commerce Lab. All educational materials are provided for learning and conceptual instruction.</p>
+        <p class="footer-sub-links">
+          <span>Zero-tracking</span> &bull; <span>Local-first storage</span> &bull; <span>Deployable to Vercel</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/core.js"></script>
+</body>
+</html>

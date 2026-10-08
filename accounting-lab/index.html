@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Accounting Simulator - Commerce Lab</title>
+  <link rel="stylesheet" href="../css/commerce-core.css">
+  <link rel="stylesheet" href="../css/commerce-labs.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">
+        <span class="brand-badge">CL</span>
+        <div class="brand-text">
+          <span class="brand-title">Commerce Lab</span>
+          <span class="brand-sub">Accounting Simulator</span>
+        </div>
+      </a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="../learn/index.html">Learn</a>
+        <a href="index.html" class="active">Accounting Lab</a>
+        <a href="../business-lab/index.html">Business Lab</a>
+        <a href="../tax-lab/index.html">Tax Lab</a>
+        <a href="../excel-lab/index.html">Excel & MIS</a>
+        <a href="../calculators/index.html">Calculators</a>
+        <a href="../textbooks/index.html">Textbooks</a>
+        <a href="../dashboard/index.html" class="nav-btn-highlight">Dashboard</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-4">
+    <div class="container">
+      <!-- Breadcrumbs & Header -->
+      <div class="lab-header">
+        <div class="badge-tag">Interactive Simulator</div>
+        <h1>Double-Entry Accounting Simulator</h1>
+        <p class="text-muted">
+          Activate transactions below to watch how every commercial activity flows synchronously through the <strong>Accounting Equation</strong>, <strong>Journal</strong>, <strong>T-Account Ledgers</strong>, <strong>Trial Balance</strong>, and <strong>Financial Statements</strong>.
+        </p>
+      </div>
+
+      <!-- Live Accounting Equation Banner -->
+      <div class="equation-bar-wrapper">
+        <div class="equation-box" id="eqAssetsBox">
+          <div class="eq-label">Total Assets (A)</div>
+          <div class="eq-value text-emerald" id="eqAssetsVal">₹1,50,000</div>
+          <div class="eq-sub" id="eqAssetsSub">Cash, Furniture, Debtors, Stock</div>
+        </div>
+        <div class="eq-operator">=</div>
+        <div class="equation-box" id="eqLiabBox">
+          <div class="eq-label">Liabilities (L)</div>
+          <div class="eq-value text-blue" id="eqLiabVal">₹35,000</div>
+          <div class="eq-sub" id="eqLiabSub">Creditors, Customer Advances</div>
+        </div>
+        <div class="eq-operator">+</div>
+        <div class="equation-box" id="eqCapBox">
+          <div class="eq-label">Capital / Equity (C)</div>
+          <div class="eq-value text-purple" id="eqCapVal">₹1,15,000</div>
+          <div class="eq-sub" id="eqCapSub">Capital + Net Profit - Drawings</div>
+        </div>
+        <div class="equation-status-pill" id="eqStatusPill">
+          ✓ EQUATION IN BALANCE
+        </div>
+      </div>
+
+      <!-- Main Simulator Layout: 2 Columns -->
+      <div class="grid grid-2 gap-4 mt-4">
+        <!-- Left: Transactions List -->
+        <div class="lab-card">
+          <div class="card-header d-flex justify-between align-center">
+            <h3>1. Commercial Transactions</h3>
+            <span class="badge-sm" id="activeTxnCounter">8 Active</span>
+          </div>
+          <p class="text-sm text-muted">Toggle transactions on or off to witness immediate double-entry ripple effects:</p>
+
+          <div class="txn-list mt-3" id="txnListContainer">
+            <!-- Dynamically populated from DEFAULT_TRANSACTIONS -->
+          </div>
+        </div>
+
+        <!-- Right: Live Journal Entries Preview -->
+        <div class="lab-card">
+          <div class="card-header d-flex justify-between align-center">
+            <h3>2. Synchronous Journal Entries</h3>
+            <span class="badge-sm badge-blue">Debit = Credit</span>
+          </div>
+          <p class="text-sm text-muted">Formal journal recording with golden rule classification:</p>
+
+          <div class="journal-feed" id="journalFeed">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Visual T-Accounts Ledger Grid -->
+      <section class="mt-5">
+        <div class="section-header d-flex justify-between align-center">
+          <div>
+            <h2>3. T-Account Ledgers (Posting)</h2>
+            <p class="text-muted">Each account aggregates debits on the left and credits on the right.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-3 gap-3" id="tAccountsGrid">
+          <!-- Dynamically populated T-Accounts -->
+        </div>
+      </section>
+
+      <!-- Step 4: Live Trial Balance & Final Accounts -->
+      <section class="mt-5">
+        <div class="grid grid-2 gap-4">
+          <!-- Trial Balance -->
+          <div class="lab-card">
+            <div class="card-header d-flex justify-between align-center">
+              <h3>4. Trial Balance</h3>
+              <span class="badge-sm" id="tbStatusBadge">Balanced</span>
+            </div>
+            <p class="text-sm text-muted">Testing arithmetical accuracy of ledger balances:</p>
+
+            <div class="table-responsive mt-3">
+              <table class="financial-table" id="trialBalanceTable">
+                <thead>
+                  <tr>
+                    <th>Particulars (Account)</th>
+                    <th class="text-right">Debit Balance (₹)</th>
+                    <th class="text-right">Credit Balance (₹)</th>
+                  </tr>
+                </thead>
+                <tbody id="trialBalanceBody">
+                  <!-- Injected via JS -->
+                </tbody>
+                <tfoot>
+                  <tr class="total-row">
+                    <td>Total</td>
+                    <td class="text-right" id="tbTotalDebit">₹0</td>
+                    <td class="text-right" id="tbTotalCredit">₹0</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+
+          <!-- Financial Statements: Trading, P&L, Balance Sheet Tabs -->
+          <div class="lab-card">
+            <div class="tab-nav mb-3">
+              <button class="tab-btn active" data-target="plTab">Trading &amp; P&amp;L</button>
+              <button class="tab-btn" data-target="bsTab">Balance Sheet</button>
+            </div>
+
+            <!-- Tab 1: P&L -->
+            <div class="tab-pane active" id="plTab">
+              <h4>Statement of Profit &amp; Loss</h4>
+              <div class="statement-sheet mt-3">
+                <div class="sheet-row">
+                  <span>Revenue from Sales</span>
+                  <strong class="text-emerald" id="plSales">₹0</strong>
+                </div>
+                <div class="sheet-row sub-row">
+                  <span>Less: Cost of Goods Sold (COGS)</span>
+                  <span class="text-red" id="plCogs">₹0</span>
+                </div>
+                <div class="sheet-row highlight-row">
+                  <span>Gross Profit</span>
+                  <strong class="text-emerald" id="plGrossProfit">₹0</strong>
+                </div>
+                <div class="sheet-row sub-row">
+                  <span>Less: Operating Expenses (Rent)</span>
+                  <span class="text-red" id="plExpenses">₹0</span>
+                </div>
+                <div class="sheet-row total-row">
+                  <span>Net Profit transferred to Capital</span>
+                  <strong class="text-emerald font-lg" id="plNetProfit">₹0</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 2: Balance Sheet -->
+            <div class="tab-pane" id="bsTab">
+              <h4>Balance Sheet (Position Statement)</h4>
+              <div class="grid grid-2 gap-3 mt-3">
+                <div class="bs-column">
+                  <h5>Liabilities &amp; Capital</h5>
+                  <div class="sheet-row">
+                    <span>Opening Capital</span>
+                    <span id="bsCapInitial">₹0</span>
+                  </div>
+                  <div class="sheet-row sub-row">
+                    <span>Add: Net Profit</span>
+                    <span class="text-emerald" id="bsNetProfit">₹0</span>
+                  </div>
+                  <div class="sheet-row sub-row">
+                    <span>Less: Drawings</span>
+                    <span class="text-red" id="bsDrawings">₹0</span>
+                  </div>
+                  <div class="sheet-row font-semibold">
+                    <span>Closing Capital</span>
+                    <strong id="bsClosingCap">₹0</strong>
+                  </div>
+                  <div class="sheet-row">
+                    <span>Sundry Creditors</span>
+                    <span id="bsCreditors">₹0</span>
+                  </div>
+                  <div class="sheet-row">
+                    <span>Customer Advance</span>
+                    <span id="bsCustomerAdvance">₹0</span>
+                  </div>
+                  <div class="sheet-row total-row">
+                    <span>Total Liabilities &amp; Capital</span>
+                    <strong class="text-purple font-md" id="bsTotalLiab">₹0</strong>
+                  </div>
+                </div>
+
+                <div class="bs-column">
+                  <h5>Assets</h5>
+                  <div class="sheet-row">
+                    <span>Furniture (Fixed Asset)</span>
+                    <span id="bsFurniture">₹0</span>
+                  </div>
+                  <div class="sheet-row">
+                    <span>Cash in Hand (Liquid)</span>
+                    <span id="bsCash">₹0</span>
+                  </div>
+                  <div class="sheet-row">
+                    <span>Sundry Debtors</span>
+                    <span id="bsDebtors">₹0</span>
+                  </div>
+                  <div class="sheet-row">
+                    <span>Closing Stock (Inventory)</span>
+                    <span id="bsStock">₹0</span>
+                  </div>
+                  <div class="sheet-row total-row">
+                    <span>Total Assets</span>
+                    <strong class="text-emerald font-md" id="bsTotalAssets">₹0</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Explanation Modal -->
+  <div class="modal-backdrop" id="explainModal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="modalTxnTitle">Pedagogical Analysis</h3>
+        <button class="close-modal-btn" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="modal-body" id="modalTxnBody">
+        <!-- Dynamically injected -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="modalCloseAction">Understood</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer mt-5">
+    <div class="container text-center">
+      <p>Dedicated to Beneficial Knowledge (<em>'Ilm Nāfi'</em>) &bull; Designed for <strong>Yasir Rasool</strong> &bull; <a href="https://github.com/myasirdotin/" target="_blank">github.com/myasirdotin</a></p>
+      <p class="text-sm text-muted">&copy; 2026 Commerce Lab. Double-entry simulator.</p>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { DEFAULT_TRANSACTIONS } from '../js/data/accounting-data.js';
+    import { AccountingEngine } from '../js/accounting-engine.js';
+    import { Toast, ProgressStore } from '../js/core.js';
+
+    const engine = new AccountingEngine(DEFAULT_TRANSACTIONS);
+
+    // DOM Elements
+    const txnListContainer = document.getElementById('txnListContainer');
+    const journalFeed = document.getElementById('journalFeed');
+    const tAccountsGrid = document.getElementById('tAccountsGrid');
+    const trialBalanceBody = document.getElementById('trialBalanceBody');
+    const tbTotalDebit = document.getElementById('tbTotalDebit');
+    const tbTotalCredit = document.getElementById('tbTotalCredit');
+    const activeTxnCounter = document.getElementById('activeTxnCounter');
+
+    // Equation Elements
+    const eqAssetsVal = document.getElementById('eqAssetsVal');
+    const eqLiabVal = document.getElementById('eqLiabVal');
+    const eqCapVal = document.getElementById('eqCapVal');
+    const eqStatusPill = document.getElementById('eqStatusPill');
+
+    // P&L and BS Elements
+    const plSales = document.getElementById('plSales');
+    const plCogs = document.getElementById('plCogs');
+    const plGrossProfit = document.getElementById('plGrossProfit');
+    const plExpenses = document.getElementById('plExpenses');
+    const plNetProfit = document.getElementById('plNetProfit');
+
+    const bsCapInitial = document.getElementById('bsCapInitial');
+    const bsNetProfit = document.getElementById('bsNetProfit');
+    const bsDrawings = document.getElementById('bsDrawings');
+    const bsClosingCap = document.getElementById('bsClosingCap');
+    const bsCreditors = document.getElementById('bsCreditors');
+    const bsCustomerAdvance = document.getElementById('bsCustomerAdvance');
+    const bsTotalLiab = document.getElementById('bsTotalLiab');
+    const bsFurniture = document.getElementById('bsFurniture');
+    const bsCash = document.getElementById('bsCash');
+    const bsDebtors = document.getElementById('bsDebtors');
+    const bsStock = document.getElementById('bsStock');
+    const bsTotalAssets = document.getElementById('bsTotalAssets');
+
+    // Modal Elements
+    const explainModal = document.getElementById('explainModal');
+    const modalTxnTitle = document.getElementById('modalTxnTitle');
+    const modalTxnBody = document.getElementById('modalTxnBody');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const modalCloseAction = document.getElementById('modalCloseAction');
+
+    function renderUI() {
+      const data = engine.calculateAll();
+
+      // 1. Render Equation
+      eqAssetsVal.textContent = '₹' + data.equation.assets.toLocaleString('en-IN');
+      eqLiabVal.textContent = '₹' + data.equation.liabilities.toLocaleString('en-IN');
+      eqCapVal.textContent = '₹' + data.equation.capital.toLocaleString('en-IN');
+      if (data.equation.isBalanced) {
+        eqStatusPill.textContent = '✓ EQUATION IN BALANCE';
+        eqStatusPill.className = 'equation-status-pill badge-emerald';
+      } else {
+        eqStatusPill.textContent = '⚠ DISCREPANCY DETECTED';
+        eqStatusPill.className = 'equation-status-pill badge-red';
+      }
+
+      // 2. Render Transactions List
+      activeTxnCounter.textContent = `${engine.activeTxns.length} of ${DEFAULT_TRANSACTIONS.length} Active`;
+      txnListContainer.innerHTML = DEFAULT_TRANSACTIONS.map(txn => {
+        const isActive = engine.activeTxns.some(t => t.id === txn.id);
+        return `
+          <div class="txn-item ${isActive ? 'is-active' : 'is-inactive'}">
+            <div class="txn-meta">
+              <span class="badge-tag">${txn.date}</span>
+              <strong>₹${txn.amount.toLocaleString('en-IN')}</strong>
+            </div>
+            <div class="txn-desc">${txn.description}</div>
+            <div class="txn-actions mt-2 d-flex justify-between align-center">
+              <label class="toggle-switch">
+                <input type="checkbox" data-id="${txn.id}" class="txn-toggle" ${isActive ? 'checked' : ''}>
+                <span class="slider round"></span>
+                <span class="toggle-text text-xs">${isActive ? 'Active' : 'Disabled'}</span>
+              </label>
+              <button class="btn btn-outline btn-xs explain-btn" data-id="${txn.id}">Explain This Entry 💡</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // 3. Render Journal Feed
+      journalFeed.innerHTML = engine.activeTxns.map(txn => `
+        <div class="journal-card mb-2">
+          <div class="journal-date text-xs text-muted">${txn.date}</div>
+          <div class="journal-row">
+            <span><strong>${txn.debitAccount}</strong> <span class="badge-xs badge-emerald">Dr.</span></span>
+            <span class="font-mono">₹${txn.amount.toLocaleString('en-IN')}</span>
+          </div>
+          <div class="journal-row indent-cr">
+            <span>To <strong>${txn.creditAccount}</strong> <span class="badge-xs badge-blue">Cr.</span></span>
+            <span class="font-mono">₹${txn.amount.toLocaleString('en-IN')}</span>
+          </div>
+          <div class="journal-narration text-xs text-muted mt-1">(Being ${txn.description.toLowerCase()})</div>
+        </div>
+      `).join('');
+
+      // 4. Render T-Accounts
+      tAccountsGrid.innerHTML = Object.keys(data.ledgers).map(accName => {
+        const acc = data.ledgers[accName];
+        return `
+          <div class="t-account-card">
+            <div class="t-account-header">
+              <h4>${acc.name}</h4>
+              <span class="badge-xs">${acc.type}</span>
+            </div>
+            <div class="t-account-body grid grid-2">
+              <div class="t-col t-col-dr">
+                <div class="t-col-title">Dr. (Debit)</div>
+                ${acc.debits.map(d => `<div class="t-entry"><span>To ${d.against}</span><strong>₹${d.amount.toLocaleString('en-IN')}</strong></div>`).join('')}
+              </div>
+              <div class="t-col t-col-cr">
+                <div class="t-col-title">Cr. (Credit)</div>
+                ${acc.credits.map(c => `<div class="t-entry"><span>By ${c.against}</span><strong>₹${c.amount.toLocaleString('en-IN')}</strong></div>`).join('')}
+              </div>
+            </div>
+            <div class="t-account-footer">
+              ${acc.netDebit > 0 ? `<span class="text-emerald">Debit Balance c/d: ₹${acc.netDebit.toLocaleString('en-IN')}</span>` : ''}
+              ${acc.netCredit > 0 ? `<span class="text-blue">Credit Balance c/d: ₹${acc.netCredit.toLocaleString('en-IN')}</span>` : ''}
+              ${acc.netDebit === 0 && acc.netCredit === 0 ? `<span class="text-muted">Settled (NIL)</span>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // 5. Render Trial Balance
+      trialBalanceBody.innerHTML = data.trialBalance.map(row => `
+        <tr>
+          <td>${row.account}</td>
+          <td class="text-right font-mono">${row.debit > 0 ? '₹' + row.debit.toLocaleString('en-IN') : '-'}</td>
+          <td class="text-right font-mono">${row.credit > 0 ? '₹' + row.credit.toLocaleString('en-IN') : '-'}</td>
+        </tr>
+      `).join('');
+
+      tbTotalDebit.textContent = '₹' + data.trialBalanceTotals.totalDebit.toLocaleString('en-IN');
+      tbTotalCredit.textContent = '₹' + data.trialBalanceTotals.totalCredit.toLocaleString('en-IN');
+
+      // 6. Render P&L
+      plSales.textContent = '₹' + data.profitLoss.sales.toLocaleString('en-IN');
+      plCogs.textContent = '₹' + data.profitLoss.costOfGoodsSold.toLocaleString('en-IN');
+      plGrossProfit.textContent = '₹' + data.profitLoss.grossProfit.toLocaleString('en-IN');
+      plExpenses.textContent = '₹' + data.profitLoss.totalIndirectExpenses.toLocaleString('en-IN');
+      plNetProfit.textContent = '₹' + data.profitLoss.netProfit.toLocaleString('en-IN');
+
+      // 7. Render Balance Sheet
+      bsCapInitial.textContent = '₹' + data.balanceSheet.equity.initialCapital.toLocaleString('en-IN');
+      bsNetProfit.textContent = '₹' + data.balanceSheet.equity.netProfit.toLocaleString('en-IN');
+      bsDrawings.textContent = '₹' + data.balanceSheet.equity.drawings.toLocaleString('en-IN');
+      bsClosingCap.textContent = '₹' + data.balanceSheet.equity.finalCapital.toLocaleString('en-IN');
+      bsCreditors.textContent = '₹' + data.balanceSheet.liabilities.creditors.toLocaleString('en-IN');
+      bsCustomerAdvance.textContent = '₹' + data.balanceSheet.liabilities.customerAdvance.toLocaleString('en-IN');
+      bsTotalLiab.textContent = '₹' + data.balanceSheet.totalEquityAndLiabilities.toLocaleString('en-IN');
+
+      bsFurniture.textContent = '₹' + data.balanceSheet.assets.furniture.toLocaleString('en-IN');
+      bsCash.textContent = '₹' + data.balanceSheet.assets.cash.toLocaleString('en-IN');
+      bsDebtors.textContent = '₹' + data.balanceSheet.assets.debtors.toLocaleString('en-IN');
+      bsStock.textContent = '₹' + data.balanceSheet.assets.closingStock.toLocaleString('en-IN');
+      bsTotalAssets.textContent = '₹' + data.balanceSheet.assets.totalAssets.toLocaleString('en-IN');
+
+      ProgressStore.recordLabActivity('Accounting Simulator');
+    }
+
+    // Event Listeners
+    txnListContainer.addEventListener('change', (e) => {
+      if (e.target.classList.contains('txn-toggle')) {
+        const id = e.target.getAttribute('data-id');
+        engine.toggleTransaction(id);
+        renderUI();
+        Toast.show('Recalculated ledger and statements in real-time!', 'success');
+      }
+    });
+
+    txnListContainer.addEventListener('click', (e) => {
+      if (e.target.classList.contains('explain-btn')) {
+        const id = e.target.getAttribute('data-id');
+        const txn = DEFAULT_TRANSACTIONS.find(t => t.id === id);
+        if (txn) {
+          modalTxnTitle.textContent = `Explanation: ${txn.description}`;
+          modalTxnBody.innerHTML = `
+            <div class="explain-section mb-3">
+              <h4 class="text-emerald">1. Traditional Golden Rules</h4>
+              <p><strong>Debit Account:</strong> ${txn.goldenRule.debitReason}</p>
+              <p><strong>Credit Account:</strong> ${txn.goldenRule.creditReason}</p>
+            </div>
+            <div class="explain-section mb-3">
+              <h4 class="text-blue">2. Modern ALCRE Classification</h4>
+              <p>${txn.goldenRule.modernRule}</p>
+            </div>
+            <div class="explain-section mb-3">
+              <h4 class="text-purple">3. Equation Impact</h4>
+              <p>Assets: <code>${txn.equationChange.assets}</code></p>
+              <p>Liabilities: <code>${txn.equationChange.liabilities}</code></p>
+              <p>Capital: <code>${txn.equationChange.capital}</code></p>
+            </div>
+            <div class="explain-section">
+              <h4>4. Balance Sheet &amp; Profit Effect</h4>
+              <p class="text-muted">${txn.financialImpact}</p>
+            </div>
+          `;
+          explainModal.style.display = 'flex';
+        }
+      }
+    });
+
+    // Close Modal
+    const closeModal = () => { explainModal.style.display = 'none'; };
+    closeModalBtn.addEventListener('click', closeModal);
+    modalCloseAction.addEventListener('click', closeModal);
+    explainModal.addEventListener('click', (e) => { if (e.target === explainModal) closeModal(); });
+
+    // Tabs inside Financial statements
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.getAttribute('data-target')).classList.add('active');
+      });
+    });
+
+    renderUI();
+  </script>
+</body>
+</html>

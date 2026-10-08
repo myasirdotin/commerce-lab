@@ -1,0 +1,22 @@
+{
+  "name": "commerce-lab",
+  "version": "1.0.0",
+  "description": "Production-quality educational platform for Commerce, Accounting, Business, Taxation, Excel, and MIS Reporting.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "commerce",
+    "accounting",
+    "financial-literacy",
+    "gst",
+    "excel",
+    "mis-reporting",
+    "education",
+    "business"
+  ],
+  "author": "Commerce Lab Team",
+  "license": "MIT"
+}

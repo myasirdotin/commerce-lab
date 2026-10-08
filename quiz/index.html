@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concept Quizzes &amp; Assessments - Commerce Lab</title>
+  <link rel="stylesheet" href="../css/commerce-core.css">
+  <link rel="stylesheet" href="../css/commerce-labs.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">
+        <span class="brand-badge">CL</span>
+        <div class="brand-text">
+          <span class="brand-title">Commerce Lab</span>
+          <span class="brand-sub">Concept Quizzes</span>
+        </div>
+      </a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="../learn/index.html">Learn</a>
+        <a href="../accounting-lab/index.html">Accounting Lab</a>
+        <a href="../business-lab/index.html">Business Lab</a>
+        <a href="../tax-lab/index.html">Tax Lab</a>
+        <a href="../excel-lab/index.html">Excel &amp; MIS</a>
+        <a href="../textbooks/index.html">Textbooks</a>
+        <a href="index.html" class="active">Quiz</a>
+        <a href="../dashboard/index.html" class="nav-btn-highlight">Dashboard</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-4">
+    <div class="container">
+      <div class="lab-header d-flex justify-between align-center">
+        <div>
+          <div class="badge-tag">Self Assessment</div>
+          <h1>Conceptual Commerce &amp; Accounting Quizzes</h1>
+          <p class="text-muted">Test your understanding of core concepts. Every answer reveals deep pedagogical explanations.</p>
+        </div>
+        <div class="score-card-pill">
+          <span>Score: </span><strong class="text-emerald" id="scoreDisplay">0</strong> / <span id="totalQuestionsDisplay">5</span>
+        </div>
+      </div>
+
+      <!-- Categories Filter -->
+      <div class="tab-nav mb-4" id="quizCatNav">
+        <button class="tab-btn active" data-cat="all">All Topics</button>
+        <button class="tab-btn" data-cat="foundations">Foundations</button>
+        <button class="tab-btn" data-cat="golden-rules">Golden Rules</button>
+        <button class="tab-btn" data-cat="financial-statements">Financial Statements</button>
+        <button class="tab-btn" data-cat="tax-gst">Tax &amp; GST</button>
+        <button class="tab-btn" data-cat="excel-business">Excel for Commerce</button>
+      </div>
+
+      <!-- Quiz Questions Feed -->
+      <div class="quiz-feed" id="quizFeed">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer mt-5">
+    <div class="container text-center">
+      <p>Dedicated to Beneficial Knowledge (<em>'Ilm Nāfi'</em>) &bull; Designed for <strong>Yasir Rasool</strong> &bull; <a href="https://github.com/myasirdotin/" target="_blank">github.com/myasirdotin</a></p>
+      <p class="text-sm text-muted">&copy; 2026 Commerce Lab. Interactive Concept Quizzes.</p>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { MASTER_QUESTIONS, QUIZ_CATEGORIES } from '../js/data/quizzes-data.js';
+    import { Toast, ProgressStore } from '../js/core.js';
+
+    let currentQuestions = [...MASTER_QUESTIONS];
+    let score = 0;
+    const answeredMap = {};
+
+    const quizFeed = document.getElementById('quizFeed');
+    const scoreDisplay = document.getElementById('scoreDisplay');
+    const totalQuestionsDisplay = document.getElementById('totalQuestionsDisplay');
+
+    function renderQuestions() {
+      totalQuestionsDisplay.textContent = currentQuestions.length;
+      quizFeed.innerHTML = currentQuestions.map((q, qIdx) => {
+        const answered = answeredMap[q.id];
+        return `
+          <div class="lab-card quiz-card mb-4" id="card_${q.id}">
+            <div class="card-header d-flex justify-between align-center">
+              <span class="badge-tag">Question ${qIdx + 1}</span>
+              <span class="text-xs text-muted uppercase font-semibold">${q.category}</span>
+            </div>
+            <h3 class="mt-2 text-md">${q.question}</h3>
+            <div class="quiz-options-list mt-3">
+              ${q.options.map((opt, oIdx) => {
+                let btnClass = 'quiz-opt-btn';
+                if (answered !== undefined) {
+                  if (oIdx === q.correctIndex) btnClass += ' opt-correct';
+                  else if (oIdx === answered && answered !== q.correctIndex) btnClass += ' opt-incorrect';
+                }
+                return `
+                  <button class="${btnClass}" data-qid="${q.id}" data-oidx="${oIdx}" ${answered !== undefined ? 'disabled' : ''}>
+                    <span class="opt-letter">${String.fromCharCode(65 + oIdx)}.</span>
+                    <span class="opt-text">${opt}</span>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+            ${answered !== undefined ? `
+              <div class="quiz-explanation-box mt-3 p-3 bg-surface border-left-emerald">
+                <strong>Pedagogical Explanation:</strong>
+                <p class="text-sm mt-1">${q.explanation}</p>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    quizFeed.addEventListener('click', (e) => {
+      const btn = e.target.closest('.quiz-opt-btn');
+      if (!btn || btn.disabled) return;
+
+      const qId = btn.getAttribute('data-qid');
+      const oIdx = parseInt(btn.getAttribute('data-oidx'), 10);
+      const question = MASTER_QUESTIONS.find(q => q.id === qId);
+
+      if (question && answeredMap[qId] === undefined) {
+        answeredMap[qId] = oIdx;
+        if (oIdx === question.correctIndex) {
+          score++;
+          Toast.show('Correct answer! +1 point', 'success');
+        } else {
+          Toast.show('Incorrect. Review the explanation below.', 'error');
+        }
+        scoreDisplay.textContent = score;
+        ProgressStore.recordQuizScore(qId, oIdx === question.correctIndex ? 100 : 0);
+        renderQuestions();
+      }
+    });
+
+    // Category Filter
+    document.querySelectorAll('#quizCatNav .tab-btn').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('#quizCatNav .tab-btn').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const cat = tab.getAttribute('data-cat');
+        if (cat === 'all') {
+          currentQuestions = [...MASTER_QUESTIONS];
+        } else {
+          currentQuestions = MASTER_QUESTIONS.filter(q => q.category === cat);
+        }
+        renderQuestions();
+      });
+    });
+
+    renderQuestions();
+  </script>
+</body>
+</html>

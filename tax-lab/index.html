@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>India Taxation &amp; GST Lab - Commerce Lab</title>
+  <link rel="stylesheet" href="../css/commerce-core.css">
+  <link rel="stylesheet" href="../css/commerce-labs.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">
+        <span class="brand-badge">CL</span>
+        <div class="brand-text">
+          <span class="brand-title">Commerce Lab</span>
+          <span class="brand-sub">India Taxation Lab</span>
+        </div>
+      </a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="../learn/index.html">Learn</a>
+        <a href="../accounting-lab/index.html">Accounting Lab</a>
+        <a href="../business-lab/index.html">Business Lab</a>
+        <a href="index.html" class="active">Tax Lab</a>
+        <a href="../excel-lab/index.html">Excel &amp; MIS</a>
+        <a href="../calculators/index.html">Calculators</a>
+        <a href="../dashboard/index.html" class="nav-btn-highlight">Dashboard</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-4">
+    <div class="container">
+      <div class="lab-header">
+        <div class="badge-tag">Statutory Framework</div>
+        <h1>India Taxation &amp; GST Laboratory</h1>
+        <p class="text-muted">
+          Understand how direct and indirect taxes function in India. Learn the <strong>Input Tax Credit (ITC) mechanism</strong>, GST rate slabs, TDS provisions, and small-business presumptive rules with official citations.
+        </p>
+      </div>
+
+      <!-- Statutory Educational Disclaimer Alert -->
+      <div class="alert-box alert-warning mb-4" id="disclaimer">
+        <div class="alert-icon">⚖️</div>
+        <div class="alert-content">
+          <strong>Official Educational Disclaimer:</strong>
+          <span id="disclaimerText">Loading statutory disclaimer...</span>
+          <div class="text-xs mt-1">
+            Official Portals: <a href="https://cbic-gst.gov.in" target="_blank" rel="noopener">CBIC GST Portal (cbic-gst.gov.in)</a> &bull; <a href="https://incometax.gov.in" target="_blank" rel="noopener">Income Tax Department (incometax.gov.in)</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive GST Pipeline Simulator -->
+      <div class="lab-card">
+        <div class="card-header d-flex justify-between align-center">
+          <div>
+            <h3>Interactive Input Tax Credit (ITC) Simulator</h3>
+            <span class="text-xs text-muted">Versioned for Financial Year <strong id="gstFyLabel">2024-25</strong></span>
+          </div>
+          <span class="badge-sm badge-blue">CGST + SGST vs IGST</span>
+        </div>
+
+        <div class="grid grid-3 gap-4 mt-4">
+          <!-- Input Form -->
+          <div class="tax-input-col">
+            <div class="form-group mb-3">
+              <label class="form-label">Purchase Value (Exclusive of GST)</label>
+              <input type="number" id="purchaseInput" class="form-control font-mono" value="10000" step="500">
+              <span class="text-xs text-muted">Cost of inventory / goods bought for resale</span>
+            </div>
+
+            <div class="form-group mb-3">
+              <label class="form-label">Sale Value (Exclusive of GST)</label>
+              <input type="number" id="saleInput" class="form-control font-mono" value="20000" step="500">
+              <span class="text-xs text-muted">Revenue earned from selling to customers</span>
+            </div>
+
+            <div class="form-group mb-3">
+              <label class="form-label">Applicable GST Slabs Rate</label>
+              <select id="gstRateSelect" class="form-control font-mono">
+                <option value="5">5% (Essential Goods, Medicines)</option>
+                <option value="12">12% (Processed items, Hardware)</option>
+                <option value="18" selected>18% (Standard Rate: Electronics, Services)</option>
+                <option value="28">28% (Luxury &amp; Automobiles)</option>
+              </select>
+            </div>
+
+            <div class="form-group mb-3">
+              <label class="form-label">Transaction Type</label>
+              <div class="d-flex gap-3 mt-1">
+                <label><input type="radio" name="supplyType" value="intra" checked> Intra-State (CGST + SGST)</label>
+                <label><input type="radio" name="supplyType" value="inter"> Inter-State (IGST)</label>
+              </div>
+            </div>
+
+            <button class="btn btn-primary w-100" id="calculateTaxBtn">Calculate GST Flow 🔄</button>
+          </div>
+
+          <!-- Middle: Step-by-Step Flowchart Pipeline -->
+          <div class="tax-pipeline-col">
+            <h4>1. Input Stage (Purchase)</h4>
+            <div class="pipeline-card mb-3">
+              <div class="d-flex justify-between">
+                <span>Input GST Paid:</span>
+                <strong class="text-blue" id="dispInputTax">₹1,800</strong>
+              </div>
+              <div class="text-xs text-muted mt-1" id="dispInputBreakdown">CGST (9%): ₹900 | SGST (9%): ₹900</div>
+              <div class="text-xs text-emerald mt-1 font-semibold">✓ Saved as Input Tax Credit (Asset)</div>
+            </div>
+
+            <h4>2. Output Stage (Sale)</h4>
+            <div class="pipeline-card mb-3">
+              <div class="d-flex justify-between">
+                <span>Output GST Collected:</span>
+                <strong class="text-purple" id="dispOutputTax">₹3,600</strong>
+              </div>
+              <div class="text-xs text-muted mt-1" id="dispOutputBreakdown">CGST (9%): ₹1,800 | SGST (9%): ₹1,800</div>
+              <div class="text-xs text-muted mt-1">Liability collected from buyer</div>
+            </div>
+          </div>
+
+          <!-- Right: Net Settlement Result -->
+          <div class="tax-result-col">
+            <h4>3. Net Government Settlement</h4>
+            <div class="tax-summary-box text-center">
+              <div class="text-xs text-muted">NET GST PAYABLE (Output - Input Credit)</div>
+              <div class="tax-net-amount text-emerald mt-2" id="dispNetPayable">₹1,800</div>
+              <p class="text-xs text-muted mt-2" id="dispSettlementExplanation">
+                Because you collected ₹3,600 from your buyer and already paid ₹1,800 to your supplier, you only deposit ₹1,800 with the Government on Form GSTR-3B.
+              </p>
+            </div>
+
+            <div class="card-outline p-3 mt-3">
+              <h5 class="text-sm">Why does this matter?</h5>
+              <p class="text-xs text-muted">
+                Without Input Tax Credit (the cascading tax effect in pre-GST days), the consumer would be taxed on tax, raising prices artificially!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- India GST Rate Slabs Reference -->
+      <section class="mt-5">
+        <div class="section-header">
+          <h2>Official GST Rate Slabs (FY 2024-25)</h2>
+          <p class="text-muted">Structured rate schedule administered by the GST Council of India.</p>
+        </div>
+
+        <div class="table-responsive">
+          <table class="financial-table" id="gstSlabsTable">
+            <thead>
+              <tr>
+                <th>Slab</th>
+                <th>CGST Rate</th>
+                <th>SGST Rate</th>
+                <th>IGST Rate</th>
+                <th>Applicable Goods &amp; Services</th>
+              </tr>
+            </thead>
+            <tbody id="gstSlabsBody">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Tax Knowledge Base Cards -->
+      <section class="mt-5">
+        <div class="section-header">
+          <h2>Statutory Tax Knowledge Base</h2>
+          <p class="text-muted">Key principles of Indian Income Tax, TDS, and GST with official sources and review dates.</p>
+        </div>
+
+        <div class="grid grid-2 gap-4" id="knowledgeBaseContainer">
+          <!-- Injected via JS from TAX_KNOWLEDGE_BASE -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer mt-5">
+    <div class="container text-center">
+      <p>Dedicated to Beneficial Knowledge (<em>'Ilm Nāfi'</em>) &bull; Designed for <strong>Yasir Rasool</strong> &bull; <a href="https://github.com/myasirdotin/" target="_blank">github.com/myasirdotin</a></p>
+      <p class="text-sm text-muted">&copy; 2026 Commerce Lab. Educational Indian Taxation Engine.</p>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { TAX_CONFIG, GST_RATE_SLABS, TAX_KNOWLEDGE_BASE, computeEducationalGST } from '../js/data/tax-rules.js';
+    import { Toast, ProgressStore } from '../js/core.js';
+
+    // Disclaimer and FY metadata
+    document.getElementById('disclaimerText').textContent = TAX_CONFIG.legalDisclaimer;
+    document.getElementById('gstFyLabel').textContent = TAX_CONFIG.currentFinancialYear;
+
+    // Render GST Slabs Table
+    document.getElementById('gstSlabsBody').innerHTML = GST_RATE_SLABS.map(slab => `
+      <tr>
+        <td><strong class="font-mono text-purple">${slab.slab}</strong></td>
+        <td class="font-mono">${slab.cgst}%</td>
+        <td class="font-mono">${slab.sgst}%</td>
+        <td class="font-mono font-semibold">${slab.igst}%</td>
+        <td class="text-sm">${slab.description}</td>
+      </tr>
+    `).join('');
+
+    // Render Knowledge Base Cards
+    document.getElementById('knowledgeBaseContainer').innerHTML = TAX_KNOWLEDGE_BASE.map(item => `
+      <div class="lab-card">
+        <div class="card-header d-flex justify-between align-center">
+          <h4>${item.topic}</h4>
+          <span class="badge-tag">${item.category}</span>
+        </div>
+        <div class="text-xs text-muted mb-2">
+          <strong>Financial Year:</strong> ${item.financialYear} &bull; <strong>Reviewed:</strong> ${item.lastReviewedDate}
+        </div>
+        <div class="card-body">
+          <p class="text-sm mb-2"><strong>Applicable Rule:</strong> ${item.applicableRule}</p>
+          <div class="example-box p-2 bg-surface text-xs border-left-emerald mb-2">
+            <strong>Worked Example:</strong> ${item.example}
+          </div>
+          <div class="text-xs text-muted">
+            <strong>Source:</strong> <a href="${item.sourceUrl}" target="_blank" rel="noopener">${item.source} ↗</a>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    // Tax calculation handler
+    function updateGSTCalculation() {
+      const p = parseFloat(document.getElementById('purchaseInput').value) || 0;
+      const s = parseFloat(document.getElementById('saleInput').value) || 0;
+      const r = parseFloat(document.getElementById('gstRateSelect').value) || 18;
+      const isInter = document.querySelector('input[name="supplyType"]:checked').value === 'inter';
+
+      const res = computeEducationalGST({ purchaseAmount: p, saleAmount: s, gstRatePercent: r, isInterState: isInter });
+
+      document.getElementById('dispInputTax').textContent = '₹' + res.inputTaxCredit.toLocaleString('en-IN');
+      document.getElementById('dispOutputTax').textContent = '₹' + res.outputTax.toLocaleString('en-IN');
+      document.getElementById('dispNetPayable').textContent = '₹' + res.netPayable.toLocaleString('en-IN');
+
+      if (isInter) {
+        document.getElementById('dispInputBreakdown').textContent = `IGST (${r}%): ₹${res.inputIGST.toLocaleString('en-IN')}`;
+        document.getElementById('dispOutputBreakdown').textContent = `IGST (${r}%): ₹${res.outputIGST.toLocaleString('en-IN')}`;
+      } else {
+        document.getElementById('dispInputBreakdown').textContent = `CGST (${r/2}%): ₹${res.inputCGST.toLocaleString('en-IN')} | SGST (${r/2}%): ₹${res.inputSGST.toLocaleString('en-IN')}`;
+        document.getElementById('dispOutputBreakdown').textContent = `CGST (${r/2}%): ₹${res.outputCGST.toLocaleString('en-IN')} | SGST (${r/2}%): ₹${res.outputSGST.toLocaleString('en-IN')}`;
+      }
+
+      if (res.netPayable > 0) {
+        document.getElementById('dispSettlementExplanation').textContent =
+          `Output GST (₹${res.outputTax.toLocaleString('en-IN')}) exceeds Input Credit (₹${res.inputTaxCredit.toLocaleString('en-IN')}). You pay ₹${res.netPayable.toLocaleString('en-IN')} into the government treasury.`;
+      } else {
+        document.getElementById('dispSettlementExplanation').textContent =
+          `Input Tax Credit exceeds output liability! ₹0 payable now; ₹${res.excessCredit.toLocaleString('en-IN')} remains in your Electronic Credit Ledger to offset future sales.`;
+      }
+
+      ProgressStore.recordLabActivity('India Tax & GST Lab');
+    }
+
+    document.getElementById('calculateTaxBtn').addEventListener('click', () => {
+      updateGSTCalculation();
+      Toast.show('GST pipeline recomputed successfully!', 'success');
+    });
+
+    document.querySelectorAll('input[name="supplyType"]').forEach(r => r.addEventListener('change', updateGSTCalculation));
+    document.getElementById('gstRateSelect').addEventListener('change', updateGSTCalculation);
+
+    // Initial run
+    updateGSTCalculation();
+  </script>
+</body>
+</html>

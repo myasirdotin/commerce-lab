@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commerce &amp; Accounting Cheatsheets - Commerce Lab</title>
+  <link rel="stylesheet" href="../css/commerce-core.css">
+  <link rel="stylesheet" href="../css/commerce-labs.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">
+        <span class="brand-badge">CL</span>
+        <div class="brand-text">
+          <span class="brand-title">Commerce Lab</span>
+          <span class="brand-sub">Quick Reference Cheatsheets</span>
+        </div>
+      </a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="../learn/index.html">Learn</a>
+        <a href="../accounting-lab/index.html">Accounting Lab</a>
+        <a href="../business-lab/index.html">Business Lab</a>
+        <a href="../tax-lab/index.html">Tax Lab</a>
+        <a href="../excel-lab/index.html">Excel &amp; MIS</a>
+        <a href="../textbooks/index.html">Textbooks</a>
+        <a href="index.html" class="active">Cheatsheets</a>
+        <a href="../dashboard/index.html" class="nav-btn-highlight">Dashboard</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-4">
+    <div class="container">
+      <div class="lab-header">
+        <div class="badge-tag">Quick Reference</div>
+        <h1>Master Commerce &amp; Accounting Cheatsheets</h1>
+        <p class="text-muted">High-density summary reference cards designed for revision, exams, and desk reference.</p>
+      </div>
+
+      <!-- Cheatsheet 1: Traditional Golden Rules vs Modern ALCRE -->
+      <section class="mb-5">
+        <div class="section-header">
+          <h2>1. The Two Rules of Debit and Credit</h2>
+          <p class="text-muted">Compare the British Traditional English approach and the American Modern ALCRE approach.</p>
+        </div>
+
+        <div class="grid grid-2 gap-4">
+          <!-- Traditional Golden Rules -->
+          <div class="lab-card">
+            <div class="card-header">
+              <span class="badge-tag badge-amber">British Method</span>
+              <h3>Traditional Golden Rules of Accounting</h3>
+            </div>
+            <div class="table-responsive mt-3">
+              <table class="financial-table">
+                <thead>
+                  <tr>
+                    <th>Type of Account</th>
+                    <th>Debit Rule</th>
+                    <th>Credit Rule</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Personal Account</strong><br><small class="text-muted">People, firms, banks, debtors, creditors</small></td>
+                    <td><span class="badge-xs badge-emerald">Debit the Receiver</span></td>
+                    <td><span class="badge-xs badge-blue">Credit the Giver</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Real Account</strong><br><small class="text-muted">Tangible &amp; intangible assets (Cash, Furniture, Land)</small></td>
+                    <td><span class="badge-xs badge-emerald">Debit what Comes In</span></td>
+                    <td><span class="badge-xs badge-blue">Credit what Goes Out</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nominal Account</strong><br><small class="text-muted">Expenses, losses, revenues, gains (Rent, Salary, Sales)</small></td>
+                    <td><span class="badge-xs badge-emerald">Debit all Expenses &amp; Losses</span></td>
+                    <td><span class="badge-xs badge-blue">Credit all Incomes &amp; Gains</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Modern ALCRE Rules -->
+          <div class="lab-card">
+            <div class="card-header">
+              <span class="badge-tag badge-purple">American Method</span>
+              <h3>Modern ALCRE Classification Rules</h3>
+            </div>
+            <div class="table-responsive mt-3">
+              <table class="financial-table">
+                <thead>
+                  <tr>
+                    <th>Account Class</th>
+                    <th>Normal Balance</th>
+                    <th>To Increase (+)</th>
+                    <th>To Decrease (-)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>A - Assets</strong></td>
+                    <td>Debit</td>
+                    <td><strong class="text-emerald">DEBIT</strong></td>
+                    <td><strong class="text-blue">CREDIT</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>L - Liabilities</strong></td>
+                    <td>Credit</td>
+                    <td><strong class="text-blue">CREDIT</strong></td>
+                    <td><strong class="text-emerald">DEBIT</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>C - Capital / Equity</strong></td>
+                    <td>Credit</td>
+                    <td><strong class="text-blue">CREDIT</strong></td>
+                    <td><strong class="text-emerald">DEBIT</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>R - Revenue / Income</strong></td>
+                    <td>Credit</td>
+                    <td><strong class="text-blue">CREDIT</strong></td>
+                    <td><strong class="text-emerald">DEBIT</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>E - Expenses / Losses</strong></td>
+                    <td>Debit</td>
+                    <td><strong class="text-emerald">DEBIT</strong></td>
+                    <td><strong class="text-blue">CREDIT</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="text-xs text-muted mt-2">
+              💡 <em>Memory Tip:</em> <strong>DEAD CLIC</strong> &rarr; <strong>D</strong>ebit <strong>E</strong>xpenses, <strong>A</strong>ssets, <strong>D</strong>rawings | <strong>C</strong>redit <strong>L</strong>iabilities, <strong>I</strong>ncome, <strong>C</strong>apital.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cheatsheet 2: Key Financial & Accounting Ratios -->
+      <section class="mb-5">
+        <div class="section-header">
+          <h2>2. Essential Financial Ratios Master Sheet</h2>
+          <p class="text-muted">Formulas and standard benchmarks used by bankers, analysts, and CBSE/B.Com examiners.</p>
+        </div>
+
+        <div class="table-responsive">
+          <table class="financial-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Ratio Name</th>
+                <th>Formula</th>
+                <th>Standard Benchmark</th>
+                <th>Business Meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Liquidity</strong></td>
+                <td>Current Ratio</td>
+                <td><code>Current Assets / Current Liabilities</code></td>
+                <td><span class="badge-xs badge-emerald">2 : 1</span></td>
+                <td>Tests ability to meet short-term debt obligations within 12 months.</td>
+              </tr>
+              <tr>
+                <td><strong>Liquidity</strong></td>
+                <td>Quick (Acid-Test) Ratio</td>
+                <td><code>(Current Assets - Inventory - Prepaids) / Current Liab</code></td>
+                <td><span class="badge-xs badge-emerald">1 : 1</span></td>
+                <td>Instant debt repayment capacity excluding slow-to-liquidate stock.</td>
+              </tr>
+              <tr>
+                <td><strong>Solvency</strong></td>
+                <td>Debt-to-Equity Ratio</td>
+                <td><code>Total Long-Term Debt / Shareholders' Equity</code></td>
+                <td><span class="badge-xs badge-blue">&le; 2 : 1</span></td>
+                <td>Proportion of outsider leverage funding company vs owner equity.</td>
+              </tr>
+              <tr>
+                <td><strong>Profitability</strong></td>
+                <td>Gross Profit Margin</td>
+                <td><code>(Gross Profit / Net Revenue) × 100</code></td>
+                <td>Industry-dependent (>30%)</td>
+                <td>Profit margin left after direct production costs to cover overheads.</td>
+              </tr>
+              <tr>
+                <td><strong>Profitability</strong></td>
+                <td>Net Profit Margin</td>
+                <td><code>(Net Profit after Tax / Net Revenue) × 100</code></td>
+                <td>> 10% - 15%</td>
+                <td>Final bottom-line return generated from each rupee of turnover.</td>
+              </tr>
+              <tr>
+                <td><strong>Activity</strong></td>
+                <td>Inventory Turnover</td>
+                <td><code>Cost of Goods Sold / Average Inventory</code></td>
+                <td>Higher is better (6x - 12x)</td>
+                <td>How many times physical stock is sold and replaced during the year.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Cheatsheet 3: Excel Shortcuts for Commerce & MIS -->
+      <section>
+        <div class="section-header">
+          <h2>3. Excel &amp; Spreadsheet Shortcuts for Accountants</h2>
+          <p class="text-muted">Speed up spreadsheet bookkeeping and financial reporting.</p>
+        </div>
+
+        <div class="grid grid-3 gap-3">
+          <div class="lab-card">
+            <h4>Formatting Shortcuts</h4>
+            <ul class="feature-list mt-2">
+              <li><code>Ctrl + Shift + 4 ($)</code>: Apply Currency Format (₹)</li>
+              <li><code>Ctrl + Shift + 5 (%)</code>: Apply Percentage Format</li>
+              <li><code>Ctrl + Shift + 3 (#)</code>: Apply Date Format (DD-MMM-YY)</li>
+              <li><code>Ctrl + 1</code>: Open Format Cells Dialog</li>
+            </ul>
+          </div>
+
+          <div class="lab-card">
+            <h4>Navigation &amp; Selection</h4>
+            <ul class="feature-list mt-2">
+              <li><code>Ctrl + Arrow Keys</code>: Jump to edge of data table</li>
+              <li><code>Ctrl + Shift + Down</code>: Select entire data column</li>
+              <li><code>Ctrl + Space</code>: Select entire column</li>
+              <li><code>Shift + Space</code>: Select entire row</li>
+            </ul>
+          </div>
+
+          <div class="lab-card">
+            <h4>Formulas &amp; Auditing</h4>
+            <ul class="feature-list mt-2">
+              <li><code>Alt + =</code>: AutoSum instant formula insertion</li>
+              <li><code>F4</code>: Toggle Absolute Cell Lock (<code>$A$1</code>)</li>
+              <li><code>Ctrl + ~</code>: Toggle formula view across sheet</li>
+              <li><code>Shift + F3</code>: Insert Function wizard</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer mt-5">
+    <div class="container text-center">
+      <p>Dedicated to Beneficial Knowledge (<em>'Ilm Nāfi'</em>) &bull; Designed for <strong>Yasir Rasool</strong> &bull; <a href="https://github.com/myasirdotin/" target="_blank">github.com/myasirdotin</a></p>
+      <p class="text-sm text-muted">&copy; 2026 Commerce Lab. Master Cheatsheets.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/core.js"></script>
+</body>
+</html>

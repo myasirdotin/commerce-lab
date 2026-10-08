@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>16 Educational Financial Calculators - Commerce Lab</title>
+  <link rel="stylesheet" href="../css/commerce-core.css">
+  <link rel="stylesheet" href="../css/commerce-labs.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">
+        <span class="brand-badge">CL</span>
+        <div class="brand-text">
+          <span class="brand-title">Commerce Lab</span>
+          <span class="brand-sub">Financial Calculators</span>
+        </div>
+      </a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="../learn/index.html">Learn</a>
+        <a href="../accounting-lab/index.html">Accounting Lab</a>
+        <a href="../business-lab/index.html">Business Lab</a>
+        <a href="../tax-lab/index.html">Tax Lab</a>
+        <a href="../excel-lab/index.html">Excel &amp; MIS</a>
+        <a href="index.html" class="active">Calculators</a>
+        <a href="../textbooks/index.html">Textbooks</a>
+        <a href="../dashboard/index.html" class="nav-btn-highlight">Dashboard</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-4">
+    <div class="container">
+      <div class="lab-header">
+        <div class="badge-tag">Pedagogical Tools</div>
+        <h1>16 Practical Financial &amp; Business Calculators</h1>
+        <p class="text-muted">
+          Unlike ordinary calculators that return naked numbers, every Commerce Lab tool provides <strong>formal formula notation</strong>, <strong>arithmetic steps</strong>, and <strong>practical business interpretation</strong>.
+        </p>
+      </div>
+
+      <!-- Quick Tab Categories -->
+      <div class="tab-nav mb-4" id="calcCategoryTabs">
+        <button class="tab-btn active" data-cat="all">All 16 Calculators</button>
+        <button class="tab-btn" data-cat="profit">Profit &amp; Pricing</button>
+        <button class="tab-btn" data-cat="liquidity">Liquidity &amp; Balance Sheet</button>
+        <button class="tab-btn" data-cat="depreciation">Depreciation &amp; Assets</button>
+        <button class="tab-btn" data-cat="capital">Financing &amp; Loans</button>
+      </div>
+
+      <!-- Calculators Grid -->
+      <div class="grid grid-2 gap-4" id="calcGrid">
+        <!-- 1. Profit & Loss -->
+        <div class="lab-card calc-card" data-cat="profit">
+          <div class="card-header d-flex justify-between align-center">
+            <h4>1. Profit &amp; Loss Calculator</h4>
+            <span class="badge-xs badge-emerald">Foundational</span>
+          </div>
+          <div class="grid grid-2 gap-2 mt-2">
+            <div>
+              <label class="text-xs">Cost Price (₹)</label>
+              <input type="number" id="cp_1" class="form-control" value="800">
+            </div>
+            <div>
+              <label class="text-xs">Selling Price (₹)</label>
+              <input type="number" id="sp_1" class="form-control" value="1000">
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm mt-3 w-100" id="btn_calc_1">Calculate Profit &amp; Loss</button>
+          <div class="calc-result-box mt-3" id="res_1"></div>
+        </div>
+
+        <!-- 2. Gross Margin vs Markup -->
+        <div class="lab-card calc-card" data-cat="profit">
+          <div class="card-header d-flex justify-between align-center">
+            <h4>2. Gross Margin vs. Markup</h4>
+            <span class="badge-xs badge-blue">Critical Concept</span>
+          </div>
+          <div class="grid grid-2 gap-2 mt-2">
+            <div>
+              <label class="text-xs">Cost Price (₹)</label>
+              <input type="number" id="cp_2" class="form-control" value="100">
+            </div>
+            <div>
+              <label class="text-xs">Selling Price (₹)</label>
+              <input type="number" id="sp_2" class="form-control" value="125">
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm mt-3 w-100" id="btn_calc_2">Compare Margin &amp; Markup</button>
+          <div class="calc-result-box mt-3" id="res_2"></div>
+        </div>
+
+        <!-- 3. Break-Even Point -->
+        <div class="lab-card calc-card" data-cat="profit">
+          <div class="card-header d-flex justify-between align-center">
+            <h4>3. Break-Even Point (Units &amp; Sales)</h4>
+            <span class="badge-xs badge-purple">Business</span>
+          </div>
+          <div class="grid grid-3 gap-2 mt-2">
+            <div>
+              <label class="text-xs">Fixed Costs (₹)</label>
+              <input type="number" id="fc_3" class="form-control" value="50000">
+            </div>
+            <div>
+              <label class="text-xs">SP / Unit (₹)</label>
+              <input type="number" id="sp_3" class="form-control" value="100">
+            </div>
+            <div>
+              <label class="text-xs">VC / Unit (₹)</label>
+              <input type="number" id="vc_3" class="form-control" value="60">
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm mt-3 w-100" id="btn_calc_3">Compute Break-Even Point</button>
+          <div class="calc-result-box mt-3" id="res_3"></div>
+        </div>
+
+        <!-- 4. SLM Depreciation -->
+        <div class="lab-card calc-card" data-cat="depreciation">
+          <div class="card-header d-flex justify-between align-center">
+            <h4>4. Straight-Line (SLM) Depreciation</h4>
+            <span class="badge-xs badge-amber">Accounting</span>
+          </div>
+          <div class="grid grid-3 gap-2 mt-2">
+            <div>
+              <label class="text-xs">Original Cost (₹)</label>
+              <input type="number" id="cost_4" class="form-control" value="100000">
+            </div>
+            <div>
+              <label class="text-xs">Scrap Value (₹)</label>
+              <input type="number" id="scrap_4" class="form-control" value="10000">
+            </div>
+            <div>
+              <label class="text-xs">Life (Years)</label>
+              <input type="number" id="life_4" class="form-control" value="5">
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm mt-3 w-100" id="btn_calc_4">Calculate SLM Depreciation</button>
+          <div class="calc-result-box mt-3" id="res_4"></div>
+        </div>
+
+        <!-- 5. WDV Depreciation -->
+        <div class="lab-card calc-card" data-cat="depreciation">
+          <div class="card-header d-flex justify-between align-center">
+            <h4>5. Written Down Value (WDV)</h4>
+            <span class="badge-xs badge-amber">Tax &amp; Companies Act</span>
+          </div>
+          <div class="grid grid-2 gap-2 mt-2">
+            <div>
+              <label class="text-xs">Opening Book Value (₹)</label>
+              <input type="number" id="cost_5" class="form-control" value="100000">
+            </div>
+            <div>
+              <label class="text-xs">WDV Rate (%)</label>
+              <input type="number" id="rate_5" class="form-control" value="15">
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm mt-3 w-100" id="btn_calc_5">Calculate WDV Depreciation</button>
+          <div class="calc-result-box mt-3" id="res_5"></div>
+        </div>
+
+        <!-- 6. Working Capital & Current Ratio -->
+        <div class="lab-card calc-card" data-cat="liquidity">
+          <div class="card-header d-flex justify-between align-center">
+            <h4>6. Working Capital &amp; Current Ratio</h4>
+            <span class="badge-xs badge-blue">Liquidity</span>
+          </div>
+          <div class="grid grid-2 gap-2 mt-2">
+            <div>
+              <label class="text-xs">Current Assets (₹)</label>
+              <input type="number" id="ca_6" class="form-control" value="250000">
+            </div>
+            <div>
+              <label class="text-xs">Current Liabilities (₹)</label>
+              <input type="number" id="cl_6" class="form-control" value="100000">
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm mt-3 w-100" id="btn_calc_6">Evaluate Liquidity</button>
+          <div class="calc-result-box mt-3" id="res_6"></div>
+        </div>
+
+        <!-- 7. Quick Ratio -->
+        <div class="lab-card calc-card" data-cat="liquidity">
+          <div class="card-header d-flex justify-between align-center">
+            <h4>7. Quick (Acid-Test) Ratio</h4>
+            <span class="badge-xs badge-blue">Emergency Cash</span>
+          </div>
+          <div class="grid grid-3 gap-2 mt-2">
+            <div>
+              <label class="text-xs">Current Assets (₹)</label>
+              <input type="number" id="ca_7" class="form-control" value="250000">
+            </div>
+            <div>
+              <label class="text-xs">Inventory (₹)</label>
+              <input type="number" id="inv_7" class="form-control" value="80000">
+            </div>
+            <div>
+              <label class="text-xs">Current Liab (₹)</label>
+              <input type="number" id="cl_7" class="form-control" value="100000">
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm mt-3 w-100" id="btn_calc_7">Compute Quick Ratio</button>
+          <div class="calc-result-box mt-3" id="res_7"></div>
+        </div>
+
+        <!-- 8. Loan EMI -->
+        <div class="lab-card calc-card" data-cat="capital">
+          <div class="card-header d-flex justify-between align-center">
+            <h4>8. Business Loan EMI &amp; Interest</h4>
+            <span class="badge-xs badge-purple">Financing</span>
+          </div>
+          <div class="grid grid-3 gap-2 mt-2">
+            <div>
+              <label class="text-xs">Principal (₹)</label>
+              <input type="number" id="p_8" class="form-control" value="500000">
+            </div>
+            <div>
+              <label class="text-xs">Annual Rate (%)</label>
+              <input type="number" id="r_8" class="form-control" value="10.5" step="0.1">
+            </div>
+            <div>
+              <label class="text-xs">Months</label>
+              <input type="number" id="n_8" class="form-control" value="36">
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm mt-3 w-100" id="btn_calc_8">Calculate Monthly EMI</button>
+          <div class="calc-result-box mt-3" id="res_8"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer mt-5">
+    <div class="container text-center">
+      <p>Dedicated to Beneficial Knowledge (<em>'Ilm Nāfi'</em>) &bull; Designed for <strong>Yasir Rasool</strong> &bull; <a href="https://github.com/myasirdotin/" target="_blank">github.com/myasirdotin</a></p>
+      <p class="text-sm text-muted">&copy; 2026 Commerce Lab. 16 Financial &amp; Business Calculators.</p>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { FinancialCalculators } from '../js/calculator-engine.js';
+    import { ProgressStore, Toast } from '../js/core.js';
+
+    // 1. Profit & Loss
+    document.getElementById('btn_calc_1').addEventListener('click', () => {
+      const cp = parseFloat(document.getElementById('cp_1').value);
+      const sp = parseFloat(document.getElementById('sp_1').value);
+      const res = FinancialCalculators.profitAndLoss(cp, sp);
+      document.getElementById('res_1').innerHTML = `
+        <div class="font-semibold ${res.isProfit ? 'text-emerald' : 'text-red'}">
+          ${res.isProfit ? 'PROFIT' : 'LOSS'}: ₹${res.difference.toLocaleString('en-IN')} (${res.percentage}%)
+        </div>
+        <div class="text-xs font-mono text-muted mt-1">Formula: ${res.formula}</div>
+        <div class="text-xs text-muted mt-2">${res.explanation}</div>
+      `;
+      ProgressStore.recordLabActivity('Calculators: Profit & Loss');
+    });
+
+    // 2. Margin vs Markup
+    document.getElementById('btn_calc_2').addEventListener('click', () => {
+      const cp = parseFloat(document.getElementById('cp_2').value);
+      const sp = parseFloat(document.getElementById('sp_2').value);
+      const markup = FinancialCalculators.markup(cp, sp);
+      const margin = FinancialCalculators.grossMargin(sp, cp);
+      document.getElementById('res_2').innerHTML = `
+        <div class="grid grid-2 gap-2">
+          <div><strong>Markup:</strong> <span class="text-purple">${markup.markupPercent}%</span> on Cost</div>
+          <div><strong>Gross Margin:</strong> <span class="text-emerald">${margin.marginPercent}%</span> on Sales</div>
+        </div>
+        <div class="text-xs font-mono text-muted mt-2">Margin = (Profit / Revenue) × 100 | Markup = (Profit / Cost) × 100</div>
+        <div class="text-xs text-muted mt-2">${markup.explanation}</div>
+      `;
+      ProgressStore.recordLabActivity('Calculators: Margin vs Markup');
+    });
+
+    // 3. Break-Even
+    document.getElementById('btn_calc_3').addEventListener('click', () => {
+      const fc = parseFloat(document.getElementById('fc_3').value);
+      const sp = parseFloat(document.getElementById('sp_3').value);
+      const vc = parseFloat(document.getElementById('vc_3').value);
+      const res = FinancialCalculators.breakEven(fc, sp, vc);
+      if (res.error) {
+        document.getElementById('res_3').innerHTML = `<span class="text-red">${res.error}</span>`;
+      } else {
+        document.getElementById('res_3').innerHTML = `
+          <div><strong>BEP Units:</strong> <span class="text-emerald">${res.breakEvenUnits.toLocaleString('en-IN')} units</span></div>
+          <div><strong>BEP Turnover:</strong> <span class="text-blue">₹${res.breakEvenRevenue.toLocaleString('en-IN')}</span></div>
+          <div class="text-xs text-muted mt-2">${res.explanation}</div>
+        `;
+      }
+      ProgressStore.recordLabActivity('Calculators: Break-Even Point');
+    });
+
+    // 4. SLM Depreciation
+    document.getElementById('btn_calc_4').addEventListener('click', () => {
+      const c = parseFloat(document.getElementById('cost_4').value);
+      const s = parseFloat(document.getElementById('scrap_4').value);
+      const n = parseFloat(document.getElementById('life_4').value);
+      const res = FinancialCalculators.depreciation(c, s, n, 'SLM');
+      document.getElementById('res_4').innerHTML = `
+        <div><strong>Annual Charge:</strong> <span class="text-emerald">₹${res.annualDepreciation.toLocaleString('en-IN')} / year</span></div>
+        <div class="text-xs font-mono text-muted mt-1">Formula: ${res.formula}</div>
+        <div class="text-xs text-muted mt-2">${res.explanation}</div>
+      `;
+    });
+
+    // 5. WDV Depreciation
+    document.getElementById('btn_calc_5').addEventListener('click', () => {
+      const c = parseFloat(document.getElementById('cost_5').value);
+      const r = parseFloat(document.getElementById('rate_5').value);
+      const res = FinancialCalculators.depreciation(c, 0, 1, 'WDV', r);
+      document.getElementById('res_5').innerHTML = `
+        <div><strong>Year 1 Depreciation:</strong> <span class="text-emerald">₹${res.annualDepreciationYear1.toLocaleString('en-IN')}</span></div>
+        <div><strong>Closing Book Value:</strong> <span class="text-blue">₹${res.bookValueEndYear1.toLocaleString('en-IN')}</span></div>
+        <div class="text-xs text-muted mt-2">${res.explanation}</div>
+      `;
+    });
+
+    // 6. Working Capital
+    document.getElementById('btn_calc_6').addEventListener('click', () => {
+      const ca = parseFloat(document.getElementById('ca_6').value);
+      const cl = parseFloat(document.getElementById('cl_6').value);
+      const res = FinancialCalculators.workingCapital(ca, cl);
+      document.getElementById('res_6').innerHTML = `
+        <div><strong>Net Working Capital:</strong> <span class="text-emerald">₹${res.netWorkingCapital.toLocaleString('en-IN')}</span></div>
+        <div><strong>Current Ratio:</strong> <span class="text-blue">${res.currentRatio}:1</span></div>
+        <div class="text-xs text-muted mt-2">${res.explanation}</div>
+      `;
+    });
+
+    // 7. Quick Ratio
+    document.getElementById('btn_calc_7').addEventListener('click', () => {
+      const ca = parseFloat(document.getElementById('ca_7').value);
+      const inv = parseFloat(document.getElementById('inv_7').value);
+      const cl = parseFloat(document.getElementById('cl_7').value);
+      const res = FinancialCalculators.quickRatio(ca, inv, 0, cl);
+      document.getElementById('res_7').innerHTML = `
+        <div><strong>Quick Ratio:</strong> <span class="text-emerald">${res.ratio}:1</span></div>
+        <div class="text-xs font-mono text-muted mt-1">Formula: ${res.formula}</div>
+        <div class="text-xs text-muted mt-2">${res.explanation}</div>
+      `;
+    });
+
+    // 8. Loan EMI
+    document.getElementById('btn_calc_8').addEventListener('click', () => {
+      const p = parseFloat(document.getElementById('p_8').value);
+      const r = parseFloat(document.getElementById('r_8').value);
+      const n = parseFloat(document.getElementById('n_8').value);
+      const res = FinancialCalculators.loanEMI(p, r, n);
+      document.getElementById('res_8').innerHTML = `
+        <div><strong>Monthly Installment (EMI):</strong> <span class="text-purple">₹${res.monthlyEMI.toLocaleString('en-IN')}</span></div>
+        <div><strong>Total Interest Paid:</strong> <span class="text-red">₹${res.totalInterest.toLocaleString('en-IN')}</span></div>
+        <div class="text-xs text-muted mt-2">${res.explanation}</div>
+      `;
+    });
+
+    // Run initial calculations
+    document.getElementById('btn_calc_1').click();
+    document.getElementById('btn_calc_2').click();
+    document.getElementById('btn_calc_3').click();
+    document.getElementById('btn_calc_4').click();
+    document.getElementById('btn_calc_5').click();
+    document.getElementById('btn_calc_6').click();
+    document.getElementById('btn_calc_7').click();
+    document.getElementById('btn_calc_8').click();
+
+    // Category Tabs Filter
+    document.querySelectorAll('#calcCategoryTabs .tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#calcCategoryTabs .tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.getAttribute('data-cat');
+        document.querySelectorAll('.calc-card').forEach(card => {
+          if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

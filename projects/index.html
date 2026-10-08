@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical Projects &amp; Case Studies - Commerce Lab</title>
+  <link rel="stylesheet" href="../css/commerce-core.css">
+  <link rel="stylesheet" href="../css/commerce-labs.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">
+        <span class="brand-badge">CL</span>
+        <div class="brand-text">
+          <span class="brand-title">Commerce Lab</span>
+          <span class="brand-sub">Practical Projects</span>
+        </div>
+      </a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="../learn/index.html">Learn</a>
+        <a href="../accounting-lab/index.html">Accounting Lab</a>
+        <a href="../business-lab/index.html">Business Lab</a>
+        <a href="../tax-lab/index.html">Tax Lab</a>
+        <a href="../excel-lab/index.html">Excel &amp; MIS</a>
+        <a href="index.html" class="active">Projects</a>
+        <a href="../quiz/index.html">Quiz</a>
+        <a href="../dashboard/index.html" class="nav-btn-highlight">Dashboard</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-4">
+    <div class="container">
+      <div class="lab-header">
+        <div class="badge-tag">Portfolio Development</div>
+        <h1>Graded Commercial Projects &amp; Case Studies</h1>
+        <p class="text-muted">
+          Real businesses don't write textbook answers; they maintain books, file GST returns, and make management decisions under uncertainty. Complete these graded portfolio challenges.
+        </p>
+      </div>
+
+      <!-- Project Filter Pills -->
+      <div class="tab-nav mb-4">
+        <button class="tab-btn active">All Projects</button>
+        <button class="tab-btn">🥉 Bronze (Class 11 / Beginners)</button>
+        <button class="tab-btn">🥈 Silver (Class 12 / Intermediate)</button>
+        <button class="tab-btn">🥇 Gold (B.Com / Entrepreneurial)</button>
+      </div>
+
+      <div class="grid grid-3 gap-4">
+        <!-- Project 1: Bronze -->
+        <div class="lab-card">
+          <div class="card-header d-flex justify-between align-center">
+            <span class="badge-tag badge-amber">🥉 Bronze Project</span>
+            <span class="text-xs text-muted">Est. 2 Hours</span>
+          </div>
+          <h3 class="mt-2">Retail Kirana Month-1 Bookkeeping</h3>
+          <p class="text-sm text-muted mt-2">
+            Record 15 foundational transactions for "Gupta Grocery Store", post into T-account ledgers, prepare a balanced Trial Balance, and construct the first month's Trading &amp; P&amp;L Account.
+          </p>
+          <div class="rubric-box mt-3 p-2 bg-surface text-xs">
+            <strong>Rubric Criteria:</strong>
+            <ul class="mt-1">
+              <li>✓ 100% correct Golden Rule debit/credit entries</li>
+              <li>✓ Arithmetically balanced Trial Balance</li>
+              <li>✓ Correct computation of Gross Profit and Net Profit</li>
+            </ul>
+          </div>
+          <div class="mt-3">
+            <a href="../accounting-lab/index.html" class="btn btn-outline btn-sm w-100">Open Simulator to Work</a>
+          </div>
+        </div>
+
+        <!-- Project 2: Silver -->
+        <div class="lab-card">
+          <div class="card-header d-flex justify-between align-center">
+            <span class="badge-tag badge-blue">🥈 Silver Project</span>
+            <span class="text-xs text-muted">Est. 4 Hours</span>
+          </div>
+          <h3 class="mt-2">Boutique Cafe Unit Economics &amp; BEP</h3>
+          <p class="text-sm text-muted mt-2">
+            Analyze a Bengaluru artisan coffee shop with ₹1,20,000 monthly rent and salaries. Calculate contribution margins for coffee beans vs pastries, establish the Break-Even Point, and build a stress-test model for monsoon season footfall drops.
+          </p>
+          <div class="rubric-box mt-3 p-2 bg-surface text-xs">
+            <strong>Rubric Criteria:</strong>
+            <ul class="mt-1">
+              <li>✓ Separation of fixed overheads vs variable inputs</li>
+              <li>✓ Weighted contribution margin calculation</li>
+              <li>✓ Margin of Safety sensitivity analysis</li>
+            </ul>
+          </div>
+          <div class="mt-3">
+            <a href="../business-lab/index.html" class="btn btn-outline btn-sm w-100">Open Business Lab</a>
+          </div>
+        </div>
+
+        <!-- Project 3: Gold -->
+        <div class="lab-card">
+          <div class="card-header d-flex justify-between align-center">
+            <span class="badge-tag badge-emerald">🥇 Gold Project</span>
+            <span class="text-xs text-muted">Est. 6 Hours</span>
+          </div>
+          <h3 class="mt-2">E-Commerce MIS &amp; GST Reconciliation</h3>
+          <p class="text-sm text-muted mt-2">
+            Ingest a 100-row multi-state electronic sales and purchase register in Excel. Use <code>SUMIF</code>, <code>XLOOKUP</code>, and pivot tables to calculate net GST liability (CGST/SGST/IGST), offset Input Tax Credit (ITC), and design an executive KPI dashboard.
+          </p>
+          <div class="rubric-box mt-3 p-2 bg-surface text-xs">
+            <strong>Rubric Criteria:</strong>
+            <ul class="mt-1">
+              <li>✓ Error-free spreadsheet formula implementation</li>
+              <li>✓ Statutory compliance with CBIC ITC rules</li>
+              <li>✓ Executive dashboard presentation with AOV and margin cards</li>
+            </ul>
+          </div>
+          <div class="mt-3">
+            <a href="../excel-lab/index.html" class="btn btn-outline btn-sm w-100">Open Excel &amp; MIS Studio</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer mt-5">
+    <div class="container text-center">
+      <p>Dedicated to Beneficial Knowledge (<em>'Ilm Nāfi'</em>) &bull; Designed for <strong>Yasir Rasool</strong> &bull; <a href="https://github.com/myasirdotin/" target="_blank">github.com/myasirdotin</a></p>
+      <p class="text-sm text-muted">&copy; 2026 Commerce Lab. Practical Portfolio Projects.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/core.js"></script>
+</body>
+</html>
