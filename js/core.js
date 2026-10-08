@@ -217,6 +217,19 @@ export function initMobileMenu() {
       nav.classList.toggle('is-open');
     });
   }
+
+  // Handle dropdown toggle on mobile screens
+  document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      if (window.innerWidth <= 992) {
+        e.preventDefault();
+        const parent = trigger.closest('.nav-dropdown');
+        if (parent) {
+          parent.classList.toggle('is-expanded');
+        }
+      }
+    });
+  });
 }
 
 // ─── Initialize on DOM Ready ──────────────────────────────────────
