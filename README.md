@@ -104,7 +104,13 @@ Every calculator displays the mathematical formula, arithmetic steps, and plain-
 15. Cost of Goods Sold (COGS)
 16. Compound Annual Growth Rate (CAGR)
 
-### 6. Textbooks with Embedded SVG Models (`/textbooks/`)
+### 6. Islamic Standards & Fiqh al-Mu'amalat Advisor (`/islamic-standards/`)
+- **Interactive Shariah Transaction Compliance Auditor:** Enter any business arrangement or contract clause and the advisor audits for *Riba* (Interest/Usury), *Gharar* (Excessive Uncertainty), *Maysir* (Gambling/Speculation), and *Tadlis/Ghash* (Fraud/Concealment of Defects).
+- **Explicit Rulings & Scriptural Citations:** Clearly identifies practices violating Islamic law with exact citations from the Quran (Surah Al-Baqarah 2:275, Al-Ma'idah 5:90, Al-Mutaffifin 83:1-3) and Prophetic Sunnah (Sahih Muslim 1513, 101, 1598).
+- **Authentic Halal Alternatives:** Provides Shariah-compliant alternatives such as *Murabahah* (Cost-plus asset sale), *Musharakah* (Equity joint venture), *Mudarabah* (Trust financing), *Ijarah* (Lease), *Salam* (Forward sale), and *Qard Hasan* (Benevolent interest-free loan) according to **AAOIFI Shariah Standards**.
+- **Business Zakat Calculator (AAOIFI FAS 9):** Computes mandatory 2.5% Zakat on commercial inventory, trade receivables, and cash, with Nisab threshold checking against 85g gold benchmark.
+
+### 7. Textbooks with Embedded SVG Models (`/textbooks/`)
 - 17 structured chapters.
 - Embedded vector SVG diagrams (Accounting Equation balance scale, 5-stage accounting cycle, Break-even curves).
 - Built-in Web Speech API Text-to-Speech narration for accessible audio listening.

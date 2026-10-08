@@ -157,6 +157,12 @@ export function initPathwaySelector() {
       url: 'accounting-lab/index.html',
       btnText: 'Launch Accounting Simulator →'
     },
+    islamic: {
+      title: 'Islamic Standards & Fiqh al-Mu\'amalat',
+      desc: 'Audit contracts for Riba, Gharar, and fraud. Structure Halal Murabahah and compute AAOIFI Business Zakat.',
+      url: 'islamic-standards/index.html',
+      btnText: 'Open Islamic Standards Advisor →'
+    },
     tax: {
       title: 'Pathway 5: India Taxation & GST Lab',
       desc: 'Learn GST slabs (0-28%), Input Tax Credit (ITC) offsetting mechanism, and small business presumptive taxation.',
