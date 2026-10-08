@@ -1,40 +1,38 @@
 /**
  * Commerce Lab - Core Application Utilities
- * Navigation, Theme Management, Student Progress Tracking
+ * Navigation, Theme Management, Student Progress Tracking, Pathway Recommender
  */
 
-(function () {
-  'use strict';
+// ─── Theme Management (Light / Dark) ─────────────────────────────
+export function initTheme() {
+  const savedTheme = localStorage.getItem('commerce_lab_theme');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = savedTheme || (prefersDark ? 'dark' : 'light');
 
-  // ─── Theme Management (Light / Dark) ─────────────────────────────
-  function initTheme() {
-    const savedTheme = localStorage.getItem('commerce_lab_theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  updateThemeToggleIcon(theme);
+}
 
-    document.documentElement.setAttribute('data-theme', theme);
-    updateThemeToggleIcon(theme);
-  }
+export function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', nextTheme);
+  localStorage.setItem('commerce_lab_theme', nextTheme);
+  updateThemeToggleIcon(nextTheme);
+}
 
-  function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('commerce_lab_theme', nextTheme);
-    updateThemeToggleIcon(nextTheme);
-  }
+function updateThemeToggleIcon(theme) {
+  const toggleBtns = document.querySelectorAll('#themeToggle, .theme-toggle, .theme-toggle-btn');
+  toggleBtns.forEach(btn => {
+    btn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
+    btn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+    btn.setAttribute('title', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+  });
+}
 
-  function updateThemeToggleIcon(theme) {
-    const toggleBtns = document.querySelectorAll('.theme-toggle-btn');
-    toggleBtns.forEach(btn => {
-      btn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
-      btn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
-      btn.setAttribute('title', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
-    });
-  }
-
-  // ─── Toast Notifications ─────────────────────────────────────────
-  function showToast(message, type = 'success') {
+// ─── Toast Notifications ─────────────────────────────────────────
+export const Toast = {
+  show(message, type = 'success') {
     let toastContainer = document.getElementById('commToastContainer');
     if (!toastContainer) {
       toastContainer = document.createElement('div');
@@ -81,145 +79,148 @@
       setTimeout(() => toast.remove(), 300);
     }, 3200);
   }
+};
 
-  // ─── Student Learning Progress System (localStorage) ─────────────
-  const ProgressStore = {
-    KEY: 'commerce_lab_progress_v1',
-    get() {
-      try {
-        return JSON.parse(localStorage.getItem(this.KEY)) || {
-          completedLessons: [],
-          quizScores: {},
-          completedProjects: [],
-          streakDays: 1,
-          lastActiveDate: new Date().toISOString().split('T')[0],
-          masteredSkills: []
-        };
-      } catch (e) {
-        return { completedLessons: [], quizScores: {}, completedProjects: [], streakDays: 1, lastActiveDate: '', masteredSkills: [] };
-      }
-    },
-    save(data) {
-      localStorage.setItem(this.KEY, JSON.stringify(data));
-    },
-    markLessonComplete(lessonId, skillTag) {
-      const p = this.get();
-      if (!p.completedLessons.includes(lessonId)) {
-        p.completedLessons.push(lessonId);
-      }
-      if (skillTag && !p.masteredSkills.includes(skillTag)) {
-        p.masteredSkills.push(skillTag);
-      }
-      this.updateStreak(p);
+// ─── Student Learning Progress System (localStorage) ─────────────
+export const ProgressStore = {
+  KEY: 'commerce_lab_progress_v1',
+  get() {
+    try {
+      return JSON.parse(localStorage.getItem(this.KEY)) || {
+        completedLessons: [],
+        labActivities: [],
+        quizScores: {},
+        activePathway: 'Foundations'
+      };
+    } catch (e) {
+      return { completedLessons: [], labActivities: [], quizScores: {}, activePathway: 'Foundations' };
+    }
+  },
+  save(data) {
+    localStorage.setItem(this.KEY, JSON.stringify(data));
+  },
+  recordLesson(lessonTitle) {
+    const p = this.get();
+    if (!p.completedLessons.includes(lessonTitle)) {
+      p.completedLessons.push(lessonTitle);
       this.save(p);
-      showToast('Lesson marked complete! Progress updated.');
-    },
-    recordQuiz(quizId, score, total) {
-      const p = this.get();
-      p.quizScores[quizId] = { score, total, date: new Date().toISOString() };
-      this.updateStreak(p);
+    }
+  },
+  recordLabActivity(labName) {
+    const p = this.get();
+    if (!p.labActivities.includes(labName)) {
+      p.labActivities.push(labName);
       this.save(p);
+    }
+  },
+  recordQuizScore(qId, scorePct) {
+    const p = this.get();
+    p.quizScores[qId] = scorePct;
+    this.save(p);
+  },
+  setPathway(pathway) {
+    const p = this.get();
+    p.activePathway = pathway;
+    this.save(p);
+  },
+  reset() {
+    localStorage.removeItem(this.KEY);
+  }
+};
+
+// ─── Pathway Recommender ───────────────────────────────────────────
+export function initPathwaySelector() {
+  const pills = document.querySelectorAll('.pathway-pill');
+  const resultCard = document.getElementById('pathwayRecommendation');
+  const recTitle = document.getElementById('recTitle');
+  const recDesc = document.getElementById('recDesc');
+  const recActionBtn = document.getElementById('recActionBtn');
+
+  if (!pills.length || !resultCard) return;
+
+  const pathways = {
+    foundations: {
+      title: 'Pathway 1: Accounting Foundations',
+      desc: 'Start from absolute scratch! Master assets, liabilities, capital, and the foundational accounting equation.',
+      url: 'learn/index.html#pathway-1',
+      btnText: 'Start Foundations →'
     },
-    updateStreak(p) {
-      const today = new Date().toISOString().split('T')[0];
-      if (p.lastActiveDate !== today) {
-        const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
-        if (p.lastActiveDate === yesterday) {
-          p.streakDays = (p.streakDays || 1) + 1;
-        } else {
-          p.streakDays = 1;
-        }
-        p.lastActiveDate = today;
-      }
+    school: {
+      title: 'Pathway 2: Financial Accounting for Class 11 & 12',
+      desc: 'Master journal entries, ledger posting, trial balance balancing, BRS, depreciation (SLM/WDV), and final accounts.',
+      url: 'learn/index.html#pathway-2',
+      btnText: 'Open Class 11-12 Curriculum →'
+    },
+    practical: {
+      title: 'Pathway 3: Practical Financial Statements',
+      desc: 'Understand how transactions become Trading A/c, Profit & Loss A/c, and Balance Sheet with realistic business numbers.',
+      url: 'accounting-lab/index.html',
+      btnText: 'Launch Accounting Simulator →'
+    },
+    tax: {
+      title: 'Pathway 5: India Taxation & GST Lab',
+      desc: 'Learn GST slabs (0-28%), Input Tax Credit (ITC) offsetting mechanism, and small business presumptive taxation.',
+      url: 'tax-lab/index.html',
+      btnText: 'Enter Tax Lab →'
+    },
+    excel: {
+      title: 'Pathway 6: Excel for Commerce & MIS',
+      desc: 'Practice real spreadsheet formulas (SUMIF, COUNTIF, XLOOKUP) and build executive management KPI dashboards.',
+      url: 'excel-lab/index.html',
+      btnText: 'Open Excel & MIS Studio →'
+    },
+    business: {
+      title: 'Pathway 4: Business Economics & Entrepreneurship',
+      desc: 'Master unit economics, fixed vs variable costs, contribution margin, and break-even points for Indian enterprises.',
+      url: 'business-lab/index.html',
+      btnText: 'Simulate Unit Economics →'
+    },
+    teacher: {
+      title: 'Teacher Hub & Lesson Plans',
+      desc: 'Ready-to-teach 45-minute lesson plans, classroom activity guides, student worksheets, and competency-based rubrics.',
+      url: 'teacher-hub/index.html',
+      btnText: 'Open Teacher Hub →'
     }
   };
 
-  // ─── Quick Pathway Recommender ───────────────────────────────────
-  function initPathwaySelector() {
-    const selectorBtns = document.querySelectorAll('.pathway-pill-btn');
-    const recBox = document.getElementById('pathwayRecommendationBox');
-    if (!selectorBtns.length || !recBox) return;
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
 
-    const pathways = {
-      'new': {
-        title: 'Accounting Foundations (Pathway 1)',
-        desc: 'Start from absolute scratch! Learn what assets, liabilities, and capital are with the intuitive accounting equation.',
-        link: 'learn/accounting/index.html',
-        btnText: 'Start Accounting Foundations →'
-      },
-      'school': {
-        title: 'Class 11 & 12 Commerce Mastery (Pathway 2)',
-        desc: 'Comprehensive coverage of Journals, Ledgers, Trial Balance, Depreciation, BRS, and Final Accounts with Trading & P&L.',
-        link: 'learn/financial-accounting/index.html',
-        btnText: 'Open School Commerce Pathway →'
-      },
-      'practical': {
-        title: 'Financial Statements Mastery (Pathway 3)',
-        desc: 'Understand how real businesses transform daily receipts and invoices into Trading Accounts, P&L, and Balance Sheets.',
-        link: 'learn/financial-statements/index.html',
-        btnText: 'Master Financial Statements →'
-      },
-      'tax': {
-        title: 'Indian Taxation & GST Lab (Pathway 5)',
-        desc: 'Learn practical GST computation, Input Tax Credit (ITC), and business tax concepts with current FY rules.',
-        link: 'tax-lab/index.html',
-        btnText: 'Enter Taxation Lab →'
-      },
-      'excel': {
-        title: 'Excel for Commerce & Business (Pathway 6)',
-        desc: 'Master essential commerce formulas: SUMIF, XLOOKUP, Nested IF, and real Indian business dataset analysis.',
-        link: 'excel-lab/index.html',
-        btnText: 'Launch Excel Sandbox →'
-      },
-      'business': {
-        title: 'Business & Entrepreneurship (Pathway 4)',
-        desc: 'Break-even analysis, unit margins, working capital, and cash-flow management for small business owners.',
-        link: 'business-lab/index.html',
-        btnText: 'Open Business Lab →'
-      },
-      'teacher': {
-        title: 'Teacher Hub & Lesson Plans',
-        desc: 'Classroom curriculum maps, downloadable question banks, grading rubrics, and interactive lab teaching guides.',
-        link: 'teacher-hub/index.html',
-        btnText: 'Access Teacher Hub →'
-      }
-    };
+      const key = pill.getAttribute('data-pathway') || 'foundations';
+      const rec = pathways[key] || pathways.foundations;
 
-    selectorBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        selectorBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+      recTitle.textContent = rec.title;
+      recDesc.textContent = rec.desc;
+      recActionBtn.textContent = rec.btnText;
+      recActionBtn.href = rec.url;
 
-        const key = btn.getAttribute('data-persona');
-        const rec = pathways[key] || pathways['new'];
-
-        recBox.innerHTML = `
-          <div>
-            <div style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: var(--brand-emerald); letter-spacing: 0.05em;">Recommended Learning Pathway</div>
-            <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary); margin: 0.25rem 0;">${rec.title}</h4>
-            <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 600px;">${rec.desc}</p>
-          </div>
-          <a href="${rec.link}" class="btn-primary" style="align-self: center;">${rec.btnText}</a>
-        `;
-      });
-    });
-  }
-
-  // ─── DOM Ready Initialization ─────────────────────────────────────
-  document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
-    initPathwaySelector();
-
-    // Attach theme toggle button listeners
-    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
-      btn.addEventListener('click', toggleTheme);
+      resultCard.style.display = 'flex';
+      ProgressStore.setPathway(rec.title);
     });
   });
+}
 
-  // Global Exports
-  window.CommerceCore = {
-    toggleTheme,
-    showToast,
-    ProgressStore
-  };
-})();
+// ─── Mobile Menu Toggle ───────────────────────────────────────────
+export function initMobileMenu() {
+  const btn = document.getElementById('mobileMenuBtn');
+  const nav = document.getElementById('navLinks');
+  if (btn && nav) {
+    btn.addEventListener('click', () => {
+      nav.classList.toggle('is-open');
+    });
+  }
+}
+
+// ─── Initialize on DOM Ready ──────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initMobileMenu();
+  initPathwaySelector();
+
+  // Attach theme toggle button
+  document.querySelectorAll('#themeToggle, .theme-toggle, .theme-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', toggleTheme);
+  });
+});
