@@ -124,9 +124,10 @@ export const diagrams = {
   /**
    * Horizontal process flow. items: string | {label, sub, tone}. Up to 5 per row, wraps to a second row.
    */
-  flow(items, { title, caption, boxW = 108, boxH = 64, gap = 26 } = {}) {
+  flow(items, { title, caption, boxW = 150, boxH = 70, gap = 30, perRow: maxPerRow = 3 } = {}) {
     const norm = items.map((it, i) => typeof it === 'string' ? { label: it, tone: TONES[i % 5] } : { tone: TONES[i % 5], ...it });
-    const perRow = Math.min(5, norm.length);
+    // Max 3 boxes per row so labels stay legible when the SVG is scaled to a phone width.
+    const perRow = Math.min(maxPerRow, norm.length);
     const rows = Math.ceil(norm.length / perRow);
     const width = perRow * boxW + (perRow - 1) * gap + 20;
     const height = rows * boxH + (rows - 1) * 48 + 20;
@@ -134,7 +135,7 @@ export const diagrams = {
     norm.forEach((it, i) => {
       const r = Math.floor(i / perRow), c = i % perRow;
       const x = 10 + c * (boxW + gap), y = 10 + r * (boxH + 48);
-      body += svg.box(x, y, boxW, boxH, it.label, { tone: it.tone, sub: it.sub, size: 12 });
+      body += svg.box(x, y, boxW, boxH, it.label, { tone: it.tone, sub: it.sub, size: 14 });
       if (i < norm.length - 1) {
         const nextRow = Math.floor((i + 1) / perRow);
         if (nextRow === r) body += svg.arrow(x + boxW + 3, y + boxH / 2, x + boxW + gap - 3, y + boxH / 2);

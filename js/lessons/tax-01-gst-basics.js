@@ -26,16 +26,15 @@ export default {
       short: 'The idea',
       html: `
         <p>Before 1 July 2017 a shawl leaving Srinagar for Delhi could carry central excise, VAT, central sales tax,
-        entry tax and octroi, each charged on top of the other. <strong>GST (Goods and Services Tax)</strong> replaced all of
-        them with one tax on one event: a <strong>supply</strong>. A supply is any sale, transfer, exchange, rental or lease of goods
-        or services made for a price in the course of business. Even sending stock from your Srinagar GSTIN to your own
-        Mumbai GSTIN counts as a supply.</p>
-        <p>GST is <strong>destination-based</strong>: the tax revenue goes to the state where the goods or services are
-        <em>consumed</em>, not where they were made. A shawl bought by a Delhi customer is taxed for Delhi's benefit, even though
+        entry tax and octroi, each charged on top of the other. <strong>GST (Goods and Services Tax)</strong> replaced them
+        with one tax on one event: a <strong>supply</strong>, meaning any sale, transfer, exchange, rental or lease of goods
+        or services for a price in the course of business. Even moving stock from your Srinagar GSTIN to your own
+        Mumbai GSTIN is a supply.</p>
+        <p>GST is <strong>destination-based</strong>: the revenue goes to the state where the goods or services are
+        <em>consumed</em>, not where they were made. A shawl bought in Delhi is taxed for Delhi's benefit, even though
         it was embroidered in Kashmir.</p>
-        <p>The second big idea is the <strong>credit chain</strong>. Every business in the chain charges GST on its sale but
-        subtracts the GST it already paid on its purchases. Only the <em>value it added</em> gets taxed. The final consumer,
-        who cannot claim credit, bears the whole tax.</p>
+        <p>The second big idea is the <strong>credit chain</strong>. Each business charges GST on its sale but subtracts the GST
+        it already paid on purchases, so only its <em>value addition</em> is taxed. The final consumer, who gets no credit, bears the whole tax.</p>
         ${diagrams.flow(
           [
             { label: 'Yarn spinner', sub: 'sells ₹2,000 + 5% = ₹100', tone: 'n' },
@@ -64,17 +63,15 @@ export default {
           ],
           { caption: 'The four GST slabs since 22 September 2025' }
         )}
-        ${callout('india', 'The apparel rule bites at the price <em>per piece</em>: a ₹2,400 kurta is 5%, a ₹2,600 kurta is 18%. Noor Crafts\' shawls at ₹7,000 are therefore 18%, while its walnut boxes qualify as handicrafts at 5%. Restaurants pay 5% but <strong>cannot claim any input credit</strong>, which is why Chai Adda gets no credit on the GST it pays on milk powder or rent.')}
-        <p>Rates can change at any Council meeting. Check the HSN code (goods) or SAC code (services) of each item on gst.gov.in
-        rather than relying on memory. The code also goes on your invoice.</p>
+        ${callout('india', 'The apparel rule bites at the price <em>per piece</em>: a ₹2,400 kurta is 5%, a ₹2,600 kurta is 18%. Noor Crafts\' shawls at ₹7,000 are therefore 18%, while its walnut boxes qualify as handicrafts at 5%. Restaurants pay 5% but <strong>cannot claim any input credit</strong>, so Chai Adda gets nothing back on the GST it pays on milk powder or rent.')}
+        <p>Look up the HSN code (goods) or SAC code (services) of each item on gst.gov.in rather than relying on memory; the code also goes on your invoice.</p>
       `
     },
     {
       heading: 'CGST + SGST or IGST? Place of supply decides',
       short: 'Intra vs inter',
       html: `
-        <p>GST is a dual tax because India is a federation: the Centre and the state each take a share. The total rate is
-        the same either way; what changes is <em>how it is labelled</em> on the invoice.</p>
+        <p>GST is a dual tax: the Centre and the state each take a share. The total rate is the same either way; what changes is <em>how it is labelled</em> on the invoice.</p>
         ${terms([
           ['Intra-state supply', 'Supplier and place of supply in the <strong>same</strong> state. Charge <strong>CGST + SGST</strong>, each half the rate: an 18% item carries 9% CGST (to the Centre) and 9% SGST (to the state). In a Union Territory without a legislature it is CGST + UTGST.'],
           ['Inter-state supply', 'Place of supply in a <strong>different</strong> state (or an export or import). Charge <strong>IGST</strong> at the full rate; the Centre collects it and passes the state share to the consuming state.'],
@@ -90,10 +87,10 @@ export default {
           scenario: 'Sana sells one pashmina shawl (list price ₹7,000, 18%) to a walk-in customer in Srinagar and an identical one to a boutique in Delhi. She also sells a walnut box (₹1,500, 5%) to the Srinagar customer. Prices are before tax.',
           steps: [
             { label: 'Shawl to the Srinagar customer (intra-state).', html: 'CGST 9% × ₹7,000 = <strong>₹630</strong>; SGST 9% × ₹7,000 = <strong>₹630</strong>. Invoice total ₹7,000 + ₹1,260 = <strong>₹8,260</strong>.' },
-            { label: 'Shawl to the Delhi boutique (inter-state).', html: 'IGST 18% × ₹7,000 = <strong>₹1,260</strong>. Invoice total <strong>₹8,260</strong>. The boutique will claim ₹1,260 as IGST credit. (If Sana gave her usual 30% dealer discount, the taxable value would be ₹4,900 and IGST ₹882; the rate does not change.)' },
+            { label: 'Shawl to the Delhi boutique (inter-state).', html: 'IGST 18% × ₹7,000 = <strong>₹1,260</strong>. Invoice total <strong>₹8,260</strong>. The boutique will claim ₹1,260 as IGST credit.' },
             { label: 'Walnut box to the Srinagar customer (intra-state, 5%).', html: 'CGST 2.5% = <strong>₹37.50</strong>; SGST 2.5% = <strong>₹37.50</strong>. Total ₹1,575. Had it gone to Delhi: IGST 5% = ₹75, same total.' }
           ],
-          result: 'Both shawl invoices carry ₹1,260 of tax, but the Srinagar one is split ₹630/₹630 between Centre and J&K, while the Delhi one is a single IGST line that the Centre later shares with Delhi.'
+          result: 'Both shawl invoices carry ₹1,260 of tax: the Srinagar one split ₹630/₹630 between Centre and J&K, the Delhi one a single IGST line that the Centre later shares with Delhi.'
         })}
         ${table(
           ['Item', 'Taxable value', 'Rate', 'CGST', 'SGST', 'IGST', 'Invoice total'],
@@ -110,8 +107,7 @@ export default {
       heading: 'GSTIN, aggregate turnover and who must register',
       short: 'Registration',
       html: `
-        <p>A registered business gets a <strong>GSTIN</strong>, a 15-character number that must appear on every tax invoice.
-        You can read quite a lot from it.</p>
+        <p>A registered business gets a <strong>GSTIN</strong>, a 15-character number that must appear on every tax invoice.</p>
         ${fig({
           title: 'Anatomy of a GSTIN',
           caption: 'Example 01ABCPS1234K1Z5 (fictitious). The first two digits tell you the state at a glance: 01 is J&K, 07 Delhi, 08 Rajasthan, 27 Maharashtra.',
@@ -125,21 +121,21 @@ export default {
             ${svg.text(320, 115, '2 + 10 + 1 + 1 + 1 = 15 characters. One PAN can hold one GSTIN per state; the entity number counts them.', { size: 11, tone: 'muted' })}
           `
         })}
-        <p>Whether you <em>must</em> register depends on <strong>aggregate turnover</strong>: the total of all your taxable, exempt and
-        export sales across India under one PAN, excluding the GST itself and purchases on which you pay reverse charge.</p>
+        <p>Whether you <em>must</em> register depends on <strong>aggregate turnover</strong>: all your taxable, exempt and
+        export sales across India under one PAN, excluding the GST itself and reverse-charge purchases.</p>
         ${table(
           ['Situation', 'Registration'],
           [
-            ['Goods, aggregate turnover above ₹40 lakh (₹20 lakh in most special-category states; J&K has opted for ₹40 lakh)', 'Compulsory'],
+            ['Goods, aggregate turnover above ₹40 lakh (₹20 lakh in most special-category states; J&K opted for ₹40 lakh)', 'Compulsory'],
             ['Services, aggregate turnover above ₹20 lakh (₹10 lakh in special-category states)', 'Compulsory'],
             ['Any inter-state supply of goods, whatever the turnover', 'Compulsory from the first sale'],
-            ['Selling through an e-commerce operator (Amazon, Flipkart, Meesho)', 'Compulsory; a narrow relief exists for small intra-state sellers of goods'],
-            ['Casual taxable person (a stall at a Delhi exhibition), or you receive services taxed under reverse charge', 'Compulsory'],
-            ['Below the limits, selling only within your state and not online', 'Optional (voluntary registration lets you claim ITC and sell to GST-registered buyers)']
+            ['Selling through an e-commerce operator (Amazon, Flipkart, Meesho)', 'Compulsory; narrow relief for small intra-state sellers'],
+            ['Casual taxable person (a stall at a Delhi exhibition), or paying tax under reverse charge', 'Compulsory'],
+            ['Below the limits, in-state only, not online', 'Optional; voluntary registration lets you claim ITC']
           ],
           { caption: 'Who must take a GSTIN' }
         )}
-        ${callout('warning', 'The turnover limit is the exception, not the rule, for anyone selling online or across state lines. Noor Crafts had to register on day one because its first boutique order came from Delhi, even though its turnover was far below ₹40 lakh. Many small sellers discover this only when a marketplace refuses to onboard them without a GSTIN.')}
+        ${callout('warning', 'The turnover limit is the exception, not the rule, for anyone selling online or across state lines. Noor Crafts had to register on day one because its first boutique order came from Delhi, long before it reached ₹40 lakh.')}
       `
     },
     {
@@ -151,11 +147,10 @@ export default {
         ${formula('Tax = Taxable value × Rate; split Rate/2 + Rate/2 for CGST + SGST, or Rate for IGST', 'A ₹120 packing charge on the Delhi shawl is part of taxable value: IGST on ₹7,120 = ₹1,281.60.')}
         ${formula('Taxable value from an inclusive price = Price × 100 ÷ (100 + Rate)', 'A chai priced at ₹21 "inclusive of 5% GST" has a taxable value of ₹20 and tax of ₹1. Use this when you quote MRP-style prices.')}
         <p><strong>Reverse charge</strong> turns the mechanism around: for a few notified cases the <em>buyer</em> pays the GST straight to the
-        government instead of the seller collecting it. The common ones for a small business are freight paid to a goods
-        transport agency, fees paid to an advocate, imported services such as foreign software subscriptions, and certain
-        purchases from unregistered persons. You pay this tax in cash (credit cannot be used for it), and then claim it as
-        input credit if the purchase is for business.</p>
-        ${callout('tip', 'Build a habit: every purchase invoice you receive must show the supplier\'s GSTIN, your GSTIN, the HSN or SAC code and the tax split. Without those, the credit in the next lesson is lost before you even start.')}
+        government. The common ones for a small business are freight paid to a goods transport agency, an advocate's fees,
+        imported services such as foreign software subscriptions, and certain purchases from unregistered persons. You pay this
+        tax in cash, not from credit, and then claim it as input credit if the purchase is for business.</p>
+        ${callout('tip', 'Every purchase invoice you receive must show the supplier\'s GSTIN, your GSTIN, the HSN or SAC code and the tax split. Without those, the credit in the next lesson is lost before you start.')}
         ${callout('note', 'Rates, thresholds and dates in this lesson are as of FY 2026-27 (October 2026). GST rates change by Council notification, so verify the current rate for your HSN or SAC on <strong>gst.gov.in</strong> before invoicing or filing. This is educational material, not professional tax advice.')}
       `
     }
@@ -163,11 +158,11 @@ export default {
 
   keyPoints: [
     'GST taxes every <strong>supply</strong> and is <strong>destination-based</strong>: revenue goes to the state where the goods or services are consumed.',
-    'Four slabs since 22 September 2025: <strong>0%, 5%, 18%, 40%</strong>. Apparel up to ₹2,500 per piece is 5%, above that 18%; handicrafts 5%; most services 18%; restaurants 5% without ITC.',
-    'Same state: <strong>CGST + SGST</strong> (half each). Different state: <strong>IGST</strong> at the full rate. The total is identical; place of supply decides.',
+    'Four slabs since 22 September 2025: <strong>0%, 5%, 18%, 40%</strong>. Apparel up to ₹2,500 per piece 5%, above that 18%; handicrafts 5%; most services 18%; restaurants 5% without ITC.',
+    'Same state: <strong>CGST + SGST</strong>, half each. Different state: <strong>IGST</strong> at the full rate. Place of supply decides; the total is identical.',
     'A GSTIN is <strong>15 characters</strong>: state code (2) + PAN (10) + entity number + Z + check digit.',
-    'Registration is compulsory above ₹40 lakh (goods) or ₹20 lakh (services), and <strong>from the first sale</strong> if you sell inter-state or through an e-commerce operator.',
-    'Tax = taxable value × rate. Under <strong>reverse charge</strong> the buyer pays the tax directly, in cash, and then claims it as credit.'
+    'Registration is compulsory above ₹40 lakh (goods) or ₹20 lakh (services), and <strong>from the first sale</strong> if you sell inter-state or online.',
+    'Tax = taxable value × rate. Under <strong>reverse charge</strong> the buyer pays the tax directly, in cash, then claims it as credit.'
   ],
 
   practice: [

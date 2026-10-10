@@ -201,7 +201,7 @@ export default {
   practice: [
     { label: 'Excel Lab', sub: 'Build the six registers with SUMIF totals', href: 'excel-lab/index.html', icon: '📗' },
     { label: 'Accounting Simulator', sub: 'Post this week\'s transactions and watch the ledger', href: 'accounting-lab/index.html', icon: '⚖️' },
-    { label: 'Lesson: Cash book &amp; petty cash', sub: 'The cash and bank book in full detail', href: 'learn/lesson.html?id=acc-07-cash-book-petty-cash', icon: '📘' }
+    { label: 'Lesson: Cash book & petty cash', sub: 'The cash and bank book in full detail', href: 'learn/lesson.html?id=acc-07-cash-book-petty-cash', icon: '📘' }
   ],
 
   quiz: [
