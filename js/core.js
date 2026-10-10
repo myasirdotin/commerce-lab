@@ -1,7 +1,17 @@
 /**
  * Commerce Lab - Core Application Utilities
- * Navigation, Theme Management, Student Progress Tracking, Pathway Recommender
+ * Theme Management, Toasts, Student Progress Tracking, Pathway Recommender.
+ * Navigation (header / drawer / tab bar / footer) lives in nav.js.
  */
+
+import { renderSiteChrome } from './nav.js';
+
+// Apply the saved theme as early as possible to avoid a light-mode flash.
+try {
+  const early = localStorage.getItem('commerce_lab_theme')
+    || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', early);
+} catch (e) { /* storage unavailable */ }
 
 // ─── Theme Management (Light / Dark) ─────────────────────────────
 export function initTheme() {
@@ -39,8 +49,10 @@ export const Toast = {
       toastContainer.id = 'commToastContainer';
       toastContainer.style.cssText = `
         position: fixed;
-        bottom: 24px;
-        right: 24px;
+        bottom: calc(var(--tabbar-h, 0px) + env(safe-area-inset-bottom, 0px) + 16px);
+        right: 16px;
+        left: 16px;
+        align-items: flex-end;
         z-index: 9999;
         display: flex;
         flex-direction: column;
@@ -208,34 +220,10 @@ export function initPathwaySelector() {
   });
 }
 
-// ─── Mobile Menu Toggle ───────────────────────────────────────────
-export function initMobileMenu() {
-  const btn = document.getElementById('mobileMenuBtn');
-  const nav = document.getElementById('navLinks');
-  if (btn && nav) {
-    btn.addEventListener('click', () => {
-      nav.classList.toggle('is-open');
-    });
-  }
-
-  // Handle dropdown toggle on mobile screens
-  document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
-    trigger.addEventListener('click', (e) => {
-      if (window.innerWidth <= 992) {
-        e.preventDefault();
-        const parent = trigger.closest('.nav-dropdown');
-        if (parent) {
-          parent.classList.toggle('is-expanded');
-        }
-      }
-    });
-  });
-}
-
 // ─── Initialize on DOM Ready ──────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  renderSiteChrome();
   initTheme();
-  initMobileMenu();
   initPathwaySelector();
 
   // Attach theme toggle button
