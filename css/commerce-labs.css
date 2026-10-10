@@ -1,5 +1,6 @@
 /* ═════════════════════════════════════════════════════════════════════
-   COMMERCE LAB - INTERACTIVE SIMULATORS & LAB STYLES
+   COMMERCE LAB - INTERACTIVE SIMULATORS & LAB STYLES  (mobile-first)
+   Base rules target a phone; min-width queries at the bottom widen them.
    ═════════════════════════════════════════════════════════════════════ */
 
 /* ─── Accounting Equation Bar ────────────────────────────────────── */
@@ -11,8 +12,9 @@
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 1.75rem 2rem;
+  padding: 1.25rem;
   box-shadow: var(--shadow-sm);
+  flex-direction: column;
   flex-wrap: wrap;
   margin-top: 1rem;
 }
@@ -21,10 +23,11 @@
   background: var(--bg-subtle);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1.1rem 1.5rem;
+  padding: 1rem 1.25rem;
   text-align: center;
   flex: 1;
-  min-width: 190px;
+  width: 100%;
+  min-width: 0;
   box-shadow: var(--shadow-sm);
 }
 
@@ -39,7 +42,7 @@
 
 .eq-value {
   font-family: var(--font-mono);
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 800;
   line-height: 1.2;
 }
@@ -51,7 +54,7 @@
 }
 
 .eq-operator {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   font-weight: 900;
   color: var(--text-muted);
 }
@@ -169,6 +172,10 @@ input:checked + .slider:before {
 }
 
 /* ─── T-Accounts Grid ────────────────────────────────────────────── */
+.t-account-body.grid-2 {
+  grid-template-columns: 1fr 1fr;   /* Dr | Cr must stay side by side */
+}
+
 .t-account-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
@@ -228,8 +235,14 @@ input:checked + .slider:before {
 /* ─── Financial Tables ───────────────────────────────────────────── */
 .table-responsive {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border: 1px solid var(--border-color);
   border-radius: 10px;
+  max-width: 100%;
+}
+
+.table-responsive table {
+  min-width: 480px;   /* keeps columns legible; the wrapper scrolls sideways */
 }
 
 .financial-table {
@@ -242,13 +255,14 @@ input:checked + .slider:before {
   background: var(--bg-subtle);
   color: var(--text-primary);
   font-weight: 700;
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 0.75rem;
   border-bottom: 2px solid var(--border-color);
   text-align: left;
+  white-space: nowrap;
 }
 
 .financial-table td {
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 0.75rem;
   border-bottom: 1px solid var(--border-color);
   color: var(--text-primary);
 }
@@ -273,12 +287,13 @@ input:checked + .slider:before {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: 10px;
-  padding: 1.25rem;
+  padding: 1rem;
 }
 
 .sheet-row {
   display: flex;
   justify-content: space-between;
+  gap: 0.75rem;
   padding: 0.5rem 0;
   font-size: 0.9rem;
   border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -308,12 +323,17 @@ input:checked + .slider:before {
 .excel-formula-bar-container {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  flex-wrap: wrap;              /* Run button drops below the input on phones */
+  gap: 0.5rem 0.75rem;
   background: var(--bg-surface);
   border: 2px solid var(--brand-emerald);
   border-radius: 12px;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
   box-shadow: var(--shadow-sm);
+}
+
+.excel-formula-bar-container .btn {
+  width: 100%;
 }
 
 .fx-label {
@@ -324,7 +344,9 @@ input:checked + .slider:before {
 }
 
 .excel-formula-input {
-  flex: 1;
+  flex: 1 1 160px;
+  min-width: 0;
+  min-height: 40px;
   border: none;
   background: transparent;
   outline: none;
@@ -342,6 +364,7 @@ input:checked + .slider:before {
 }
 
 .chip-btn {
+  min-height: 36px;
   padding: 0.35rem 0.75rem;
   border-radius: var(--radius-full);
   border: 1px solid var(--border-color);
@@ -363,10 +386,11 @@ input:checked + .slider:before {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  padding: 1.25rem 1.5rem;
+  padding: 1rem 1.25rem;
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
   box-shadow: var(--shadow-sm);
 }
 
@@ -415,9 +439,11 @@ input:checked + .slider:before {
 /* ─── MIS KPI Grid ───────────────────────────────────────────────── */
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
+
+.kpi-grid > * { min-width: 0; }
 
 .kpi-card {
   background: var(--bg-surface);
@@ -440,7 +466,8 @@ input:checked + .slider:before {
 
 .kpi-value {
   font-family: var(--font-mono);
-  font-size: 1.7rem;
+  font-size: 1.6rem;
+  overflow-wrap: anywhere;
   font-weight: 800;
   line-height: 1.2;
 }
@@ -490,7 +517,8 @@ input:checked + .slider:before {
 
 .tax-net-amount {
   font-family: var(--font-mono);
-  font-size: 2.2rem;
+  font-size: 1.8rem;
+  overflow-wrap: anywhere;
   font-weight: 900;
 }
 
@@ -530,7 +558,8 @@ input:checked + .slider:before {
   border-radius: 16px;
   max-width: 620px;
   width: 100%;
-  max-height: 85vh;
+  max-height: 90vh;
+  max-height: 90dvh;
   overflow-y: auto;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border-color);
@@ -540,7 +569,8 @@ input:checked + .slider:before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 1.5rem;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -552,7 +582,7 @@ input:checked + .slider:before {
 }
 
 .modal-body {
-  padding: 1.5rem;
+  padding: 1.25rem;
 }
 
 .modal-footer {
@@ -567,10 +597,17 @@ input:checked + .slider:before {
   gap: 0.5rem;
   border-bottom: 2px solid var(--border-color);
   padding-bottom: 0.5rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 
+.tab-nav::-webkit-scrollbar { display: none; }
+
 .tab-btn {
+  flex-shrink: 0;
+  min-height: 40px;
   padding: 0.5rem 1rem;
   border-radius: var(--radius-sm);
   font-size: 0.86rem;
@@ -602,20 +639,21 @@ input:checked + .slider:before {
 /* ─── Textbook Reader Layout ─────────────────────────────────────── */
 .reader-container {
   display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 2.5rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
   align-items: start;
 }
+
+.reader-container > * { min-width: 0; }
 
 .reader-sidebar {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  padding: 1.25rem;
-  position: sticky;
-  top: 90px;
-  max-height: calc(100vh - 120px);
+  padding: 1rem;
+  max-height: 45vh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .sidebar-header {
@@ -632,6 +670,7 @@ input:checked + .slider:before {
 
 .chapter-link {
   text-align: left;
+  min-height: 40px;
   padding: 0.6rem 0.85rem;
   border-radius: 8px;
   font-size: 0.84rem;
@@ -656,13 +695,13 @@ input:checked + .slider:before {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: 16px;
-  padding: 2.5rem;
+  padding: 1.25rem;
   box-shadow: var(--shadow-sm);
 }
 
 .chapter-prose {
-  font-size: 1.05rem;
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.7;
   color: var(--text-primary);
 }
 
@@ -682,7 +721,8 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.85rem 1.15rem;
+  min-height: 48px;
+  padding: 0.85rem 1rem;
   border: 1.5px solid var(--border-color);
   background: var(--bg-surface);
   border-radius: 10px;
@@ -716,14 +756,44 @@ input:checked + .slider:before {
   font-weight: 800;
 }
 
-/* ─── Responsive Adjustments ─────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-  .reader-container { grid-template-columns: 1fr; }
+/* ─── Responsive: widen upwards ───────────────────────────────────── */
+@media (min-width: 640px) {
+  .excel-formula-bar-container { flex-wrap: nowrap; padding: 0.5rem 1rem; }
+  .excel-formula-bar-container .btn { width: auto; }
+
+  .equation-bar-wrapper { flex-direction: row; padding: 1.5rem 1.75rem; }
+  .equation-box { width: auto; min-width: 170px; }
+  .eq-value { font-size: 1.8rem; }
+  .eq-operator { font-size: 2.2rem; }
+
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .kpi-value { font-size: 1.7rem; }
+
+  .financial-table th, .financial-table td { padding: 0.75rem 1rem; }
+  .statement-sheet { padding: 1.25rem; }
+  .tax-net-amount { font-size: 2.2rem; }
+
+  .modal-header { padding: 1.25rem 1.5rem; }
+  .modal-body { padding: 1.5rem; }
+  .formula-result-banner { padding: 1.25rem 1.5rem; }
+  .reader-content { padding: 1.75rem; }
 }
 
-@media (max-width: 768px) {
-  .kpi-grid { grid-template-columns: 1fr; }
-  .equation-bar-wrapper { flex-direction: column; }
-  .equation-box { width: 100%; }
+@media (min-width: 900px) {
+  .equation-bar-wrapper { padding: 1.75rem 2rem; }
+  .tab-nav { flex-wrap: wrap; overflow: visible; }
+  .reader-content { padding: 2.5rem; }
+  .chapter-prose { font-size: 1.05rem; line-height: 1.75; }
+}
+
+@media (min-width: 1024px) {
+  .kpi-grid { grid-template-columns: repeat(4, 1fr); }
+
+  .reader-container { grid-template-columns: 320px 1fr; gap: 2.5rem; }
+  .reader-sidebar {
+    padding: 1.25rem;
+    position: sticky;
+    top: 90px;
+    max-height: calc(100vh - 120px);
+  }
 }

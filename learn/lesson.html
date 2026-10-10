@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#059669">
+  <title>Lesson - Commerce Lab</title>
+  <meta name="description" content="Step-by-step commerce, accounting, business and tax lessons with real-life Indian examples and diagrams.">
+  <link rel="stylesheet" href="../css/commerce-core.css">
+  <link rel="stylesheet" href="../css/commerce-labs.css">
+  <link rel="stylesheet" href="../css/lessons.css">
+</head>
+<body>
+  <!-- Header, mobile drawer, tab bar and footer are rendered by js/nav.js -->
+  <header class="site-header" id="siteHeader"></header>
+
+  <main class="py-4">
+    <div class="container">
+      <article class="lesson-wrap" id="lesson">
+        <p class="text-muted">Loading lesson…</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer mt-5" id="siteFooter"></footer>
+
+  <script type="module">
+    import { Toast, ProgressStore } from '../js/core.js';
+    import { HUBS, findLesson, hubOf, neighbours, loadLesson } from '../js/lessons/registry.js';
+    import { esc } from '../js/lesson-kit.js';
+
+    const ROOT = new URL('../', location.href);
+    const url = (href) => /^https?:/.test(href) ? href : new URL(href, ROOT).href;
+    const lessonUrl = (id) => url(`learn/lesson.html?id=${encodeURIComponent(id)}`);
+
+    const root = document.getElementById('lesson');
+    const id = new URLSearchParams(location.search).get('id');
+    const meta = id && findLesson(id);
+
+    function isDone(lessonId) {
+      return ProgressStore.get().completedLessons.includes(lessonId);
+    }
+
+    function renderError(msg) {
+      root.innerHTML = `
+        <div class="lesson-error">
+          <h1>Lesson not found</h1>
+          <p class="text-muted mt-2">${esc(msg)}</p>
+          <a class="btn btn-primary mt-4" href="${url('learn/index.html')}">Browse all lessons</a>
+        </div>`;
+    }
+
+    function renderQuiz(quiz) {
+      if (!quiz || !quiz.length) return '';
+      return `
+        <section class="mini-quiz" id="quiz">
+          <h3>✍️ Check yourself</h3>
+          ${quiz.map((q, qi) => `
+            <div class="mq-item" data-q="${qi}">
+              <div class="mq-q">${qi + 1}. ${q.q}</div>
+              <div class="mq-opts quiz-options-list">
+                ${q.options.map((o, oi) => `<button type="button" class="quiz-opt-btn" data-opt="${oi}"><span class="opt-letter">${'ABCD'[oi]}</span><span>${o}</span></button>`).join('')}
+              </div>
+              <div class="mq-why"></div>
+            </div>`).join('')}
+          <div class="mq-score" id="mqScore"></div>
+        </section>`;
+    }
+
+    function bindQuiz(quiz) {
+      if (!quiz || !quiz.length) return;
+      let correct = 0, answered = 0;
+      document.querySelectorAll('.mq-item').forEach(item => {
+        const qi = +item.dataset.q;
+        item.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (item.classList.contains('answered')) return;
+            const chosen = +btn.dataset.opt;
+            const right = quiz[qi].answer;
+            item.classList.add('answered');
+            item.querySelectorAll('.quiz-opt-btn').forEach(b => {
+              b.disabled = true;
+              const i = +b.dataset.opt;
+              if (i === right) b.classList.add('opt-correct');
+              else if (i === chosen) b.classList.add('opt-incorrect');
+            });
+            answered += 1;
+            if (chosen === right) correct += 1;
+            item.querySelector('.mq-why').innerHTML = `<strong>${chosen === right ? '✅ Correct.' : '❌ Not quite.'}</strong> ${quiz[qi].why}`;
+            document.getElementById('mqScore').textContent = `Score: ${correct} / ${answered} answered (${quiz.length} questions)`;
+            if (answered === quiz.length) ProgressStore.recordQuizScore(`lesson:${id}`, Math.round(correct / quiz.length * 100));
+          });
+        });
+      });
+    }
+
+    function render(lesson) {
+      const hub = hubOf(id);
+      const { prev, next } = neighbours(id);
+      const done = isDone(id);
+      document.title = `${lesson.title} - Commerce Lab`;
+
+      const sections = (lesson.sections || []).map((s, i) => `
+        <section class="lesson-section" id="s${i + 1}">
+          <h2>${s.heading}</h2>
+          ${s.html}
+        </section>`).join('');
+
+      root.innerHTML = `
+        <nav class="lesson-crumb" aria-label="Breadcrumb">
+          <a href="${url('learn/index.html')}">Learn</a> <span>›</span>
+          <a href="${url('learn/index.html')}#hub-${hub.id}">${hub.icon} ${esc(hub.title)}</a> <span>›</span>
+          <span>Lesson ${meta.number}</span>
+        </nav>
+
+        <h1 class="lesson-title">${esc(lesson.title)}</h1>
+        <div class="lesson-meta">
+          <span>⏱ ${meta.minutes} min read</span>
+          <span id="doneBadge" class="badge-xs ${done ? 'badge-emerald' : ''}">${done ? '✓ Completed' : 'Not completed'}</span>
+          <button class="btn btn-outline btn-xs" id="ttsBtn" type="button">🔊 Listen</button>
+        </div>
+
+        <div class="lesson-intro">${lesson.intro}</div>
+
+        ${lesson.outcomes && lesson.outcomes.length ? `
+          <div class="outcomes"><h4>After this lesson you can</h4><ul>${lesson.outcomes.map(o => `<li><span>${o}</span></li>`).join('')}</ul></div>` : ''}
+
+        <nav class="lesson-toc" aria-label="On this page">
+          ${(lesson.sections || []).map((s, i) => `<a href="#s${i + 1}">${i + 1}. ${s.short || s.heading}</a>`).join('')}
+          ${lesson.quiz && lesson.quiz.length ? `<a href="#quiz">Quiz</a>` : ''}
+        </nav>
+
+        <div class="lesson-body">
+          ${sections}
+
+          ${lesson.keyPoints && lesson.keyPoints.length ? `
+            <section class="key-points" id="key-points">
+              <h3>🧠 Key points to remember</h3>
+              <ol>${lesson.keyPoints.map(k => `<li>${k}</li>`).join('')}</ol>
+            </section>` : ''}
+
+          ${lesson.practice && lesson.practice.length ? `
+            <h3>🧪 Practice it</h3>
+            <div class="practice-links">
+              ${lesson.practice.map(p => `<a class="practice-link" href="${url(p.href)}"><span class="pl-ico">${p.icon || '🧪'}</span><span>${esc(p.label)}${p.sub ? `<span class="pl-sub">${esc(p.sub)}</span>` : ''}</span></a>`).join('')}
+            </div>` : ''}
+
+          ${renderQuiz(lesson.quiz)}
+
+          ${lesson.glossary && lesson.glossary.length ? `
+            <section class="glossary">
+              <h3>📖 Words used in this lesson</h3>
+              <dl class="term-list">${lesson.glossary.map(([t, d]) => `<dt>${t}</dt><dd>${d}</dd>`).join('')}</dl>
+            </section>` : ''}
+        </div>
+
+        <div class="complete-bar">
+          <div><strong>Finished reading?</strong><br><span class="text-sm text-muted">Mark it done to track your progress on this device.</span></div>
+          <button class="btn ${done ? 'btn-outline' : 'btn-primary'}" id="completeBtn" type="button">${done ? '✓ Completed' : 'Mark as complete'}</button>
+        </div>
+
+        <nav class="lesson-nav" aria-label="Previous and next lesson">
+          ${prev ? `<a href="${lessonUrl(prev.id)}" class="prev"><span class="ln-label">← Previous · ${prev.number}</span><span class="ln-title">${esc(prev.title)}</span></a>` : '<span></span>'}
+          ${next ? `<a href="${lessonUrl(next.id)}" class="next"><span class="ln-label">Next · ${next.number} →</span><span class="ln-title">${esc(next.title)}</span></a>` : `<a href="${url('learn/index.html')}" class="next"><span class="ln-label">All lessons</span><span class="ln-title">Back to the curriculum</span></a>`}
+        </nav>`;
+
+      bindQuiz(lesson.quiz);
+
+      document.getElementById('completeBtn').addEventListener('click', () => {
+        ProgressStore.recordLesson(id);
+        document.getElementById('completeBtn').textContent = '✓ Completed';
+        document.getElementById('completeBtn').className = 'btn btn-outline';
+        const b = document.getElementById('doneBadge');
+        b.textContent = '✓ Completed'; b.className = 'badge-xs badge-emerald';
+        Toast.show('Lesson marked complete', 'success');
+      });
+
+      // Text to speech
+      const ttsBtn = document.getElementById('ttsBtn');
+      if ('speechSynthesis' in window) {
+        let speaking = false;
+        ttsBtn.addEventListener('click', () => {
+          if (speaking) { window.speechSynthesis.cancel(); speaking = false; ttsBtn.textContent = '🔊 Listen'; return; }
+          const text = lesson.title + '. ' + document.querySelector('.lesson-body').innerText.replace(/\s+/g, ' ');
+          const u = new SpeechSynthesisUtterance(text);
+          u.rate = 0.95;
+          u.onend = () => { speaking = false; ttsBtn.textContent = '🔊 Listen'; };
+          window.speechSynthesis.cancel();
+          window.speechSynthesis.speak(u);
+          speaking = true; ttsBtn.textContent = '⏹ Stop';
+        });
+      } else {
+        ttsBtn.style.display = 'none';
+      }
+
+      try { localStorage.setItem('commerce_lab_last_lesson', id); } catch (e) { /* ignore */ }
+
+      // Jump to hash if present
+      if (location.hash) {
+        const el = document.querySelector(location.hash);
+        el && el.scrollIntoView();
+      }
+    }
+
+    if (!meta) {
+      renderError(id ? `No lesson with id "${id}".` : 'No lesson id was given.');
+    } else {
+      loadLesson(id).then(render).catch(err => {
+        console.error(err);
+        renderError('This lesson could not be loaded. ' + (err && err.message ? err.message : ''));
+      });
+    }
+  </script>
+</body>
+</html>

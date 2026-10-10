@@ -91,4 +91,35 @@ export class MISEngine {
     });
     return map;
   }
+
+  /**
+   * Flat summary used by the MIS dashboard page (mis-lab/index.html).
+   * Breakdowns are reduced to plain `name -> revenue` maps.
+   */
+  generateExecutiveSummary() {
+    const r = this.generateExecutiveReport();
+    const flatten = (obj) => Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, v.revenue]));
+    return {
+      totalRevenue: r.kpi.netRevenue,
+      totalOrders: r.kpi.orderCount,
+      averageOrderValue: r.kpi.avgOrderValue,
+      grossProfit: r.kpi.grossProfit,
+      grossMarginPct: r.kpi.grossMarginPct,
+      netProfit: r.kpi.netProfit,
+      netMarginPct: r.kpi.netMarginPct,
+      totalExpenses: r.kpi.totalOpEx,
+      categoryBreakdown: flatten(r.categoryBreakdown),
+      cityBreakdown: flatten(r.cityBreakdown),
+      expensesByCategory: r.expensesByCategory,
+      agingSchedule: {
+        current_0_30: r.receivablesAging.current_0_30,
+        aging_31_60: r.receivablesAging.overdue_31_60,
+        aging_61_90: r.receivablesAging.overdue_61_90,
+        above_90: r.receivablesAging.badDebtsRisk_90_plus
+      }
+    };
+  }
 }
+
+// Name used by the dashboard page.
+export { MISEngine as MISReportingEngine };

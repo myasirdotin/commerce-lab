@@ -1,133 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#059669">
   <title>Student Progress Portal - Commerce Lab</title>
   <link rel="stylesheet" href="../css/commerce-core.css">
   <link rel="stylesheet" href="../css/commerce-labs.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="nav-container">
-      <a href="../index.html" class="nav-brand">
-        <span class="brand-badge">CL</span>
-        <div class="brand-text">
-          <span class="brand-title">Commerce Lab</span>
-          <span class="brand-sub">Progress Portal</span>
-        </div>
-      </a>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-      <nav class="nav-links" id="navLinks">
-        <a href="../index.html">Home</a>
-        <a href="../learn/index.html">Learn</a>
-
-        <!-- Interactive Labs Dropdown -->
-        <div class="nav-dropdown">
-          <button class="dropdown-trigger" type="button">
-            Labs <span class="dropdown-chevron">▼</span>
-          </button>
-          <div class="dropdown-menu">
-            <a href="../accounting-lab/index.html" class="dropdown-item">
-              <span class="dropdown-item-icon">⚖️</span>
-              <div class="dropdown-item-info">
-                <span class="dropdown-item-title">Accounting Simulator</span>
-                <span class="dropdown-item-desc">Double-entry, T-Accounts &amp; equation bar</span>
-              </div>
-            </a>
-            <a href="../business-lab/index.html" class="dropdown-item">
-              <span class="dropdown-item-icon">🏬</span>
-              <div class="dropdown-item-info">
-                <span class="dropdown-item-title">Business &amp; BEP Lab</span>
-                <span class="dropdown-item-desc">Break-even simulator &amp; unit economics</span>
-              </div>
-            </a>
-            <a href="../tax-lab/index.html" class="dropdown-item">
-              <span class="dropdown-item-icon">🏛️</span>
-              <div class="dropdown-item-info">
-                <span class="dropdown-item-title">India Tax &amp; GST Lab</span>
-                <span class="dropdown-item-desc">Input Tax Credit pipeline (FY 24-25)</span>
-              </div>
-            </a>
-            <a href="../excel-lab/index.html" class="dropdown-item">
-              <span class="dropdown-item-icon">📊</span>
-              <div class="dropdown-item-info">
-                <span class="dropdown-item-title">Excel Formula Studio</span>
-                <span class="dropdown-item-desc">SUMIF, XLOOKUP &amp; data challenges</span>
-              </div>
-            </a>
-            <a href="../mis-lab/index.html" class="dropdown-item">
-              <span class="dropdown-item-icon">📈</span>
-              <div class="dropdown-item-info">
-                <span class="dropdown-item-title">MIS Executive Dashboard</span>
-                <span class="dropdown-item-desc">KPI metric cards &amp; receivables aging</span>
-              </div>
-            </a>
-            <a href="../calculators/index.html" class="dropdown-item">
-              <span class="dropdown-item-icon">🧮</span>
-              <div class="dropdown-item-info">
-                <span class="dropdown-item-title">16 Financial Calculators</span>
-                <span class="dropdown-item-desc">Formulas &amp; step-by-step working</span>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <a href="../islamic-standards/index.html">Islamic Standards ⚖️</a>
-
-        <!-- Resources Dropdown -->
-        <div class="nav-dropdown">
-          <button class="dropdown-trigger" type="button">
-            Resources <span class="dropdown-chevron">▼</span>
-          </button>
-          <div class="dropdown-menu">
-            <a href="../textbooks/index.html" class="dropdown-item">
-              <span class="dropdown-item-icon">📖</span>
-              <div class="dropdown-item-info">
-                <span class="dropdown-item-title">Textbooks &amp; SVG Models</span>
-                <span class="dropdown-item-desc">17 chapters with audio narration</span>
-              </div>
-            </a>
-            <a href="../cheatsheets/index.html" class="dropdown-item">
-              <span class="dropdown-item-icon">📑</span>
-              <div class="dropdown-item-info">
-                <span class="dropdown-item-title">Cheatsheets &amp; Rules</span>
-                <span class="dropdown-item-desc">Golden Rules, ALCRE &amp; ratio sheet</span>
-              </div>
-            </a>
-            <a href="../projects/index.html" class="dropdown-item">
-              <span class="dropdown-item-icon">🏆</span>
-              <div class="dropdown-item-info">
-                <span class="dropdown-item-title">Practical Projects</span>
-                <span class="dropdown-item-desc">Bronze, Silver &amp; Gold rubrics</span>
-              </div>
-            </a>
-            <a href="../quiz/index.html" class="dropdown-item">
-              <span class="dropdown-item-icon">✍️</span>
-              <div class="dropdown-item-info">
-                <span class="dropdown-item-title">Concept Quizzes</span>
-                <span class="dropdown-item-desc">Self-assessments with explanations</span>
-              </div>
-            </a>
-            <a href="../teacher-hub/index.html" class="dropdown-item">
-              <span class="dropdown-item-icon">🍎</span>
-              <div class="dropdown-item-info">
-                <span class="dropdown-item-title">Teacher Hub</span>
-                <span class="dropdown-item-desc">45-min lesson plans &amp; worksheets</span>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <a href="index.html" class="active nav-btn-highlight">Dashboard</a>
-      </nav>
-      <div class="header-actions">
-        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-      </div>
-    </div>
-  </header>
+  <!-- Header, mobile drawer, tab bar and footer are rendered by js/nav.js -->
+  <header class="site-header" id="siteHeader"></header>
 
   <main class="py-4">
     <div class="container">
@@ -145,9 +28,9 @@
       <!-- KPI Summary Cards -->
       <div class="kpi-grid mt-4">
         <div class="kpi-card">
-          <div class="kpi-title">Textbook Chapters Read</div>
+          <div class="kpi-title">Lessons Completed</div>
           <div class="kpi-value text-emerald" id="statLessons">0</div>
-          <div class="kpi-sub">Out of 17 structured chapters</div>
+          <div class="kpi-sub" id="statLessonsSub">Across six learning journeys</div>
         </div>
 
         <div class="kpi-card">
@@ -227,20 +110,18 @@
     </div>
   </main>
 
-  <footer class="site-footer mt-5">
-    <div class="container text-center">
-      <p>Dedicated to Beneficial Knowledge (<em>'Ilm Nāfi'</em>) &bull; Designed for <strong>Yasir Rasool</strong> &bull; <a href="https://github.com/myasirdotin/" target="_blank">github.com/myasirdotin</a></p>
-      <p class="text-sm text-muted">&copy; 2026 Commerce Lab. Student Progress Portal.</p>
-    </div>
-  </footer>
+  <footer class="site-footer mt-5" id="siteFooter"></footer>
 
   <script type="module">
     import { ProgressStore, Toast } from '../js/core.js';
+    import { ALL_LESSONS, findLesson } from '../js/lessons/registry.js';
 
     function renderDashboard() {
       const data = ProgressStore.get();
 
-      document.getElementById('statLessons').textContent = data.completedLessons.length;
+      const doneLessons = data.completedLessons.filter(l => findLesson(l));
+      document.getElementById('statLessons').textContent = doneLessons.length;
+      document.getElementById('statLessonsSub').textContent = `Out of ${ALL_LESSONS.length} lessons in six journeys`;
       document.getElementById('statLabs').textContent = data.labActivities.length;
 
       const quizEntries = Object.keys(data.quizScores);
@@ -258,12 +139,12 @@
 
       const activityList = document.getElementById('activityList');
       const allActs = [];
-      data.completedLessons.forEach(l => allActs.push({ text: `Read textbook chapter: ${l}`, type: 'lesson' }));
+      data.completedLessons.forEach(l => { const m = findLesson(l); allActs.push({ text: m ? `Completed lesson ${m.number}: ${m.title}` : `Completed: ${l}`, type: 'lesson' }); });
       data.labActivities.forEach(l => allActs.push({ text: `Practiced simulator: ${l}`, type: 'lab' }));
       quizEntries.forEach(q => allActs.push({ text: `Completed quiz question: ${q}`, type: 'quiz' }));
 
       if (allActs.length === 0) {
-        activityList.innerHTML = `<p class="text-sm text-muted p-3">No activity recorded yet. Start reading textbooks or explore a laboratory!</p>`;
+        activityList.innerHTML = `<p class="text-sm text-muted p-3">No activity recorded yet. Start a lesson in Learn or explore a laboratory!</p>`;
       } else {
         activityList.innerHTML = allActs.slice(-8).reverse().map(act => `
           <div class="activity-row d-flex justify-between align-center py-2 border-bottom text-sm">

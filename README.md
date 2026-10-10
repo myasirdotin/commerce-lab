@@ -31,10 +31,18 @@ The platform is structured into modular educational hubs:
 ```
 commerce-lab/
 ├── css/
-│   ├── commerce-core.css        # Academic design system, dark/light themes, typography
+│   ├── commerce-core.css        # Mobile-first design system, dark/light themes, nav, drawer & tab bar
 │   └── commerce-labs.css        # Interactive lab widgets, T-accounts, equation bars, formula bars
 ├── js/
 │   ├── core.js                  # Theme toggling, toasts, ProgressStore local persistence
+│   ├── nav.js                   # Single source of truth for navigation: renders header, mobile drawer, bottom tab bar & footer on every page
+│   ├── lesson-kit.js            # Lesson building blocks: SVG diagram generators, worked-example boxes, journal/T-account/table helpers
+│   └── lessons/
+│       ├── registry.js          # The curriculum: six journeys and their ordered lessons (single source of truth)
+│       └── <id>.js              # One module per lesson (see docs/LESSON-AUTHORING.md)
+├── learn/
+│   ├── index.html               # Learning Journeys hub (progress, continue-where-you-left-off)
+│   └── lesson.html?id=<id>      # Lesson reader: sections, figures, key points, practice links, quiz, glossary
 │   ├── accounting-engine.js     # Real double-entry ledger & financial statement generator
 │   ├── excel-engine.js          # In-browser formula parser (SUM, AVERAGE, SUMIF, COUNTIF, XLOOKUP)
 │   ├── mis-engine.js            # Business intelligence & executive KPI summary aggregations
