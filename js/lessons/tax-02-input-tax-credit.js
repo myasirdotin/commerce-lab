@@ -25,10 +25,9 @@ export default {
       heading: 'The mechanism: tax on your value addition only',
       short: 'Mechanism',
       html: `
-        <p>When Noor Crafts buys shawls from a weaver, the weaver's invoice carries GST. That tax is Sana's
-        <strong>input tax</strong>. When she sells the shawls, she charges GST to the customer: her <strong>output tax</strong>.
-        She does not deposit the whole output tax. She deposits output tax <em>minus</em> input tax, and the input tax she subtracts
-        is called <strong>input tax credit (ITC)</strong>.</p>
+        <p>When Noor Crafts buys shawls from a weaver, the GST on his invoice is Sana's <strong>input tax</strong>. When she sells
+        them, the GST she charges is her <strong>output tax</strong>. She deposits output tax <em>minus</em> input tax, and the
+        input tax she subtracts is her <strong>input tax credit (ITC)</strong>.</p>
         ${formula('Net GST payable in cash = Output tax − Input tax credit', 'If ITC exceeds output tax in a month, the excess sits in your electronic credit ledger and rolls forward. It is not refunded, except for exports and inverted-duty cases.')}
         ${diagrams.flow(
           [
@@ -40,8 +39,8 @@ export default {
           ],
           { title: 'How purchase tax becomes a reduction in your payment', caption: 'Credit only becomes usable at step 2, when the supplier has filed. Steps 3 to 5 happen inside your GSTR-3B each month.' }
         )}
-        <p>Credit is tracked <strong>by head</strong>. IGST you paid on a Delhi courier bill is IGST credit; CGST and SGST paid to a
-        Srinagar packaging vendor are CGST credit and SGST credit. The heads matter in set-off, below.</p>
+        <p>Credit is tracked <strong>by head</strong>: IGST paid on a Delhi courier bill is IGST credit; CGST and SGST paid to a
+        Srinagar packaging vendor are CGST and SGST credit. The heads matter in set-off, below.</p>
       `
     },
     {
@@ -51,14 +50,14 @@ export default {
         <p>Section 16 of the CGST Act allows credit only if <strong>all four</strong> conditions are met:</p>
         ${terms([
           ['1. You hold a tax invoice', 'A proper tax invoice (or debit note) with the supplier\'s GSTIN, your GSTIN, HSN/SAC and the tax split. A bill of supply from a composition dealer carries no tax and gives no credit.'],
-          ['2. You have received the goods or services', 'Credit on goods paid for in advance but not yet delivered must wait. For goods delivered in lots, credit comes with the last lot.'],
-          ['3. The supplier has paid the tax', 'The supplier must have filed GSTR-1 (so the invoice shows in <strong>your GSTR-2B</strong>) and paid through GSTR-3B. If it is not in GSTR-2B, you cannot claim it, even with the invoice in hand.'],
+          ['2. You have received the goods or services', 'Credit on goods paid for in advance but not yet delivered must wait.'],
+          ['3. The supplier has paid the tax', 'The supplier must have filed GSTR-1, so the invoice shows in <strong>your GSTR-2B</strong>, and paid through GSTR-3B. Not in 2B, no credit, whatever the invoice says.'],
           ['4. You have filed your return', 'Credit is taken by claiming it in your own GSTR-3B.']
         ])}
-        <p>Two more rules sit on top. If you do not <strong>pay the supplier within 180 days</strong> of the invoice date, you must reverse
-        the credit with interest and may re-claim it when you finally pay. And credit for any financial year must be claimed by
-        <strong>30 November</strong> of the next year (or the annual return, if earlier). An April 2026 invoice found in December 2027 is dead credit.</p>
-        ${callout('warning', 'The most common ITC loss for small businesses is condition 3. A kirana supplier who collects GST from Rohit but never files GSTR-1 leaves Rohit with an invoice he cannot use. Check GSTR-2B every month, chase suppliers before the 11th, and prefer suppliers who file on time. If a supplier has still not filed by 30 September of the next financial year, Rule 37A requires you to reverse the credit by 30 November.')}
+        <p>Two more rules sit on top. If you do not <strong>pay the supplier within 180 days</strong> of the invoice, you must reverse
+        the credit with interest and may re-claim it when you pay. And credit for a financial year must be claimed by
+        <strong>30 November</strong> of the next year. An April 2026 invoice found in December 2027 is dead credit.</p>
+        ${callout('warning', 'The most common ITC loss for small businesses is condition 3. A supplier who collects GST from Rohit but never files GSTR-1 leaves him with an invoice he cannot use. Check GSTR-2B every month and chase suppliers before the 11th. If a supplier has still not filed by 30 September of the next financial year, Rule 37A requires you to reverse the credit by 30 November.')}
       `
     },
     {
@@ -67,20 +66,20 @@ export default {
       html: `
         <p>Section 17(5) lists purchases on which credit is simply not allowed, however business-related they feel.</p>
         ${table(
-          ['Blocked', 'Typical example', 'Why it matters'],
+          ['Blocked', 'Typical example', 'Note'],
           [
-            ['Goods or services for personal use', 'Sana\'s home internet billed to Noor Crafts', 'Claim only the business portion of mixed-use items'],
-            ['Motor vehicles (seating up to 13) and their insurance, repairs', 'A car bought for deliveries', 'Allowed only for transport businesses, driving schools, or further sale'],
-            ['Food and beverages, outdoor catering, club and gym membership, beauty and health services', 'Staff lunch at a restaurant, a club subscription', 'Allowed only when the law obliges you to provide them to employees'],
-            ['Works contract and construction of immovable property', 'Building or renovating the workshop', 'Plant and machinery is allowed; the building itself is not'],
-            ['Goods lost, stolen, destroyed, written off, or given as gifts or free samples', 'Two shawls gifted to an influencer', 'Reverse the credit on those shawls'],
-            ['Tax paid under composition, or on a supply used for exempt sales', 'Buying from a composition dealer', 'There is no tax on the bill, so there is nothing to claim']
+            ['Goods or services for personal use', 'Sana\'s home internet billed to Noor Crafts', 'Claim only the business share of mixed-use items'],
+            ['Motor vehicles (seating up to 13), their insurance and repairs', 'A car bought for deliveries', 'Allowed only for transport businesses, driving schools, or resale'],
+            ['Food and beverages, catering, club and gym membership, beauty and health services', 'Staff lunch at a restaurant', 'Allowed only when the law obliges you to provide them'],
+            ['Works contract and construction of immovable property', 'Renovating the workshop', 'Plant and machinery is allowed; the building is not'],
+            ['Goods lost, stolen, destroyed, written off, gifted or given as free samples', 'Two shawls gifted to an influencer', 'Reverse the credit on those shawls'],
+            ['Tax paid under composition', 'Buying from a composition dealer', 'No tax on the bill, nothing to claim']
           ],
           { caption: 'Blocked credits under section 17(5)' }
         )}
-        <p>Two related rules. <strong>Capital goods</strong> (a laptop, an embroidery frame, a delivery e-rickshaw used only for business) get
+        <p>Two related rules. <strong>Capital goods</strong> (a laptop, an embroidery frame, a business-only e-rickshaw) get
         <strong>full credit in the month of purchase</strong>, provided you do not also claim income-tax depreciation on the GST part of the cost.
-        And when your purchases serve both <strong>taxable and exempt</strong> sales, say a kirana selling 18% soap and 0% loose atta from one shop,
+        And when purchases serve both <strong>taxable and exempt</strong> sales, say a kirana selling 18% soap and 0% loose atta from one shop,
         common credits like rent and electricity are allowed only <strong>in proportion</strong> to taxable turnover (Rules 42 and 43).</p>
       `
     },
@@ -132,27 +131,18 @@ export default {
           ],
           { align: ['l', 'r', 'r', 'r', 'r'], caption: 'Set-off table for the month', total: ['Total', inr(108000), inr(21300), inr(21300), inr(86700)] }
         )}
-        ${callout('remember', 'Had the courier bill been CGST + SGST instead, the ₹2,700 would have reduced CGST and SGST by ₹1,350 each and the IGST due would have been the full ₹54,000. The cash total is the same ₹86,700 either way; only the distribution between heads changes. Problems arise when one head has surplus credit and another has a shortfall, because surplus SGST credit can never pay a CGST bill.')}
+        ${callout('remember', 'Had the courier bill been CGST + SGST instead, the ₹2,700 would have reduced CGST and SGST by ₹1,350 each and IGST due would have been the full ₹54,000. The cash total stays ₹86,700; only the split between heads changes. Trouble starts when one head has surplus credit and another a shortfall, because surplus SGST credit can never pay a CGST bill.')}
       `
     },
     {
       heading: 'What this means for a business owner',
       short: 'For owners',
       html: `
-        <p>ITC is money. Every ₹100 of credit you fail to claim is ₹100 of extra cost that your competitor, who did claim it,
-        does not carry. A few habits protect it.</p>
-        ${table(
-          ['Habit', 'Why'],
-          [
-            ['Give your GSTIN to every supplier and insist on a tax invoice, not a cash memo', 'No GSTIN on the invoice, no credit in GSTR-2B'],
-            ['Reconcile purchases with GSTR-2B before filing GSTR-3B each month', 'Claiming credit not in 2B invites a notice and interest at 18%'],
-            ['Pay suppliers within 180 days', 'Late payment means reversal with interest'],
-            ['Keep personal and blocked expenses out of the business books', 'Claiming them is the easiest audit finding there is'],
-            ['Buy capital goods in the business name', 'Full credit in the month of purchase, often the biggest single credit of the year']
-          ],
-          { caption: 'Five habits that keep your ITC safe' }
-        )}
-        ${callout('tip', 'When choosing between two suppliers, compare the price <em>after</em> credit. A registered supplier at ₹4,000 + 5% GST costs you ₹4,000 once you claim the ₹200. An unregistered weaver at ₹4,100 with no GST actually costs more, because there is nothing to claim.')}
+        <p>ITC is money. Every ₹100 of credit you fail to claim is ₹100 of cost that a competitor who did claim it does not carry.
+        Four habits protect it: give your GSTIN to every supplier and insist on a tax invoice, not a cash memo; reconcile purchases
+        with GSTR-2B before filing GSTR-3B; pay suppliers within 180 days; and buy capital goods in the business name, because that
+        credit is often the biggest single credit of the year.</p>
+        ${callout('tip', 'When choosing between two suppliers, compare the price <em>after</em> credit. A registered weaver at ₹4,000 + 5% GST costs you ₹4,000 once you claim the ₹200. An unregistered weaver at ₹4,100 with no GST costs more, because there is nothing to claim.')}
         ${callout('note', 'Rates, rules and dates here are as of FY 2026-27 (October 2026). ITC rules change by amendment and circular, so verify on <strong>gst.gov.in</strong> and in your own GSTR-2B before claiming. This is educational material, not professional tax advice.')}
       `
     }
@@ -161,7 +151,7 @@ export default {
   keyPoints: [
     '<strong>Net GST = Output tax − Input tax credit.</strong> Only your value addition is taxed; the consumer bears the whole tax.',
     'Four conditions: tax invoice, goods or services received, supplier filed and paid (<strong>it shows in GSTR-2B</strong>), and your own return filed. Pay the supplier within 180 days.',
-    'Blocked under 17(5): personal use, most motor vehicles, food and beverages, club membership, building construction, goods lost or gifted, composition purchases.',
+    'Blocked under 17(5): personal use, most motor vehicles, food and beverages, club membership, building construction, goods lost or gifted.',
     'Set-off order: <strong>IGST credit first</strong> (against IGST, then CGST, then SGST). CGST credit cannot pay SGST and vice versa.',
     'Capital goods get full credit in the month of purchase. With exempt sales, common credits are allowed only in proportion to taxable turnover.',
     'Check GSTR-2B every month. If a supplier never files, the credit is not yours, however genuine the invoice.'

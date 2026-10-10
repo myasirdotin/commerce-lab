@@ -174,7 +174,7 @@ export default {
 
   keyPoints: [
     'MIS is internal, monthly, decision-focused information built from your registers; statutory accounts are for the law and arrive late.',
-    'The pack has six fixed boxes on one page: P&L vs last month and budget, cash + 4-week outlook, debtors aging, stock and dead stock, sales mix, KPI table.',
+    'The pack has six fixed boxes on one page: P&amp;L vs last month and budget, cash + 4-week outlook, debtors aging, stock and dead stock, sales mix, KPI table.',
     'Gross margin % = (Revenue − COGS) ÷ Revenue; net margin % = Net profit ÷ Revenue; AOV = Revenue ÷ Orders; returns % = returned orders ÷ orders.',
     'Debtor days = Debtors ÷ Credit sales × 30; inventory days = Stock ÷ COGS × 30; runway = Cash ÷ Monthly fixed outgoings.',
     'Every KPI needs a target and a red/amber/green rule; every red KPI needs one action with an owner and a date.',

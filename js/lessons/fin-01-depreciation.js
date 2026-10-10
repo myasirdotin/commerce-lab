@@ -43,14 +43,13 @@ export default {
           ],
           { title: 'From cost to book value', caption: 'Each year a slice of the cost moves from the balance sheet to the P&L. What has not yet been charged is the book value, which is not a market price.' }
         )}
-        <p>Three things to hold on to. First, depreciation is <strong>allocation, not valuation</strong>: the book value after two years is
-        simply the cost not yet charged, whatever a buyer would pay. Second, it is a <strong>non-cash expense</strong>: the cash left when
-        the machine was bought, so depreciation reduces profit without reducing the bank balance. Third, land is not depreciated, because
-        it does not wear out.</p>
+        <p>Three things to hold on to. Depreciation is <strong>allocation, not valuation</strong>: book value is the cost not yet charged,
+        whatever a buyer would pay. It is a <strong>non-cash expense</strong>: the cash left when the machine was bought, so the yearly charge
+        reduces profit but not the bank balance. And land is not depreciated, because it does not wear out.</p>
         ${terms([
-          ['Causes', 'Wear and tear from use; passage of time (a lease, a patent); obsolescence when a better machine makes yours uneconomic; depletion for mines and quarries; accidents.'],
+          ['Causes', 'Wear and tear from use; passage of time (a lease, a patent); obsolescence when a better machine makes yours uneconomic; depletion for mines and quarries.'],
           ['Residual (scrap) value', 'What you expect to get for the asset at the end of its useful life. Under SLM it is deducted before spreading the cost.'],
-          ['Useful life', 'The years you expect to use the asset, not how long it could physically last. A laptop may run for eight years and still have a three-year useful life.']
+          ['Useful life', 'The years you expect to use the asset, not how long it could physically last.']
         ])}
       `
     },
@@ -61,10 +60,10 @@ export default {
         ${formula('SLM depreciation per year = (Cost − Residual value) ÷ Useful life', 'Same amount every year. Noor Crafts: (1,20,000 − 20,000) ÷ 5 = ₹20,000.')}
         ${formula('WDV depreciation = Opening book value × Rate', 'A fixed percentage of a shrinking base, so the charge falls every year. Noor Crafts: 1,20,000 × 20% = ₹24,000 in year 1; 96,000 × 20% = ₹19,200 in year 2.')}
         ${compare([
-          { title: 'Straight-line (SLM)', tone: 'a', points: ['Equal charge each year; simple to budget', 'Book value reaches residual value exactly at the end of life', 'Fits assets that give even service: furniture, leases, patents, buildings', 'Common in company accounts under Schedule II of the Companies Act 2013'] },
-          { title: 'Written-down value (WDV)', tone: 'd', points: ['Heavy charge early, lighter later', 'Matches assets that lose value and efficiency fast: machines, vehicles, computers', 'Repairs rise as the asset ages, so depreciation plus repairs stays roughly level', 'Required for income-tax computation in India, so many small businesses use it in the books too'] }
+          { title: 'Straight-line (SLM)', tone: 'a', points: ['Equal charge each year; simple to budget', 'Ends exactly at residual value', 'Fits assets that give even service: furniture, leases, patents, buildings', 'Common in company accounts under Schedule II of the Companies Act 2013'] },
+          { title: 'Written-down value (WDV)', tone: 'd', points: ['Heavy charge early, lighter later', 'Fits assets that lose value fast: machines, vehicles, computers', 'Repairs rise as the asset ages, so depreciation plus repairs stays roughly level', 'Required for income tax in India, so many small businesses use it in the books too'] }
         ])}
-        ${callout('remember', 'Under WDV the book value never reaches zero mathematically; you keep taking 20% of a smaller and smaller number. In practice the asset is written off or sold. Under SLM the schedule ends exactly at the residual value.')}
+        ${callout('remember', 'Under WDV the book value never mathematically reaches zero; you keep taking 20% of a smaller number until the asset is sold or written off. Under SLM the schedule ends exactly at the residual value.')}
       `
     },
     {
@@ -81,7 +80,7 @@ export default {
             { label: 'Effect on profit, year 1:', html: 'WDV charges ₹4,000 more than SLM, so year-1 profit is <strong>₹4,000 lower</strong> under WDV.' },
             { label: 'Effect on profit, year 5:', html: 'WDV charges ₹9,830 against SLM\'s ₹20,000, so year-5 profit is <strong>₹10,170 higher</strong> under WDV.' }
           ],
-          result: 'Over five years SLM charges ₹1,00,000 and WDV ₹80,678. The total cost of the machine is the same whichever method you use; the methods only decide <em>which year</em> bears how much. If Sana sells at ₹20,000 in year 5, the WDV books will show a loss of ₹19,322 on sale to catch up.'
+          result: 'Over five years SLM charges ₹1,00,000 and WDV ₹80,678. The machine costs the same whichever method you use; the methods only decide <em>which year</em> bears how much. If Sana sells at ₹20,000 in year 5, the WDV books show a ₹19,322 loss on sale to catch up.'
         })}
         ${table(
           ['Year', 'SLM charge', 'SLM book value', 'WDV charge (20%)', 'WDV book value'],
@@ -104,9 +103,9 @@ export default {
       heading: 'Journal entries and where it shows in the statements',
       short: 'Entries',
       html: `
-        <p>There are two ways to book the yearly charge. The <strong>direct method</strong> credits the asset account, so the ledger shows
-        the shrinking book value. The <strong>provision method</strong> keeps the asset at cost and piles the charge into a separate
-        Provision for Depreciation (also called Accumulated Depreciation) account; the balance sheet shows cost less provision.</p>
+        <p>Two ways to book the yearly charge. The <strong>direct method</strong> credits the asset account, so the ledger shows the shrinking
+        book value. The <strong>provision method</strong> keeps the asset at cost and accumulates the charge in a separate Provision for
+        Depreciation account; the balance sheet shows cost less provision.</p>
         ${journal([
           { date: '31 Mar Y1', debit: 'Depreciation', credit: 'Machinery', amount: 20000, narration: 'SLM depreciation for the year, direct method' },
           { date: '31 Mar Y1', debit: 'Depreciation', credit: 'Provision for Depreciation on Machinery', amount: 20000, narration: 'Same charge under the provision method; Machinery A/c stays at ₹1,20,000' },
@@ -121,15 +120,15 @@ export default {
           ],
           { align: ['l', 'l', 'r', 'r'], caption: 'How the first year appears in the final accounts' }
         )}
-        ${callout('tip', 'The provision method is better for an owner because the balance sheet shows both numbers: what you paid and how much has been used up. A machine showing cost ₹1,20,000 less provision ₹1,00,000 is telling you a replacement is due.')}
+        ${callout('tip', 'The provision method suits an owner better: the balance sheet shows what you paid and how much is used up. Cost ₹1,20,000 less provision ₹1,00,000 is telling you a replacement is due.')}
       `
     },
     {
       heading: 'Income-tax depreciation: blocks, rates and the 180-day rule',
       short: 'Tax rules',
       html: `
-        <p>Whatever method your books use, the income-tax computation has its own rules. Assets are grouped into <strong>blocks</strong>
-        by type and rate, depreciation is always on <strong>WDV</strong> of the block, and the rates are fixed by the Income-tax Rules.</p>
+        <p>Whatever your books use, the income-tax computation has its own rules: assets are grouped into <strong>blocks</strong> by type,
+        depreciation is always on the <strong>WDV</strong> of the block, and the rates are fixed by the Income-tax Rules.</p>
         ${table(
           ['Block', 'Rate (WDV)', 'Examples'],
           [
@@ -141,18 +140,17 @@ export default {
           ],
           { caption: 'Common income-tax depreciation blocks (Appendix I, Income-tax Rules). Verify current rates on the portal before filing.' }
         )}
-        ${callout('india', '<strong>Half-rate rule:</strong> if an asset is bought and put to use for <strong>less than 180 days</strong> in the financial year, only half the rate applies that year. Sana\'s machine bought on 1 April earns the full 15% (₹18,000 in the tax computation). The same machine bought on 15 November would get 7.5% (₹9,000) in year one. Under the block system an asset sold is deducted from the block, and no profit or loss is computed asset by asset unless the block empties or goes negative. Check the rates on the Income-tax portal each year.')}
-        <p>So Noor Crafts can charge ₹20,000 (SLM) or ₹24,000 (WDV at 20%) in its own books while the tax return allows ₹18,000. The
-        difference is a normal <em>book versus tax</em> timing gap; your CA adjusts for it in the computation of taxable income.</p>
+        ${callout('india', '<strong>Half-rate rule:</strong> an asset put to use for <strong>less than 180 days</strong> in the financial year gets only half the rate that year. Sana\'s machine bought on 1 April earns the full 15% (₹18,000 in the tax computation); bought on 15 November it would get 7.5% (₹9,000). An asset sold is deducted from its block, and no profit or loss is computed asset by asset unless the block empties. Check the rates on the Income-tax portal each year.')}
+        <p>So Noor Crafts can charge ₹20,000 (SLM) or ₹24,000 (WDV) in its own books while the tax return allows ₹18,000. That is a normal
+        <em>book versus tax</em> timing gap; your CA adjusts for it in the computation of taxable income.</p>
       `
     },
     {
       heading: 'Selling the asset: profit or loss on sale',
       short: 'Sale',
       html: `
-        <p>When an asset is sold, compare the sale price with the <strong>book value on the date of sale</strong>. Sell above book value and
-        there is a profit on sale (a gain in the P&amp;L); sell below and there is a loss. The profit or loss is really a correction of
-        the depreciation charged so far.</p>
+        <p>When an asset is sold, compare the sale price with the <strong>book value on the date of sale</strong>. Above book value is a
+        profit on sale; below is a loss. Either is really a correction of the depreciation charged so far.</p>
         ${formula('Profit (loss) on sale = Sale price − Book value at date of sale', 'Book value = cost − depreciation charged to date. Always depreciate up to the date of sale first.')}
         ${example({
           title: 'Sana sells the machine at the end of year 3 for ₹65,000',
@@ -163,7 +161,7 @@ export default {
             { label: 'Entry (SLM, direct method):', html: 'Bank A/c Dr ₹65,000; To Machinery A/c ₹60,000; To Profit on Sale of Machinery A/c ₹5,000.' },
             { label: 'Entry (SLM, provision method):', html: 'Bank A/c Dr ₹65,000 and Provision for Depreciation A/c Dr ₹60,000; To Machinery A/c ₹1,20,000; To Profit on Sale of Machinery A/c ₹5,000. The asset and its provision are both removed.' }
           ],
-          result: 'Total charged against profit over three years: SLM ₹60,000 − ₹5,000 gain = ₹55,000. WDV ₹58,560 − ₹3,560 gain = ₹55,000. Either way the machine really cost ₹1,20,000 − ₹65,000 = ₹55,000 to own for three years. The method only changed the timing.',
+          result: 'Net charge over three years: SLM ₹60,000 − ₹5,000 gain = ₹55,000; WDV ₹58,560 − ₹3,560 gain = ₹55,000. Either way the machine cost ₹1,20,000 − ₹65,000 = ₹55,000 to own. The method only changed the timing.',
           tone: 'c'
         })}
         ${table(
@@ -176,17 +174,17 @@ export default {
           ],
           { align: ['l', 'r', 'r'], caption: 'Sale entry under SLM, provision method (debits ₹1,25,000 = credits ₹1,25,000)' }
         )}
-        ${callout('warning', 'Owners often record the ₹65,000 received as income and leave the machine in the books. That overstates profit by the full book value and leaves a ghost asset on the balance sheet. Always remove the asset (and its provision) and recognise only the difference.')}
+        ${callout('warning', 'Owners often book the ₹65,000 received as income and leave the machine in the books. That overstates profit and leaves a ghost asset on the balance sheet. Remove the asset (and its provision) and recognise only the difference.')}
       `
     }
   ],
 
   keyPoints: [
-    'Depreciation allocates the cost of a fixed asset over its useful life so each year\'s profit bears a fair share. It is not a valuation and it is not a cash outflow.',
-    'SLM: (Cost − Residual) ÷ Life, a flat charge. WDV: Rate × opening book value, a falling charge. Total cost charged over the asset\'s life is the same; only the timing differs.',
-    'Noor Crafts\' ₹1,20,000 machine: SLM ₹20,000 a year; WDV at 20% gives ₹24,000 in year 1 falling to ₹9,830 in year 5. Year-1 profit is ₹4,000 lower under WDV; year-5 profit is ₹10,170 higher.',
-    'Entry: Depreciation A/c Dr, To Asset A/c (direct) or To Provision for Depreciation A/c. It sits on the debit side of the P&L; the balance sheet shows the book value.',
-    'Income tax uses WDV block rates (furniture 10%, plant and machinery 15%, computers 40%, buildings 10%) with half the rate if the asset was used for under 180 days in the year of purchase.',
+    'Depreciation allocates a fixed asset\'s cost over its useful life. It is not a valuation and not a cash outflow.',
+    'SLM: (Cost − Residual) ÷ Life, a flat charge. WDV: Rate × opening book value, a falling charge. The total over the asset\'s life is the same; only the timing differs.',
+    'Noor Crafts\' ₹1,20,000 machine: SLM ₹20,000 a year; WDV at 20% gives ₹24,000 in year 1 falling to ₹9,830 in year 5. Year-1 profit is ₹4,000 lower under WDV; year-5 profit ₹10,170 higher.',
+    'Entry: Depreciation A/c Dr, To Asset A/c (direct) or To Provision for Depreciation A/c. Debit side of the P&L; book value on the balance sheet.',
+    'Income tax uses WDV block rates (furniture 10%, plant and machinery 15%, computers 40%, buildings 10%), halved if the asset was used under 180 days in the year of purchase.',
     'On sale: profit or loss = sale price − book value at the date of sale. Remove the asset and its provision from the books.'
   ],
 
