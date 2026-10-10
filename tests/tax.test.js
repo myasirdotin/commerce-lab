@@ -4,9 +4,10 @@ import { computeEducationalGST, TAX_CONFIG, GST_RATE_SLABS } from '../js/data/ta
 
 describe('Tax Engine & GST Calculation Verification', () => {
   it('should verify tax rules metadata specifies current FY and official disclaimer', () => {
-    assert.strictEqual(TAX_CONFIG.currentFinancialYear, '2024-25');
+    assert.strictEqual(TAX_CONFIG.currentFinancialYear, '2026-27');
     assert.ok(TAX_CONFIG.legalDisclaimer.includes('educational simulations'));
-    assert.ok(GST_RATE_SLABS.length >= 5);
+    assert.ok(GST_RATE_SLABS.length >= 4);
+    assert.ok(GST_RATE_SLABS.some(s => s.slab === '40%') && !GST_RATE_SLABS.some(s => s.slab === '28%'), 'post-Sept-2025 slab structure');
   });
 
   it('should accurately compute intra-state GST (CGST + SGST) and Input Tax Credit offset', () => {

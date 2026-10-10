@@ -41,7 +41,6 @@ export const NAV = {
     {
       key: 'resources', label: 'Resources', icon: '📚',
       items: [
-        { key: 'textbooks',   icon: '📖', href: 'textbooks/index.html',   title: 'Textbooks & SVG Models', desc: '17 chapters with audio narration' },
         { key: 'cheatsheets', icon: '📑', href: 'cheatsheets/index.html', title: 'Cheatsheets & Rules',    desc: 'Golden Rules, ALCRE & ratio sheet' },
         { key: 'projects',    icon: '🏆', href: 'projects/index.html',    title: 'Practical Projects',     desc: 'Bronze, Silver & Gold rubrics' },
         { key: 'quiz',        icon: '✍️', href: 'quiz/index.html',        title: 'Concept Quizzes',        desc: 'Self-assessments with explanations' },
@@ -75,7 +74,6 @@ export const NAV = {
     'excel-lab': 'Excel & MIS Studio',
     'mis-lab': 'Executive MIS Studio',
     'calculators': 'Financial Calculators',
-    'textbooks': 'Textbook Library',
     'cheatsheets': 'Quick Reference Cheatsheets',
     'projects': 'Practical Projects',
     'quiz': 'Concept Quizzes',
@@ -97,7 +95,7 @@ export const NAV = {
       ]},
       { heading: 'Learning Hub', links: [
         ['learn/index.html', 'Master Curriculum'],
-        ['textbooks/index.html', 'Textbook Library'],
+        ['learn/index.html#hub-start', 'Start a Business track'],
         ['cheatsheets/index.html', 'Cheatsheets & Rules'],
         ['projects/index.html', 'Practical Projects'],
         ['quiz/index.html', 'Concept Quizzes'],

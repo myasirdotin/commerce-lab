@@ -151,23 +151,29 @@ export function initPathwaySelector() {
   if (!pills.length || !resultCard) return;
 
   const pathways = {
+    start: {
+      title: 'Journey 1: Start a Business (India)',
+      desc: 'Nine practical lessons: idea to plan, legal structure, registrations, bank & payments, invoicing, bookkeeping, pricing, the compliance calendar and ethics.',
+      url: 'learn/index.html#hub-start',
+      btnText: 'Start journey 1 →'
+    },
     foundations: {
-      title: 'Pathway 1: Accounting Foundations',
-      desc: 'Start from absolute scratch! Master assets, liabilities, capital, and the foundational accounting equation.',
-      url: 'learn/index.html#pathway-1',
-      btnText: 'Start Foundations →'
+      title: 'Journey 2: Accounting Foundations',
+      desc: 'Start from scratch: the accounting equation, debit & credit rules, journal, ledger, trial balance, cash book and bank reconciliation.',
+      url: 'learn/index.html#hub-acc',
+      btnText: 'Start journey 2 →'
     },
     school: {
-      title: 'Pathway 2: Financial Accounting for Class 11 & 12',
-      desc: 'Master journal entries, ledger posting, trial balance balancing, BRS, depreciation (SLM/WDV), and final accounts.',
-      url: 'learn/index.html#pathway-2',
-      btnText: 'Open Class 11-12 Curriculum →'
+      title: 'Journeys 2 & 3: Class 11-12 Accountancy',
+      desc: 'Journal entries, ledger posting, trial balance, BRS, depreciation (SLM/WDV), provisions and final accounts, with worked examples for every topic.',
+      url: 'learn/index.html#hub-acc',
+      btnText: 'Open journey 2, then 3 →'
     },
     practical: {
-      title: 'Pathway 3: Practical Financial Statements',
-      desc: 'Understand how transactions become Trading A/c, Profit & Loss A/c, and Balance Sheet with realistic business numbers.',
-      url: 'accounting-lab/index.html',
-      btnText: 'Launch Accounting Simulator →'
+      title: 'Journey 3: Adjustments & Final Accounts',
+      desc: 'How transactions become the Trading A/c, Profit & Loss A/c and Balance Sheet, and how to read the ratios like an owner.',
+      url: 'learn/index.html#hub-fin',
+      btnText: 'Start journey 3 →'
     },
     islamic: {
       title: 'Islamic Standards & Fiqh al-Mu\'amalat',
@@ -176,22 +182,22 @@ export function initPathwaySelector() {
       btnText: 'Open Islamic Standards Advisor →'
     },
     tax: {
-      title: 'Pathway 5: India Taxation & GST Lab',
-      desc: 'Learn GST slabs (0-28%), Input Tax Credit (ITC) offsetting mechanism, and small business presumptive taxation.',
-      url: 'tax-lab/index.html',
-      btnText: 'Enter Tax Lab →'
+      title: 'Journey 5: Tax & GST (India)',
+      desc: 'GST slabs (0/5/18/40), input tax credit, returns and composition, income tax for a small business, and TDS. Then practise in the Tax Lab.',
+      url: 'learn/index.html#hub-tax',
+      btnText: 'Start journey 5 →'
     },
     excel: {
-      title: 'Pathway 6: Excel for Commerce & MIS',
-      desc: 'Practice real spreadsheet formulas (SUMIF, COUNTIF, XLOOKUP) and build executive management KPI dashboards.',
-      url: 'excel-lab/index.html',
-      btnText: 'Open Excel & MIS Studio →'
+      title: 'Journey 6: Excel & MIS Reporting',
+      desc: 'Registers and formulas that answer business questions, the monthly MIS pack, and budget vs actual. Then practise in the Excel & MIS labs.',
+      url: 'learn/index.html#hub-mis',
+      btnText: 'Start journey 6 →'
     },
     business: {
-      title: 'Pathway 4: Business Economics & Entrepreneurship',
-      desc: 'Master unit economics, fixed vs variable costs, contribution margin, and break-even points for Indian enterprises.',
-      url: 'business-lab/index.html',
-      btnText: 'Simulate Unit Economics →'
+      title: 'Journey 4: Business & Management',
+      desc: 'Costs and break-even, working capital and cash flow, inventory, managing with SOPs and KPIs, and channel margins.',
+      url: 'learn/index.html#hub-biz',
+      btnText: 'Start journey 4 →'
     },
     teacher: {
       title: 'Teacher Hub & Lesson Plans',
