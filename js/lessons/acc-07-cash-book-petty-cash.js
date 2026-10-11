@@ -50,8 +50,8 @@ export default {
       html: `
         ${terms([
           ['Single column', 'Just a Cash column on each side. Fine for a business with no bank account, which today is almost nobody.'],
-          ['Double column', 'Cash and Bank columns on each side. The everyday format for a kirana, café or small brand. Movements between the two columns are <em>contra entries</em>.'],
-          ['Triple column', 'Adds a Discount column on each side: <em>discount allowed</em> to customers on the debit side, <em>discount received</em> from suppliers on the credit side. The discount columns are only totalled, never balanced, because they are not money; the totals are posted to the Discount Allowed and Discount Received accounts in the ledger.']
+          ['Double column', 'Cash and Bank columns on each side. The everyday format for a kirana, café or small brand.'],
+          ['Triple column', 'Adds a Discount column on each side: <em>discount allowed</em> to customers on the debit side, <em>discount received</em> from suppliers on the credit side. Discount columns are totalled, never balanced, because they are not money; the totals go to the Discount Allowed and Discount Received accounts.']
         ])}
         ${table(
           ['Dr. (Receipts)', 'Disc. allowed', 'Cash', 'Bank', 'Cr. (Payments)', 'Disc. received', 'Cash', 'Bank'],
@@ -62,10 +62,10 @@ export default {
           { caption: 'Triple column cash book: the discount columns record what was given up, not what moved' }
         )}
         <p>A <strong>contra entry</strong> (marked "C" in the L.F. column) is a transaction between the two columns. Cash deposited into the bank
-        is written on the debit side in the Bank column ("To Cash") and on the credit side in the Cash column ("By Bank"). Cash withdrawn
-        from the bank for the till is the mirror image. Because both halves of the double entry are already inside the cash book, a contra
-        entry is <strong>never posted</strong> to the ledger.</p>
-        ${callout('warning', 'The most common cash book mistake is recording only one half of a contra entry. If the deposit slip is entered under Bank but nobody reduces the Cash column, the cash balance in the book will be ₹20,000 higher than the drawer, and the owner will suspect theft that never happened.')}
+        is written on the debit side in the Bank column ("To Cash") and on the credit side in the Cash column ("By Bank"); a withdrawal for
+        the till is the mirror image. Both halves of the double entry are already inside the cash book, so a contra entry is
+        <strong>never posted</strong> to the ledger.</p>
+        ${callout('warning', 'The commonest cash book mistake is recording only one half of a contra entry. Enter the deposit under Bank but forget to reduce Cash, and the book shows ₹20,000 more than the drawer; the owner suspects a theft that never happened.')}
       `
     },
     {
@@ -108,7 +108,7 @@ export default {
           ],
           { align: ['l', 'l', 'r', 'r'], caption: 'Gupta Kirana: cash book, credit side', total: ['', 'Total', inr(42300), inr(86800)] }
         )}
-        ${callout('tip', 'Keep UPI and card receipts in the <strong>Bank</strong> column, not Cash, even though they feel like counter sales. The money never touched the drawer. If a UPI settlement lands in the bank a day later, the bank reconciliation in the next lesson will explain the timing gap.')}
+        ${callout('tip', 'Keep UPI and card receipts in the <strong>Bank</strong> column, not Cash: the money never touched the drawer. If a settlement lands a day late, the bank reconciliation in the next lesson explains the gap.')}
       `
     },
     {
@@ -116,9 +116,9 @@ export default {
       short: 'Petty cash',
       html: `
         <p>Small payments are frequent, urgent and annoying to book one by one. So the main cashier hands a fixed sum, the
-        <strong>float</strong>, to a petty cashier (often the office assistant), who pays the small bills, collects a voucher for each,
-        and at month end is reimbursed <em>exactly what was spent</em> so the float returns to its fixed amount. This is the
-        <strong>imprest system</strong>. Its beauty is control: at any moment, cash in the tin plus vouchers in the file must equal the float.</p>
+        <strong>float</strong>, to a petty cashier, who pays the small bills, collects a voucher for each, and at month end is reimbursed
+        <em>exactly what was spent</em> so the float returns to its fixed amount. This is the <strong>imprest system</strong>. Its beauty
+        is control: at any moment, cash in the tin plus vouchers in the file must equal the float.</p>
         ${diagrams.cycle(
           [
             { label: 'Float ₹3,000', tone: 'a' },
@@ -169,23 +169,22 @@ export default {
       short: 'Controls',
       html: `
         <p>Petty cash is where leakage starts, not because people are dishonest but because "I will put the bill in later" never happens.
-        The imprest system already builds in the first control: the petty cashier cannot spend more than the float without coming back
-        for reimbursement, and reimbursement needs vouchers. Add these.</p>
+        The imprest system is the first control: nobody can spend beyond the float without coming back with vouchers. Add these.</p>
         ${checklist([
-          'A <strong>voucher for every payment</strong>, numbered, signed by the person who spent and approved by the owner. Attach the shop bill or the courier receipt.',
+          'A <strong>voucher for every payment</strong>, numbered, signed by the spender and approved by the owner, with the bill attached.',
           'A <strong>ceiling per payment</strong> (say ₹500). Anything bigger goes through the main cash book by UPI or NEFT, where the bank leaves a trail.',
-          '<strong>Surprise counts.</strong> Once a month, on a day the petty cashier does not expect, count the tin: cash + vouchers must equal the float. A shortfall is a conversation that day, not at year end.',
-          'Reimburse <strong>only against the vouchers</strong>, and only up to the float. Never top up "a bit extra".',
+          '<strong>Surprise counts.</strong> Once a month, unannounced, count the tin: cash + vouchers must equal the float. A shortfall is a conversation that day, not at year end.',
+          'Reimburse <strong>only against vouchers</strong>, and only up to the float. Never top up "a bit extra".',
           'The petty cashier does not also write the main cash book. Separating the two jobs is the cheapest fraud control there is.'
         ], { title: 'Five petty cash controls' })}
-        ${callout('india', 'Income-tax rules disallow any single cash expense above ₹10,000 paid to one person in a day (section 40A(3)), and GST input credit needs a proper tax invoice. A ₹3,000 petty float keeps you safely inside both limits; for anything larger use the bank and ask for a GST invoice.')}
+        ${callout('india', 'Income-tax rules disallow a cash expense above ₹10,000 to one person in a day (section 40A(3)), and GST input credit needs a tax invoice. A ₹3,000 float stays safely inside both; for anything larger use the bank and ask for a GST invoice.')}
       `
     }
   ],
 
   keyPoints: [
-    'The cash book is a journal (first record, in date order) and a ledger (the Cash and Bank columns are the accounts themselves). No separate Cash or Bank account exists in the ledger.',
-    'Receipts go on the debit side, payments on the credit side. Cash columns always balance as a debit; a credit bank balance is an overdraft.',
+    'The cash book is a journal (first record, in date order) and a ledger (the Cash and Bank columns are the accounts themselves).',
+    'Receipts on the debit side, payments on the credit side. A cash column always balances as a debit; a credit bank balance is an overdraft.',
     'A contra entry (C) records cash moving to the bank or back. It appears on both sides of the cash book and is never posted to the ledger.',
     'In a triple column cash book, discount columns are totalled, not balanced, and posted to Discount Allowed and Discount Received.',
     'The imprest system gives the petty cashier a fixed float and reimburses exactly what was spent, so cash in hand plus vouchers always equals the float.',

@@ -9,10 +9,9 @@ export default {
   id: 'tax-01-gst-basics',
   title: 'GST basics: CGST, SGST, IGST & slabs',
 
-  intro: `<p>GST is the one tax sitting inside almost every bill you give or receive. If you run a business you
+  intro: `<p>GST sits inside almost every bill you give or receive. If you run a business you
     <strong>collect it on sales, pay it on purchases, and send the difference to the government</strong>.
-    This lesson gives you the vocabulary (supply, place of supply, GSTIN, slabs) and the arithmetic you need before
-    you touch a return.</p>`,
+    This lesson gives you the vocabulary and the arithmetic you need before you touch a return.</p>`,
 
   outcomes: [
     'Say what GST replaced, why it is called a <em>destination-based</em> tax, and what counts as a <em>supply</em>.',
@@ -57,9 +56,9 @@ export default {
           ['Rate', 'What falls here (examples)', 'For Noor Crafts, Chai Adda, Gupta Kirana'],
           [
             ['0% (nil)', 'Unbranded atta, rice, fresh vegetables, milk, books, health and life insurance', 'Loose grains at Gupta Kirana'],
-            ['5%', 'Handicrafts, apparel and footwear up to ₹2,500 per piece, textile yarn and fabric, packaged food, standalone restaurants (no ITC)', 'Walnut boxes, chai and snacks at Chai Adda'],
-            ['18%', 'Apparel above ₹2,500 per piece, electronics, cement, and almost every service: courier, software, consultancy, commission', 'Pashmina shawls at ₹7,000, courier bills, marketplace commission'],
-            ['40%', 'Tobacco and pan masala, sugary and aerated drinks, large luxury cars and yachts', 'Nothing these three businesses sell']
+            ['5%', 'Handicrafts, apparel and footwear up to ₹2,500 per piece, textile yarn and fabric, packaged food, standalone restaurants (no ITC)', 'Walnut boxes; chai at Chai Adda'],
+            ['18%', 'Apparel above ₹2,500 per piece, electronics, and almost every service: courier, software, commission', 'Pashmina shawls at ₹7,000; courier bills'],
+            ['40%', 'Tobacco and pan masala, sugary and aerated drinks, large luxury cars', 'Nothing these three businesses sell']
           ],
           { caption: 'The four GST slabs since 22 September 2025' }
         )}
@@ -73,9 +72,9 @@ export default {
       html: `
         <p>GST is a dual tax: the Centre and the state each take a share. The total rate is the same either way; what changes is <em>how it is labelled</em> on the invoice.</p>
         ${terms([
-          ['Intra-state supply', 'Supplier and place of supply in the <strong>same</strong> state. Charge <strong>CGST + SGST</strong>, each half the rate: an 18% item carries 9% CGST (to the Centre) and 9% SGST (to the state). In a Union Territory without a legislature it is CGST + UTGST.'],
-          ['Inter-state supply', 'Place of supply in a <strong>different</strong> state (or an export or import). Charge <strong>IGST</strong> at the full rate; the Centre collects it and passes the state share to the consuming state.'],
-          ['Place of supply', 'For goods, where the goods are <strong>delivered</strong>. For most services to a registered business, the <strong>buyer\'s location</strong>. This, not the buyer\'s billing address or the courier route, decides intra vs inter.']
+          ['Intra-state supply', 'Supplier and place of supply in the <strong>same</strong> state. Charge <strong>CGST + SGST</strong>, each half the rate: an 18% item carries 9% CGST (to the Centre) and 9% SGST (to the state). Union Territories without a legislature use CGST + UTGST.'],
+          ['Inter-state supply', 'Place of supply in a <strong>different</strong> state, or an export or import. Charge <strong>IGST</strong> at the full rate; the Centre collects it and passes the state share to the consuming state.'],
+          ['Place of supply', 'For goods, where they are <strong>delivered</strong>. For most services to a registered business, the <strong>buyer\'s location</strong>. This, not the billing address, decides intra vs inter.']
         ])}
         ${diagrams.split(
           { heading: 'Intra-state: Srinagar to Srinagar', tone: 'a', items: ['Taxable value ₹7,000', 'CGST 9% = ₹630 to Centre', 'SGST 9% = ₹630 to J&K', 'Customer pays ₹8,260'] },
@@ -93,11 +92,11 @@ export default {
           result: 'Both shawl invoices carry ₹1,260 of tax: the Srinagar one split ₹630/₹630 between Centre and J&K, the Delhi one a single IGST line that the Centre later shares with Delhi.'
         })}
         ${table(
-          ['Item', 'Taxable value', 'Rate', 'CGST', 'SGST', 'IGST', 'Invoice total'],
+          ['Item', 'Value', 'Rate', 'CGST', 'SGST', 'IGST', 'Total'],
           [
             ['Shawl, Srinagar', inr(7000), '18%', inr(630), inr(630), '—', inr(8260)],
             ['Shawl, Delhi', inr(7000), '18%', '—', '—', inr(1260), inr(8260)],
-            ['Walnut box, Srinagar', inr(1500), '5%', '₹37.50', '₹37.50', '—', inr(1575)]
+            ['Box, Srinagar', inr(1500), '5%', '₹37.50', '₹37.50', '—', inr(1575)]
           ],
           { align: ['l', 'r', 'r', 'r', 'r', 'r', 'r'], caption: 'Three invoices from Noor Crafts' }
         )}
@@ -110,7 +109,7 @@ export default {
         <p>A registered business gets a <strong>GSTIN</strong>, a 15-character number that must appear on every tax invoice.</p>
         ${fig({
           title: 'Anatomy of a GSTIN',
-          caption: 'Example 01ABCPS1234K1Z5 (fictitious). The first two digits tell you the state at a glance: 01 is J&K, 07 Delhi, 08 Rajasthan, 27 Maharashtra.',
+          caption: 'Fictitious example. The first two digits give the state: 01 J&K, 07 Delhi, 08 Rajasthan, 27 Maharashtra.',
           viewBox: '0 0 640 150',
           body: `
             ${svg.box(10, 20, 90, 60, '01', { tone: 'a', sub: 'State code (2)', size: 18 })}
@@ -142,14 +141,14 @@ export default {
       heading: 'Taxable value, the computation and reverse charge',
       short: 'The maths',
       html: `
-        <p><strong>Taxable value</strong> is the price actually payable for the supply: the item price, minus any discount shown on
-        the invoice, plus packing, freight or other charges you bill the customer. Tax is then simply value times rate.</p>
-        ${formula('Tax = Taxable value × Rate; split Rate/2 + Rate/2 for CGST + SGST, or Rate for IGST', 'A ₹120 packing charge on the Delhi shawl is part of taxable value: IGST on ₹7,120 = ₹1,281.60.')}
-        ${formula('Taxable value from an inclusive price = Price × 100 ÷ (100 + Rate)', 'A chai priced at ₹21 "inclusive of 5% GST" has a taxable value of ₹20 and tax of ₹1. Use this when you quote MRP-style prices.')}
+        <p><strong>Taxable value</strong> is the price actually payable: the item price, minus any discount shown on the invoice,
+        plus packing, freight or other charges you bill the customer. Tax is then value times rate.</p>
+        ${formula('Tax = Taxable value × Rate, split half-half for CGST + SGST, or whole as IGST', 'A ₹120 packing charge on the Delhi shawl is part of taxable value: IGST on ₹7,120 = ₹1,281.60.')}
+        ${formula('Taxable value from an inclusive price = Price × 100 ÷ (100 + Rate)', 'A chai priced ₹21 inclusive of 5% GST has a taxable value of ₹20 and tax of ₹1.')}
         <p><strong>Reverse charge</strong> turns the mechanism around: for a few notified cases the <em>buyer</em> pays the GST straight to the
-        government. The common ones for a small business are freight paid to a goods transport agency, an advocate's fees,
+        government. Common ones for a small business: freight paid to a goods transport agency, an advocate's fees,
         imported services such as foreign software subscriptions, and certain purchases from unregistered persons. You pay this
-        tax in cash, not from credit, and then claim it as input credit if the purchase is for business.</p>
+        tax in cash, not from credit, then claim it as input credit if the purchase is for business.</p>
         ${callout('tip', 'Every purchase invoice you receive must show the supplier\'s GSTIN, your GSTIN, the HSN or SAC code and the tax split. Without those, the credit in the next lesson is lost before you start.')}
         ${callout('note', 'Rates, thresholds and dates in this lesson are as of FY 2026-27 (October 2026). GST rates change by Council notification, so verify the current rate for your HSN or SAC on <strong>gst.gov.in</strong> before invoicing or filing. This is educational material, not professional tax advice.')}
       `

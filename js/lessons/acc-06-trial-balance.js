@@ -39,10 +39,9 @@ export default {
           ],
           { title: 'The trial balance is the bridge', caption: 'Nothing goes into the final accounts that is not first in the trial balance (closing stock is the one classic exception, see below).' }
         )}
-        <p>Tally, Zoho Books or any software produces a trial balance with one click, and it always tallies because the software
-        refuses to save a one-sided entry. That does not make the lesson useless: you still need to <strong>read</strong> the trial balance
-        to spot a balance on the wrong side (a creditor showing a debit balance, a bank account in credit) and to understand what
-        your CA is building the year-end statements from.</p>
+        <p>Tally or any software produces a trial balance in one click, and it always tallies because the software refuses to save a
+        one-sided entry. You still need to <strong>read</strong> it, to spot a balance on the wrong side (a creditor in debit, a bank
+        account in credit) and to know what your CA builds the year-end statements from.</p>
       `
     },
     {
@@ -151,14 +150,13 @@ export default {
             { label: 'Scan the debit column for digit pairs.', html: 'The Courier expense line reads ₹1,980. The courier ledger account shows a balance of ₹1,890. The 8 and 9 were swapped while copying.' },
             { label: 'Correct it.', html: 'Debit total becomes ₹8,14,560 − ₹90 = ₹8,14,470. Both sides now agree.' }
           ],
-          result: 'Found in five minutes instead of five hours. The by-9 test pointed straight at a copying error, not a posting error, so Sana checked the trial balance sheet before touching the ledger.',
+          result: 'Found in five minutes instead of five hours. The by-9 test pointed at a copying error, so Sana checked the trial balance sheet before touching the ledger.',
           tone: 'c'
         })}
-        <p>If the difference still cannot be traced and the statements are due, the gap is parked in a <strong>suspense account</strong>:
-        a temporary account that takes the difference (₹90 on the credit side in the case above, had it not been found) so that the
-        trial balance tallies and work can continue. Each error found later is corrected through a rectification entry, and the
-        suspense account must be zero before the final balance sheet is signed. A suspense balance that survives to year end is a sign
-        of sloppy books.</p>
+        <p>If the difference cannot be traced and the statements are due, park it in a <strong>suspense account</strong>: a temporary
+        account that takes the gap (₹90 on the credit side above, had it not been found) so the trial balance tallies and work continues.
+        Each error found later is corrected by a rectification entry, and the suspense account must be zero before the balance sheet is
+        signed.</p>
         ${terms([
           ['Transposition', 'Two digits swapped while writing a number: ₹2,340 written as ₹2,430. The difference is always a multiple of 9.'],
           ['Slide', 'A number written with the decimal or a zero out of place: ₹12,000 written as ₹1,200. Also a multiple of 9 (here 10,800 = 9 × 1,200).'],

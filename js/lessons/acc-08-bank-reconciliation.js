@@ -134,15 +134,15 @@ export default {
       heading: 'What a BRS catches for a business owner',
       short: 'For owners',
       html: `
-        <p>Most owners think of the BRS as an accountant's chore. It is actually the cheapest audit you will ever do, because it compares
-        your records with an <em>independent</em> record you cannot edit.</p>
+        <p>Most owners treat the BRS as an accountant's chore. It is the cheapest audit you will ever do, because it compares your records
+        with an <em>independent</em> record you cannot edit.</p>
         ${terms([
-          ['Missing receipts', 'A ₹14,000 NEFT sitting in the bank and nowhere in your books means a customer who paid is still shown as a debtor. Without the BRS you might chase them, or worse, forget that an order is paid and ready to ship.'],
-          ['Fraud and leakage', 'Cash sales deposited short, a cheque issued to a supplier who does not exist, a payment that appears in the statement but was never authorised. Each one shows up as an unticked line.'],
-          ['Bank errors', 'Banks do make mistakes: a charge applied twice, a credit meant for another account. You can only dispute what you have noticed, and banks have time limits for complaints.'],
-          ['Bounced cheques', 'A dishonoured cheque leaves a false receipt in your books. The BRS flags it in time to follow up with the customer and, if needed, send the section 138 notice within the legal 30-day window.']
+          ['Missing receipts', 'A ₹14,000 NEFT in the bank and nowhere in your books means a customer who paid is still shown as a debtor. You might chase them, or forget that a paid order is waiting to ship.'],
+          ['Fraud and leakage', 'Cash sales deposited short, a cheque to a supplier who does not exist, a payment in the statement that was never authorised. Each shows up as an unticked line.'],
+          ['Bank errors', 'A charge applied twice, a credit meant for another account. You can only dispute what you have noticed, and banks have time limits for complaints.'],
+          ['Bounced cheques', 'A dishonoured cheque leaves a false receipt in your books. The BRS flags it in time to act.']
         ])}
-        ${callout('india', 'Under section 138 of the Negotiable Instruments Act, a dishonoured cheque is a criminal offence for the drawer, but you must send a written demand within 30 days of receiving the bank\'s return memo. Reconcile late and you lose that right. Also keep the bank statement and BRS for every month: GST officers reconcile your declared turnover against bank credits, and unexplained deposits are treated as income.')}
+        ${callout('india', 'Under section 138 of the Negotiable Instruments Act a dishonoured cheque is an offence for the drawer, but you must send a written demand within 30 days of the bank\'s return memo. Reconcile late and you lose that right. Keep every month\'s statement and BRS: GST officers compare declared turnover with bank credits, and unexplained deposits are treated as income.')}
       `
     }
   ],
