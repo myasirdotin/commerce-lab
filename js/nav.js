@@ -62,8 +62,8 @@ export const NAV = {
   tabs: [
     { key: 'home',  label: 'Home',  icon: '🏠', href: 'index.html' },
     { key: 'learn', label: 'Learn', icon: '🎓', href: 'learn/index.html' },
+    { key: 'updates', label: "What's New", icon: '🆕', href: 'updates/index.html' },
     { key: 'labs',  label: 'Labs',  icon: '🧪', sheet: 'labs' },
-    { key: 'quiz',  label: 'Quiz',  icon: '✍️', href: 'quiz/index.html' },
     { key: 'menu',  label: 'Menu',  icon: '☰',  sheet: 'all' }
   ],
 
@@ -261,7 +261,7 @@ function buildTabBar(page) {
                     <span class="tab-icon" aria-hidden="true">${t.icon}</span><span class="tab-label">${esc(t.label)}</span>
                   </button>`;
         }
-        return `<a href="${url(t.href)}" class="${cls}"${active ? ' aria-current="page"' : ''}>
+        return `<a href="${url(t.href)}" class="${cls}" data-tab="${t.key}"${active ? ' aria-current="page"' : ''}>
                   <span class="tab-icon" aria-hidden="true">${t.icon}</span><span class="tab-label">${esc(t.label)}</span>
                 </a>`;
       }).join('')}
@@ -423,4 +423,17 @@ export function renderSiteChrome() {
     }
   });
   mo.observe(document.body, { childList: true, subtree: true });
+}
+
+// ─── "What's New" dot ─────────────────────────────────────────────
+// Marks the What's New links when a compliance change is newer than the reader's last visit to that page.
+export async function markUnseenUpdates() {
+  if (currentPageKey() === 'updates') return;
+  try {
+    const { COMPLIANCE_UPDATES } = await import(new URL('data/compliance-updates.js', import.meta.url).href);
+    const latest = COMPLIANCE_UPDATES.reduce((m, u) => (u.date > m ? u.date : m), '');
+    const seen = localStorage.getItem('commerce_lab_updates_seen');
+    if (!latest || (seen && seen >= latest)) return;
+    document.querySelectorAll('a[href$="updates/index.html"]').forEach(a => a.classList.add('has-new'));
+  } catch (e) { /* data or storage unavailable: no dot */ }
 }

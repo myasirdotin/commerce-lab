@@ -64,6 +64,13 @@
       </div>
     </section>
 
+    <!-- What's New (compliance tracker summary, filled from js/data/compliance-updates.js) -->
+    <section class="section py-4">
+      <div class="container">
+        <div class="home-news" id="homeNews"></div>
+      </div>
+    </section>
+
     <!-- Fundamental Pillars Grid -->
     <section class="section py-5 bg-surface">
       <div class="container">
@@ -249,5 +256,21 @@
   <footer class="site-footer" id="siteFooter"></footer>
 
   <script type="module" src="js/core.js"></script>
+  <script type="module">
+    import { COMPLIANCE_META, COMPLIANCE_UPDATES } from './js/data/compliance-updates.js';
+    const parse = (iso) => { const [y, m, d] = iso.split('-').map(Number); return new Date(y, m - 1, d); };
+    const fmt = (iso) => parse(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+    const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const latest = [...COMPLIANCE_UPDATES].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
+    document.getElementById('homeNews').innerHTML = `
+      <div class="hn-head">
+        <h2>🆕 What's New in compliance</h2>
+        <span class="text-xs text-muted">Last checked ${fmt(COMPLIANCE_META.lastChecked)}</span>
+      </div>
+      <ul class="hn-list">
+        ${latest.map(u => `<li><a href="updates/index.html#${esc(u.id)}"><span class="hn-date">${fmt(u.date)}</span><span class="hn-title">${esc(u.title)}</span></a></li>`).join('')}
+      </ul>
+      <a class="btn btn-primary" href="updates/index.html">See all changes &amp; due dates →</a>`;
+  </script>
 </body>
 </html>

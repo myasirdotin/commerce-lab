@@ -4,7 +4,7 @@
  * Navigation (header / drawer / tab bar / footer) lives in nav.js.
  */
 
-import { renderSiteChrome } from './nav.js';
+import { renderSiteChrome, markUnseenUpdates } from './nav.js';
 
 // Apply the saved theme as early as possible to avoid a light-mode flash.
 try {
@@ -238,6 +238,7 @@ if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.
 // ─── Initialize on DOM Ready ──────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   renderSiteChrome();
+  markUnseenUpdates();
   initTheme();
   initPathwaySelector();
 

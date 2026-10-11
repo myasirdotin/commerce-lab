@@ -7,7 +7,7 @@
  *
  * Bump VERSION when you rename or remove files so old caches are dropped.
  */
-const VERSION = 'cl-v1';
+const VERSION = 'cl-v2';
 
 const PRECACHE = [
   './', 'index.html', 'manifest.webmanifest', 'icons/icon-192.png',
@@ -40,8 +40,9 @@ self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== location.origin) return;
 
+  // no-cache: always revalidate with the server, so a stale browser copy never hides an update.
   event.respondWith(
-    fetch(req)
+    fetch(req.mode === 'navigate' ? req : new Request(req, { cache: 'no-cache' }))
       .then(res => {
         if (res.ok) { const copy = res.clone(); caches.open(VERSION).then(c => c.put(req, copy)); }
         return res;
