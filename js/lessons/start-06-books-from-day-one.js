@@ -49,12 +49,12 @@ export default {
       html: `
         <p>A product brand with one bank account does not need a complicated system. It needs six lists, kept up to date.</p>
         ${terms([
-          ['Cash &amp; bank book', 'Every rupee in and out, in date order, with a running balance: one column set for cash in hand, one for the bank account. Moving money between the two (an ATM withdrawal) is a <em>contra entry</em>: it appears on both sides and is not income or expense.'],
-          ['Sales register', 'One row per invoice: date, invoice number, buyer (and GSTIN if registered), what was sold, taxable value, GST charged, total. This is the raw material of your GSTR-1.'],
-          ['Purchase register', 'One row per supplier bill for goods you resell or use in the product: weaver, carpenter, packaging. Note the supplier\'s GSTIN and the GST on the bill, because that GST is your input tax credit.'],
-          ['Expense register', 'Everything else you spend on running the business: rent, helper\'s salary, courier, phone, advertising, gateway fees. Mark which bills carry GST.'],
-          ['Stock register', 'Per product: opening units, units bought, units sold, closing units. Count physically at month end and write the difference down honestly.'],
-          ['Debtors &amp; creditors lists', 'Who owes you (dealers on credit) and whom you owe (weavers, the bank), with the amount and the due date. These two lists decide whether you can pay the rent next month.']
+          ['Cash &amp; bank book', 'Every rupee in and out, in date order, with a running balance: one column set for cash in hand, one for the bank. Moving money between the two (an ATM withdrawal) is a <em>contra entry</em>: it appears on both sides and is neither income nor expense.'],
+          ['Sales register', 'One row per invoice: date, invoice number, buyer (GSTIN if registered), items, taxable value, GST, total. The raw material of your GSTR-1.'],
+          ['Purchase register', 'One row per supplier bill for goods you resell or build into the product: weaver, carpenter, packaging. Note the supplier\'s GSTIN and the GST on the bill; that GST is your input tax credit.'],
+          ['Expense register', 'Everything else: rent, helper\'s salary, courier, phone, advertising, gateway fees. Mark which bills carry GST.'],
+          ['Stock register', 'Per product: opening units, bought, sold, closing. Count physically at month end and write the difference down honestly.'],
+          ['Debtors &amp; creditors lists', 'Who owes you (dealers on credit) and whom you owe (weavers, the bank), with amount and due date. These two lists decide whether you can pay next month\'s rent.']
         ])}
       `
     },
@@ -109,15 +109,15 @@ export default {
           title: 'The week of 6 to 12 April 2026',
           scenario: 'Sana starts the week with ' + inr(120000) + ' in J&amp;K Bank, ' + inr(2000) + ' cash, 15 shawls in stock, and Aarna Boutique (Mumbai) owing ' + inr(35000) + ' from March. Shawls are priced ' + inr(7000) + ' before GST; dealers pay 30% less, ' + inr(4900) + '. A shawl is above ' + inr(2500) + ' per piece, so GST is 18%, charged as IGST because the buyers are outside J&amp;K.',
           steps: [
-            { label: 'Mon 6 Apr.', html: 'Weaver Ghulam Nabi delivers 10 shawls, bill W-14, ' + inr(40000) + ', on credit. He is unregistered, so no GST and no ITC. Purchase register + creditors list + stock register (15 + 10 = 25).' },
-            { label: 'Tue 7 Apr.', html: 'Online customer in Delhi buys 2 shawls: taxable ' + inr(14000) + ' + IGST ' + inr(2520) + ' = ' + inr(16520) + ', paid by UPI. Invoice NC/26-27/001. Sales register + bank book + stock (25 − 2 = 23).' },
-            { label: 'Wed 8 Apr.', html: 'Meher Boutique, Delhi, takes 10 shawls at ' + inr(4900) + ': taxable ' + inr(49000) + ' + IGST ' + inr(8820) + ' = ' + inr(57820) + ', 30 days credit. Invoice NC/26-27/002. Sales register + debtors list + stock (23 − 10 = 13).' },
-            { label: 'Thu 9 Apr.', html: 'April rent ' + inr(8000) + ' paid to the landlord by bank transfer. No GST (he is unregistered). Expense register + bank book.' },
-            { label: 'Fri 10 Apr.', html: '100 packaging boxes from Srinagar Packaging (registered): ' + inr(12000) + ' + CGST ' + inr(1080) + ' + SGST ' + inr(1080) + ' = ' + inr(14160) + ', paid by UPI. Purchase register (ITC ' + inr(2160) + ') + bank book.' },
-            { label: 'Sat 11 Apr.', html: 'Courier bill for 10 shipments: ' + inr(900) + ' + CGST ' + inr(81) + ' + SGST ' + inr(81) + ' = ' + inr(1062) + ', paid by UPI. Expense register + bank book. Sana also withdraws ' + inr(5000) + ' cash from the ATM for petty expenses: contra entry in the cash &amp; bank book only.' },
-            { label: 'Sun 12 Apr.', html: 'Aarna Boutique pays ' + inr(20000) + ' by NEFT against its March invoice. Bank book + debtors list (balance now ' + inr(15000) + ').' }
+            { label: 'Mon 6 Apr.', html: 'Weaver Ghulam Nabi delivers 10 shawls, bill W-14, ' + inr(40000) + ', on credit; unregistered, so no GST. Purchase register, creditors list, stock (15 + 10 = 25).' },
+            { label: 'Tue 7 Apr.', html: 'Online customer in Delhi buys 2 shawls: ' + inr(14000) + ' + IGST ' + inr(2520) + ' = ' + inr(16520) + ' by UPI. Sales register, bank book, stock (23).' },
+            { label: 'Wed 8 Apr.', html: 'Meher Boutique takes 10 shawls at ' + inr(4900) + ': ' + inr(49000) + ' + IGST ' + inr(8820) + ' = ' + inr(57820) + ', 30 days credit. Sales register, debtors list, stock (13).' },
+            { label: 'Thu 9 Apr.', html: 'April rent ' + inr(8000) + ' by bank transfer, no GST. Expense register, bank book.' },
+            { label: 'Fri 10 Apr.', html: '100 boxes from Srinagar Packaging (registered): ' + inr(12000) + ' + CGST ' + inr(1080) + ' + SGST ' + inr(1080) + ' = ' + inr(14160) + ' by UPI. Purchase register with ITC ' + inr(2160) + ', bank book.' },
+            { label: 'Sat 11 Apr.', html: 'Courier for 10 shipments: ' + inr(900) + ' + GST ' + inr(162) + ' = ' + inr(1062) + ' by UPI. Sana also withdraws ' + inr(5000) + ' cash from the ATM: a contra entry in the cash &amp; bank book only.' },
+            { label: 'Sun 12 Apr.', html: 'Aarna Boutique pays ' + inr(20000) + ' by NEFT against its March invoice. Bank book, debtors list (balance ' + inr(15000) + ').' }
           ],
-          result: 'Seven events, every one written in at least two places. That double trace is what lets the week be checked.'
+          result: 'Seven events, each written in at least two places. That double trace is what lets the week be checked.'
         })}
         ${table(
           ['Date', 'Invoice', 'Buyer', 'Items', 'Taxable value', 'IGST 18%', 'Total'],
