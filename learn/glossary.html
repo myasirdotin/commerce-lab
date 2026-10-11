@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#059669">
+  <title>Glossary - Commerce Lab</title>
+  <meta name="description" content="Every accounting, business, GST and income-tax term used in Commerce Lab lessons, A to Z, searchable, with a link to the lesson that explains it.">
+  <link rel="stylesheet" href="../css/commerce-core.css">
+  <link rel="stylesheet" href="../css/commerce-labs.css">
+  <link rel="stylesheet" href="../css/lessons.css">
+</head>
+<body>
+  <!-- Header, mobile drawer, tab bar and footer are rendered by js/nav.js -->
+  <header class="site-header" id="siteHeader"></header>
+
+  <main class="py-4">
+    <div class="container">
+      <nav class="lesson-crumb" aria-label="Breadcrumb">
+        <a href="index.html">Learn</a> <span>›</span> <span>Glossary</span>
+      </nav>
+      <div class="lab-header hub-intro">
+        <div class="badge-tag">Look it up</div>
+        <h1>Glossary</h1>
+        <p class="text-muted">Every term defined in the lessons, A to Z. Tap the lesson name under a term to read it in context.</p>
+      </div>
+
+      <div class="gloss-tools">
+        <label class="sr-only" for="glossSearch">Search terms</label>
+        <input type="search" id="glossSearch" class="form-control" placeholder="Search a term, e.g. GSTIN, accrual, ITC" autocomplete="off">
+        <p class="text-xs text-muted mt-1" id="glossCount" aria-live="polite"></p>
+      </div>
+
+      <nav class="hub-jump" id="letterJump" aria-label="Jump to a letter"></nav>
+
+      <div id="glossList"><p class="text-muted">Loading glossary…</p></div>
+    </div>
+  </main>
+
+  <footer class="site-footer mt-5" id="siteFooter"></footer>
+
+  <script type="module">
+    import '../js/core.js';
+    import { ALL_LESSONS, loadLesson } from '../js/lessons/registry.js';
+    import { esc } from '../js/lesson-kit.js';
+
+    const ROOT = new URL('../', location.href);
+    const lessonUrl = (id) => new URL(`learn/lesson.html?id=${encodeURIComponent(id)}`, ROOT).href;
+    const plain = (html) => { const d = document.createElement('div'); d.innerHTML = html; return d.textContent; };
+
+    const listEl = document.getElementById('glossList');
+    const countEl = document.getElementById('glossCount');
+    const search = document.getElementById('glossSearch');
+
+    const lessons = await Promise.all(ALL_LESSONS.map(meta =>
+      loadLesson(meta.id).then(l => ({ meta, lesson: l })).catch(() => null)));
+
+    // Merge terms that appear in several lessons: first definition wins, every source is listed.
+    const byKey = new Map();
+    for (const item of lessons) {
+      if (!item) continue;
+      for (const [term, def] of item.lesson.glossary || []) {
+        const key = plain(term).trim().toLowerCase();
+        if (!byKey.has(key)) byKey.set(key, { term, def, sources: [] });
+        byKey.get(key).sources.push(item.meta);
+      }
+    }
+    const entries = [...byKey.values()]
+      .map(e => ({ ...e, sortKey: plain(e.term).trim(), haystack: (plain(e.term) + ' ' + plain(e.def)).toLowerCase() }))
+      .sort((a, b) => a.sortKey.localeCompare(b.sortKey, 'en', { sensitivity: 'base' }));
+
+    const letterOf = (e) => { const c = e.sortKey[0].toUpperCase(); return /[A-Z]/.test(c) ? c : '#'; };
+
+    function render(q) {
+      const words = q.toLowerCase().split(/\s+/).filter(Boolean);
+      const shown = entries.filter(e => words.every(w => e.haystack.includes(w)));
+      countEl.textContent = q ? `${shown.length} of ${entries.length} terms match` : `${entries.length} terms from ${ALL_LESSONS.length} lessons`;
+
+      const groups = new Map();
+      shown.forEach(e => { const L = letterOf(e); (groups.get(L) || groups.set(L, []).get(L)).push(e); });
+
+      document.getElementById('letterJump').innerHTML = [...groups.keys()]
+        .map(L => `<a href="#letter-${L}">${L}</a>`).join('');
+
+      listEl.innerHTML = shown.length ? [...groups].map(([L, items]) => `
+        <section class="gloss-group" id="letter-${L}">
+          <h2 class="gloss-letter">${L}</h2>
+          <dl class="term-list">
+            ${items.map(e => `
+              <dt>${e.term}</dt>
+              <dd>${e.def}
+                <span class="gloss-src">${e.sources.map(s => `<a href="${lessonUrl(s.id)}">${s.number} ${esc(s.title)}</a>`).join(' · ')}</span>
+              </dd>`).join('')}
+          </dl>
+        </section>`).join('')
+        : `<div class="empty-note">No term matches “${esc(q)}”. Try a shorter word.</div>`;
+    }
+
+    render('');
+    search.addEventListener('input', () => render(search.value.trim()));
+  </script>
+</body>
+</html>

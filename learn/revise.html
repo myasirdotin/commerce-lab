@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#059669">
+  <title>Quick Revision - Commerce Lab</title>
+  <meta name="description" content="Quick-recall sheets: the key points of every lesson in a learning journey on one page.">
+  <link rel="stylesheet" href="../css/commerce-core.css">
+  <link rel="stylesheet" href="../css/commerce-labs.css">
+  <link rel="stylesheet" href="../css/lessons.css">
+</head>
+<body>
+  <!-- Header, mobile drawer, tab bar and footer are rendered by js/nav.js -->
+  <header class="site-header" id="siteHeader"></header>
+
+  <main class="py-4">
+    <div class="container">
+      <nav class="lesson-crumb" aria-label="Breadcrumb">
+        <a href="index.html">Learn</a> <span>›</span> <span>Quick revision</span>
+      </nav>
+      <div class="lab-header hub-intro">
+        <div class="badge-tag">Recall</div>
+        <h1 id="revTitle">Quick Revision</h1>
+        <p class="text-muted" id="revIntro">The key points of every lesson in a journey, on one page. Read it before an exam, a GST filing or a meeting with your CA.</p>
+      </div>
+
+      <nav class="hub-jump" id="hubPick" aria-label="Choose a journey"></nav>
+
+      <div id="revList"><p class="text-muted">Loading…</p></div>
+    </div>
+  </main>
+
+  <footer class="site-footer mt-5" id="siteFooter"></footer>
+
+  <script type="module">
+    import { ProgressStore } from '../js/core.js';
+    import { HUBS, loadLesson } from '../js/lessons/registry.js';
+    import { esc } from '../js/lesson-kit.js';
+
+    const ROOT = new URL('../', location.href);
+    const lessonUrl = (id) => new URL(`learn/lesson.html?id=${encodeURIComponent(id)}`, ROOT).href;
+    const done = new Set(ProgressStore.get().completedLessons);
+
+    const wanted = new URLSearchParams(location.search).get('hub');
+    const hub = HUBS.find(h => h.id === wanted) || HUBS[0];
+    document.title = `Revise: ${hub.title} - Commerce Lab`;
+    document.getElementById('revTitle').textContent = `${hub.icon} Revise: ${hub.title}`;
+
+    document.getElementById('hubPick').innerHTML = HUBS.map(h =>
+      `<a href="?hub=${h.id}"${h.id === hub.id ? ' class="active" aria-current="page"' : ''}>${h.icon} ${h.num}. ${esc(h.title)}</a>`).join('');
+    const activePill = document.querySelector('#hubPick a.active');
+    activePill && activePill.scrollIntoView({ inline: 'center', block: 'nearest' });
+
+    const lessons = await Promise.all(hub.lessons.map(l => loadLesson(l.id).catch(() => null)));
+
+    document.getElementById('revList').innerHTML = hub.lessons.map((meta, i) => {
+      const lesson = lessons[i];
+      const points = (lesson && lesson.keyPoints) || [];
+      return `
+        <section class="rev-card">
+          <div class="rev-head">
+            <span class="lesson-no">${done.has(meta.id) ? '✓' : `${hub.num}.${i + 1}`}</span>
+            <h2>${esc(meta.title)}</h2>
+          </div>
+          ${points.length ? `<ol>${points.map(p => `<li>${p}</li>`).join('')}</ol>` : '<p class="text-muted">Key points could not be loaded.</p>'}
+          <a class="rev-open" href="${lessonUrl(meta.id)}">Open the full lesson →</a>
+        </section>`;
+    }).join('');
+  </script>
+</body>
+</html>

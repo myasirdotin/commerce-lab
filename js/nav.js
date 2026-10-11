@@ -41,6 +41,8 @@ export const NAV = {
     {
       key: 'resources', label: 'Resources', icon: '📚',
       items: [
+        { key: 'glossary',    icon: '📖', href: 'learn/glossary.html',    title: 'Glossary A–Z',           desc: 'Every lesson term, searchable' },
+        { key: 'revise',      icon: '🧠', href: 'learn/revise.html',      title: 'Quick Revision',         desc: 'Key points per journey' },
         { key: 'cheatsheets', icon: '📑', href: 'cheatsheets/index.html', title: 'Cheatsheets & Rules',    desc: 'Golden Rules, ALCRE & ratio sheet' },
         { key: 'projects',    icon: '🏆', href: 'projects/index.html',    title: 'Practical Projects',     desc: 'Bronze, Silver & Gold rubrics' },
         { key: 'quiz',        icon: '✍️', href: 'quiz/index.html',        title: 'Concept Quizzes',        desc: 'Self-assessments with explanations' },
