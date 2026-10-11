@@ -24,7 +24,8 @@ Local: `C:\xampp\htdocs\commerce-lab` → `http://localhost/commerce-lab/`. Also
 - **Correct facts.** Indian tax/legal facts must match `docs/LESSON-AUTHORING.md` §4 (verified Oct 2026, FY 2026-27).
   If a fact changes, update that file first, then the lessons and `js/data/tax-rules.js`. Hedge anything uncertain
   with "verify on the portal".
-- **Educational, not advice.** Tax pages keep the disclaimer.
+- **Educational, not advice.** Every page shows a dismissible "For education only" banner and a footer disclaimer
+  (both rendered by `js/nav.js`); tax pages also keep their own disclaimer. Do not remove these.
 
 ## 3. How it is built
 
