@@ -1,4 +1,4 @@
-import { fig, svg, diagrams, example, callout, formula, table, terms, compare, inr } from '../lesson-kit.js';
+import { fig, svg, diagrams, example, callout, formula, table, terms, inr } from '../lesson-kit.js';
 
 /**
  * Lesson 5.4 - Income tax for a small business
@@ -31,9 +31,9 @@ export default {
         ${table(
           ['Structure', 'Who is taxed', 'Rate (FY 2026-27)'],
           [
-            ['Sole proprietorship (Noor Crafts, Gupta Kirana, Chai Adda)', 'The owner, in her own ITR. Business profit is one head of income alongside salary, interest and rent.', 'Individual slabs; new regime is the default'],
-            ['Partnership firm / LLP', 'The firm itself; partners\' share of profit is then exempt in their hands. Partner salary and interest are deductible within limits.', '30% + 4% cess'],
-            ['Private limited / OPC', 'The company. Dividends taxed again in the shareholder\'s hands.', '25% (turnover up to ₹400 crore) or 22% under section 115BAA, plus surcharge and cess']
+            ['Sole proprietorship (Noor Crafts, Gupta Kirana, Chai Adda)', 'The owner, in her own ITR. Business profit is one head of income alongside salary, interest and rent.', 'Individual slabs; new regime by default'],
+            ['Partnership firm / LLP', 'The firm itself; partners\' share of profit is exempt in their hands.', '30% + 4% cess'],
+            ['Private limited / OPC', 'The company; dividends are taxed again in the shareholder\'s hands.', '25% (turnover up to ₹400 crore) or 22% under 115BAA, plus surcharge and cess']
           ],
           { caption: 'Same profit, different taxpayer' }
         )}
@@ -63,7 +63,7 @@ export default {
             ${svg.text(75, 170, 'Old regime: nil to ₹2.5L, 5% to ₹5L, 20% to ₹10L, then 30%', { size: 10.5, tone: 'muted', max: 18 })}
           `
         })}
-        ${callout('remember', 'The rebate is a cliff, not a slope. At ₹12,00,000 of total income the tax is nil; at ₹12,10,000 the slab tax is ₹61,500 and the rebate is gone, but <em>marginal relief</em> limits the tax to the ₹10,000 of income above ₹12 lakh. Salaried people also get a ₹75,000 standard deduction; business owners do not.')}
+        ${callout('remember', 'The rebate is a cliff. At ₹12,00,000 of total income the tax is nil; at ₹12,10,000 the slab tax is ₹61,500 and the rebate is gone, though <em>marginal relief</em> caps the tax at the ₹10,000 of income above ₹12 lakh. The ₹75,000 standard deduction is for salary only; business owners do not get it.')}
       `
     },
     {
@@ -84,10 +84,10 @@ export default {
         )}
         ${terms([
           ['Personal expenses', 'Family groceries, a holiday, the home electricity bill: not deductible even if paid from the business account. Mixed items (phone, car) are split.'],
-          ['Cash payments above ₹10,000 (section 40A(3))', 'Any expense paid in cash to one person on one day above ₹10,000 is <strong>fully disallowed</strong> (₹35,000 for transporters). Pay the weaver ₹15,000 by UPI and it is deductible; in cash it is not.'],
-          ['Penalties and fines', 'A GST late fee or traffic challan is a cost of breaking the law, not of doing business. Interest on late tax is likewise disallowed.'],
-          ['Depreciation at Income-tax rates', 'Books may use straight-line at any rate; the Act prescribes WDV on <em>blocks</em>: 10% furniture and buildings, 15% plant, machinery and vehicles, 40% computers; half rate if the asset was used under 180 days in the year. You deduct the Act\'s figure, not the book figure.'],
-          ['Pay-first expenses (section 43B)', 'GST, PF, bonus and bank interest are deductible only in the year actually paid. Under 43B(h), dues to micro and small suppliers must be paid within 15 days (45 with a written agreement) to be deductible that year.']
+          ['Cash payments above ₹10,000 (section 40A(3))', 'An expense paid in cash to one person on one day above ₹10,000 is <strong>fully disallowed</strong> (₹35,000 for transporters). Pay the weaver ₹15,000 by UPI and it is deductible; in cash it is not.'],
+          ['Penalties and fines', 'A GST late fee or a traffic challan is the cost of breaking the law, not of doing business. Interest on late tax is likewise disallowed.'],
+          ['Depreciation at Income-tax rates', 'The Act prescribes WDV on <em>blocks</em>: 10% furniture and buildings, 15% plant, machinery and vehicles, 40% computers; half rate if used under 180 days. You deduct the Act\'s figure, not the book figure.'],
+          ['Pay-first expenses (section 43B)', 'GST, PF, bonus and bank interest count only in the year paid. Under 43B(h), micro and small suppliers must be paid within 15 days (45 with a written agreement) for the expense to count that year.']
         ])}
       `
     },
@@ -105,7 +105,7 @@ export default {
             { label: 'Slab tax.', html: '0 to 4L nil; 4 to 8L at 5% = ₹20,000; 8L to 9.4L at 10% = ₹14,000. Tax = <strong>₹34,000</strong>.' },
             { label: 'Rebate and cess.', html: 'Total income is below ₹12 lakh, so the 87A rebate (up to ₹60,000) wipes out the ₹34,000. Cess 4% of nil = nil. <strong>Tax payable: ₹0.</strong>' }
           ],
-          result: 'Nil tax, but the return is still compulsory because income exceeds the ₹4 lakh basic exemption, and the ₹40,000 add-back matters: had Sana not corrected it and been caught, the officer would add it with interest and a possible penalty. Under the old regime the same ₹9,40,000 would attract ₹12,500 + 20% of ₹4,40,000 = ₹1,00,500 plus cess, less any 80C savings.'
+          result: 'Nil tax, but the return is still compulsory because income exceeds the ₹4 lakh basic exemption. Under the old regime the same ₹9,40,000 would attract ₹12,500 + 20% of ₹4,40,000 = ₹1,00,500 plus cess, less any 80C savings, so the new regime wins easily.'
         })}
         ${table(
           ['Step', 'Amount'],
@@ -127,12 +127,12 @@ export default {
       heading: 'Presumptive taxation: 44AD and 44ADA',
       short: 'Presumptive',
       html: `
-        <p>If keeping tax-grade books feels heavy, the Act offers a shortcut. Declare a fixed percentage of turnover as profit,
-        and you are excused from books and audit for income-tax purposes.</p>
+        <p>If tax-grade books feel heavy, the Act offers a shortcut: declare a fixed percentage of turnover as profit and skip
+        books and audit for income-tax purposes.</p>
         ${table(
           ['Scheme', 'Who', 'Limit', 'Deemed profit', 'Conditions'],
           [
-            ['44AD', 'Businesses: traders, manufacturers, kiranas, cafés', 'Turnover up to ₹2 crore (₹3 crore if cash receipts are 5% or less)', '6% of digital receipts, 8% of cash receipts, or more if you choose', 'Individuals, HUFs, partnership firms (not LLPs); not commission or agency income'],
+            ['44AD', 'Businesses: traders, manufacturers, kiranas, cafés', 'Turnover up to ₹2 crore (₹3 crore if cash receipts are 5% or less)', '6% of digital receipts, 8% of cash receipts, or more if you choose', 'Individuals, HUFs, partnership firms (not LLPs); not commission income'],
             ['44ADA', 'Professionals: CAs, doctors, architects, designers', 'Receipts up to ₹50 lakh (₹75 lakh if cash is 5% or less)', '50% of receipts', 'Notified professions only']
           ],
           { caption: 'The two presumptive schemes' }
@@ -145,13 +145,13 @@ export default {
             { label: 'Deemed profit.', html: 'Digital ₹16,56,000 × 6% = ₹99,360. Cash ₹1,84,000 × 8% = ₹14,720. Deemed business income = <strong>₹1,14,080</strong>.' },
             { label: 'Tax.', html: 'With ₹10,000 interest, total income ₹1,24,080, below the ₹4 lakh nil slab. Tax nil, and no books or depreciation schedule needed for income tax.' },
             { label: 'Compare with the normal computation.', html: 'Normal: ₹9,30,000 business income, tax nil after rebate. Presumptive: ₹1,14,080, tax nil. Same tax this year, far less paperwork under 44AD.' },
-            { label: 'Now imagine profit grows to ₹15,00,000 on ₹30,00,000 turnover.', html: 'Normal: slab tax ₹1,05,000 + cess = ₹1,09,200 (no rebate above ₹12 lakh). 44AD at 6%: deemed income ₹1,80,000, tax nil. The gap is over a lakh.' },
-            { label: 'And if margins collapse.', html: 'A bad year with ₹30,00,000 turnover and an actual loss still deems ₹1,80,000 of profit. Declaring less than 6% or 8% means keeping books, getting audited, and losing 44AD for five years.' }
+            { label: 'Now imagine profit of ₹15,00,000 on ₹30,00,000 turnover.', html: 'Normal: slab tax ₹1,05,000 + cess = ₹1,09,200 (no rebate above ₹12 lakh). 44AD at 6%: deemed income ₹1,80,000, tax nil. The gap is over a lakh.' },
+            { label: 'And if margins collapse.', html: 'A loss-making year on ₹30,00,000 turnover still deems ₹1,80,000 of profit. Declaring less than 6% or 8% means books, an audit, and losing 44AD for five years.' }
           ],
-          result: 'Presumptive wins when your real margin is well above 6% or 8%, as it is for a high-value craft business, and hurts when margins are thin or negative, as they can be for a kirana at 8 to 12%. Once you opt out after using it, you cannot return for five years.',
+          result: 'Presumptive wins when your real margin is well above 6% or 8%, as for a high-value craft business, and hurts when margins are thin or negative, as they can be for a kirana at 8 to 12%.',
           tone: 'c'
         })}
-        ${callout('warning', 'Presumptive is for income tax only. GST still needs full invoices, GSTR-1 and GSTR-2B matching, and your bank will want real statements for a loan. In practice you keep the books anyway; 44AD saves you the audit and the depreciation schedule, not the bookkeeping. Also, if a lender or buyer sees ₹1,14,080 of declared income against ₹9 lakh of real profit, expect questions; many CAs advise declaring closer to the real figure.')}
+        ${callout('warning', 'Presumptive is for income tax only. GST still needs full invoices and GSTR-2B matching, and a bank still wants real statements for a loan, so in practice you keep the books anyway; 44AD saves the audit and the depreciation schedule. And if a lender sees ₹1,14,080 declared against ₹9 lakh of real profit, expect questions; many CAs advise declaring closer to the real figure.')}
       `
     },
     {
@@ -159,17 +159,14 @@ export default {
       short: 'Calendar',
       html: `
         ${terms([
-          ['Advance tax', 'If your tax for the year (after TDS) exceeds <strong>₹10,000</strong>, pay it in instalments: <strong>15% by 15 June, 45% by 15 September, 75% by 15 December, 100% by 15 March</strong>. Presumptive taxpayers pay the whole amount by 15 March. Shortfall costs interest under 234B (1% a month on unpaid advance tax below 90%) and 234C (1% a month for missing an instalment).'],
-          ['ITR form', '<strong>ITR-3</strong> for business or professional income computed normally. <strong>ITR-4 (Sugam)</strong> for 44AD or 44ADA with total income up to ₹50 lakh. ITR-5 for firms and LLPs, ITR-6 for companies.'],
-          ['Due dates', '<strong>31 July</strong> for everyone not under audit; <strong>31 October</strong> if a tax audit applies. A belated return is allowed until 31 December with a fee of ₹1,000 or ₹5,000 and loss of some carry-forwards.'],
-          ['Tax audit (44AB)', 'Compulsory if turnover exceeds <strong>₹1 crore</strong> (₹10 crore when cash receipts and payments are each 5% or less), or professional receipts exceed ₹50 lakh, or you declare less than the presumptive rate while above the basic exemption. A CA signs Form 3CB-3CD.'],
-          ['Form 26AS and AIS', 'Before filing, download both from incometax.gov.in. 26AS lists TDS and TCS credited to your PAN; AIS lists what banks, marketplaces and the GST system reported about you. Anything there that is missing from your return invites a notice.']
-        ])}
-        ${compare([
-          { title: 'Normal computation (ITR-3)', tone: 'b', points: ['Real profit after adjustments', 'Books and depreciation schedule required', 'Audit above ₹1 crore / ₹10 crore', 'Losses can be carried forward'] },
-          { title: 'Presumptive (ITR-4)', tone: 'c', points: ['6% / 8% of turnover (50% for professionals)', 'No books or audit for income tax', 'Advance tax in one go by 15 March', 'Five-year lock if you opt out'] }
+          ['Advance tax', 'If the year\'s tax (after TDS) exceeds <strong>₹10,000</strong>, pay in instalments: <strong>15% by 15 June, 45% by 15 September, 75% by 15 December, 100% by 15 March</strong>; presumptive taxpayers pay it all by 15 March. Shortfalls cost 1% a month under 234B (less than 90% paid in advance) and 234C (instalment missed).'],
+          ['ITR form', '<strong>ITR-3</strong> for business income computed normally; <strong>ITR-4 (Sugam)</strong> for 44AD or 44ADA with total income up to ₹50 lakh. ITR-5 for firms and LLPs, ITR-6 for companies.'],
+          ['Due dates', '<strong>31 July</strong> without audit; <strong>31 October</strong> with a tax audit. A belated return is allowed until 31 December with a fee and loss of some carry-forwards.'],
+          ['Tax audit (44AB)', 'Compulsory if turnover exceeds <strong>₹1 crore</strong> (₹10 crore when cash receipts and payments are each 5% or less), professional receipts exceed ₹50 lakh, or you declare below the presumptive rate while above the basic exemption.'],
+          ['Form 26AS and AIS', 'Download both from incometax.gov.in before filing. 26AS lists TDS and TCS credited to your PAN; AIS lists what banks, marketplaces and the GST system reported about you. Anything there but missing from your return invites a notice.']
         ])}
         ${callout('note', 'Slabs, rebate, presumptive limits and due dates here are for FY 2026-27 (assessment year 2027-28), as of October 2026. The Finance Act changes these almost every year; verify on <strong>incometax.gov.in</strong> and the tax calculator there before filing. This is educational material, not professional tax advice.')}
+        ${callout('india', 'From 1 April 2026 the <strong>Income-tax Act, 2025</strong> replaces the 1961 Act, and section numbers changed even where the rule stayed the same. This lesson uses the familiar 1961 numbers because CAs, software and older guides still use them. Commonly cited mappings: rebate 87A is now section 156, presumptive 44AD/44ADA are grouped around section 58, and cash-expense limit 40A(3) is around section 41. Published mappings still disagree in places, so confirm the new number on incometax.gov.in before quoting it in a return.', 'New Act, new numbers')}
       `
     }
   ],
@@ -179,8 +176,7 @@ export default {
     'New regime FY 2026-27: nil to ₹4L, 5% to ₹8L, 10% to ₹12L, 15% to ₹16L, 20% to ₹20L, 25% to ₹24L, 30% above. <strong>Rebate 87A makes tax nil up to ₹12 lakh</strong> total income; 4% cess on the tax.',
     'Taxable business income = book profit + disallowed items (personal, <strong>cash above ₹10,000 per person per day</strong>, fines, unpaid 43B items) − Income-tax depreciation instead of book depreciation.',
     '44AD deems profit at <strong>6% digital / 8% cash</strong> of turnover up to ₹2 crore (₹3 crore); 44ADA deems 50% for professionals up to ₹50 lakh. No books or audit, but a five-year lock if you leave.',
-    'Advance tax by 15 June, 15 September, 15 December, 15 March (one go by 15 March under presumptive). ITR-3 normal, ITR-4 presumptive; file by 31 July, or 31 October with audit.',
-    'Check Form 26AS and AIS before filing: they are what the department already knows about you.'
+    'Advance tax by 15 June, 15 September, 15 December, 15 March (all by 15 March under presumptive). ITR-3 normal, ITR-4 presumptive; file by 31 July, or 31 October with audit. Check 26AS and AIS first.'
   ],
 
   practice: [

@@ -23,7 +23,7 @@ export default {
       heading: 'The manager\'s loop',
       short: 'The loop',
       html: `
-        <p>Every management textbook describes the same five activities, and every good shopkeeper does them by instinct. You decide what
+        <p>Every management textbook describes the same five activities, and every good shopkeeper does them by instinct: decide what
         you want (plan), arrange the work and tools (organise), get the right people (staff), guide them day to day (direct), and
         compare results with the plan (control). The last step feeds the first, which is why it is a loop and not a list.</p>
         ${diagrams.cycle(
@@ -43,16 +43,16 @@ export default {
           ['Direct', 'The daily work of instructing, answering questions, motivating and correcting.'],
           ['Control', 'Measure results against the plan, find the gap, and act. KPIs and the weekly review live here.']
         ])}
-        ${callout('remember', 'Most one-person businesses live entirely in "direct": reacting to whatever comes in. Adding fifteen minutes of "control" every week is the single biggest upgrade an owner can make.')}
+        ${callout('remember', 'Most one-person businesses live entirely in "direct", reacting to whatever comes in. Fifteen minutes of "control" every week is the biggest upgrade an owner can make.')}
       `
     },
     {
       heading: 'A quarterly plan with three goals',
       short: 'Quarterly plan',
       html: `
-        <p>A year is too long to plan honestly and a week is too short to change anything. A quarter works. Pick <strong>three
-        goals</strong>, each with a number and a date, and list the two or three actions that will get you there. More than three
-        goals means none of them gets done.</p>
+        <p>A year is too long to plan honestly and a week too short to change anything; a quarter works. Pick <strong>three
+        goals</strong>, each with a number and a date, and the two or three actions that will get you there. More than three
+        goals means none gets done.</p>
         ${table(
           ['Goal (October to December)', 'Measure', 'Now', 'Target', 'Actions'],
           [
@@ -62,8 +62,8 @@ export default {
           ],
           { caption: 'Noor Crafts: Sana\'s first quarterly plan' }
         )}
-        <p>Each goal has an owner (Sana for 1 and 3, Bilal for 2), and each action goes on a dated checklist. At the end of the quarter
-        the "Now" column becomes the starting point for the next plan. That is the loop closing.</p>
+        <p>Each goal has an owner (Sana for 1 and 3, Bilal for 2) and each action a date. At quarter end the "Now" column becomes
+        the start of the next plan: the loop closing.</p>
         ${callout('tip', 'Write the plan on one page and pin it above the packing table. A plan nobody sees is a wish.')}
       `
     },
@@ -71,18 +71,18 @@ export default {
       heading: 'SOPs: write it down once, so you stop explaining it',
       short: 'SOPs',
       html: `
-        <p>A <strong>standard operating procedure</strong> is a numbered list of exactly how a task is done here, written so that a
-        new person can follow it without asking. The test of a good SOP is simple: hand it to someone on their first day and see if
-        the order goes out correctly. Here is the one that makes goal 2 possible.</p>
+        <p>A <strong>standard operating procedure</strong> is a numbered list of exactly how a task is done here, written so a
+        new person can follow it without asking. The test: hand it to someone on their first day and see if the order goes out
+        correctly. This one makes goal 2 possible.</p>
         ${steps([
-          'Check the order dashboard at 10 am and 2 pm. For each new paid order, print the order slip (customer name, address, mobile, items, SKU codes).',
-          'Pick the items from the shelf by SKU code. Tick each item on the slip. If any item is missing, tell Sana immediately; do not substitute.',
-          'Quality check: lay the shawl flat, check embroidery, edges and any marks. Open each box and check hinges and finish. A reject goes to the "QC fail" shelf with a note.',
-          'Pack: shawl in tissue, then the cloth bag, then the brand box; walnut box wrapped in bubble sheet. Add the thank-you card and the care-instructions leaflet. Seal with branded tape.',
-          'Print the invoice (two copies: one inside the parcel, one filed) and the courier label. Weigh the parcel and write the weight on the slip.',
-          'Book the pickup on the courier portal before 3 pm. Paste the label. Record the tracking number on the order slip and in the dispatch register.',
-          'Send the customer the tracking link on WhatsApp with the standard message. Mark the order as "dispatched" on the dashboard.',
-          'File the order slip and the invoice copy in the month\'s folder. Update the stock register for every item that left.'
+          'Check the order dashboard at 10 am and 2 pm. For each new paid order, print the order slip (name, address, mobile, items, SKU codes).',
+          'Pick items by SKU code and tick each on the slip. If anything is missing, tell Sana at once; never substitute.',
+          'Quality check: lay the shawl flat and check embroidery, edges and marks; open each box and check hinges and finish. Rejects go to the "QC fail" shelf with a note.',
+          'Pack: shawl in tissue, cloth bag, then brand box; walnut box in bubble sheet. Add the thank-you card and care leaflet. Seal with branded tape.',
+          'Print the invoice (one copy inside the parcel, one filed) and the courier label. Weigh the parcel and note the weight on the slip.',
+          'Book the pickup on the courier portal before 3 pm. Paste the label. Record the tracking number on the slip and in the dispatch register.',
+          'WhatsApp the customer the tracking link with the standard message. Mark the order "dispatched" on the dashboard.',
+          'File the slip and invoice copy in the month\'s folder. Update the stock register for every item that left.'
         ], { title: 'SOP: order fulfilment (owner: Bilal)' })}
         ${diagrams.flow(
           [
@@ -93,10 +93,10 @@ export default {
             { label: 'Tracking to customer', tone: 'e' },
             { label: 'Update registers', tone: 'n' }
           ],
-          { title: 'Order fulfilment at a glance', caption: 'Six stations, one owner. The flow chart goes on the wall; the numbered SOP goes in the folder for training and for settling arguments.' }
+          { title: 'Order fulfilment at a glance', caption: 'Six stations, one owner. The chart goes on the wall; the numbered SOP goes in the folder for training and for settling arguments.' }
         )}
-        <p>Write SOPs only for tasks that repeat often and go wrong when done from memory: order fulfilment, receiving stock, handling a
-        return, raising a dealer invoice, closing the day\'s cash. Four or five good SOPs cover most of a small business.</p>
+        <p>Write SOPs only for tasks that repeat often and go wrong from memory: order fulfilment, receiving stock, handling a
+        return, raising a dealer invoice, closing the day\'s cash. Four or five cover most of a small business.</p>
       `
     },
     {
@@ -104,8 +104,8 @@ export default {
       short: 'People',
       html: `
         <p>Delegation fails when it is vague. "Bilal, handle the orders" leaves a dozen questions open. A <strong>RACI table</strong>
-        fixes that: for each task, who is <em>Responsible</em> (does the work), who is <em>Accountable</em> (answers for the result,
-        exactly one person), who is <em>Consulted</em> before, and who is <em>Informed</em> after.</p>
+        fixes that: for each task, who is <em>Responsible</em> (does the work), <em>Accountable</em> (answers for the result;
+        exactly one person), <em>Consulted</em> before, and <em>Informed</em> after.</p>
         ${table(
           ['Task', 'Sana (owner)', 'Bilal (helper)', 'Weaver / carpenter', 'CA'],
           [
@@ -120,10 +120,10 @@ export default {
         )}
         <p>Notice that Sana is Accountable for everything but Responsible for only two rows. That is the goal: the owner keeps the
         decisions and hands over the doing.</p>
-        <p>When you hire the first employee, do three things properly. Give a <strong>written offer letter</strong> (designation, start
-        date, monthly salary, hours, leave, notice period, probation). Record the employee\'s details and pay by bank transfer, never
-        cash. Pay at least the state minimum wage for the category of work.</p>
-        ${callout('india', 'Statutory deductions kick in with size. <strong>EPF</strong> (provident fund) becomes compulsory once you have 20 or more employees; <strong>ESI</strong> (health insurance) once you have 10 or more in a notified area, for staff earning up to ₹21,000 a month. Below those sizes you may register voluntarily. With one or two staff, Sana\'s obligations are the Shops and Establishment registration, minimum wages, and a proper salary register. Verify current thresholds; some states apply ESI at 20.')}
+        <p>When you hire your first employee, do three things properly: a <strong>written offer letter</strong> (designation, start
+        date, salary, hours, leave, notice period, probation); salary by bank transfer, never cash; and at least the state minimum
+        wage for the category of work.</p>
+        ${callout('india', 'Statutory deductions kick in with size. <strong>EPF</strong> (provident fund) becomes compulsory at 20 or more employees; <strong>ESI</strong> (health insurance) at 10 or more in a notified area, for staff earning up to ₹21,000 a month. Below that you may register voluntarily. With one or two staff, Sana\'s obligations are Shops and Establishment registration, minimum wages and a salary register. Verify current thresholds; some states apply ESI at 20.')}
       `
     },
     {
@@ -131,8 +131,8 @@ export default {
       short: 'KPIs',
       html: `
         <p>A <strong>KPI</strong> (key performance indicator) is a number you look at every week because it tells you whether the
-        plan is working. Choose six to eight, no more, and put them on one sheet with the target beside each. The weekly review is
-        the half-hour where you look at the sheet and decide one or two things.</p>
+        plan is working. Choose six to eight, put them on one sheet with a target beside each, and spend half an hour a week
+        deciding one or two things from it.</p>
         ${checklist([
           'Last week\'s KPI sheet: which numbers are red, and why?',
           'Cash: bank balance, what is due to be paid this week, what is due to come in.',
@@ -169,10 +169,9 @@ export default {
           { align: ['l', 'l', 'r', 'r', 'l'], caption: 'Noor Crafts weekly KPI sheet' }
         )}
         ${formula('Conversion rate = Orders ÷ Visitors', 'Small changes matter: lifting 1.33% to 1.5% on the same 2,400 visitors adds 4 orders a week with no extra ad spend.')}
-        <p>Finally, managing means <strong>saying no</strong>. Say no to a dealer order that would push cash days below 20. Say no to a
-        custom design that needs a new supplier for one order. Say no to a fourth goal in the quarter. Every yes to the wrong thing is
-        a no to the plan you already wrote.</p>
-        ${callout('warning', 'Do not track a number you will not act on. If the returns figure is red for three weeks and nothing changes, the sheet has become decoration. Fewer KPIs, each with a decision attached, beat a dashboard nobody reads.')}
+        <p>Finally, managing means <strong>saying no</strong>: to a dealer order that would push cash days below 20, to a custom design
+        that needs a new supplier for one order, to a fourth goal in the quarter. Every yes to the wrong thing is a no to the plan you already wrote.</p>
+        ${callout('warning', 'Do not track a number you will not act on. If returns stay red for three weeks and nothing changes, the sheet has become decoration. Fewer KPIs, each with a decision attached, beat a dashboard nobody reads.')}
       `
     }
   ],

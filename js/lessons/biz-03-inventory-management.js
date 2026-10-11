@@ -38,18 +38,18 @@ export default {
           ],
           { align: ['l', 'r', 'r', 'r', 'r'], caption: 'Same formula, three businesses. Perishables turn fast; handmade luxury turns slowly.' }
         )}
-        <p>There is no universal "good" number; compare against your own past and against similar businesses. What matters is the
-        <em>direction</em>. If Noor Crafts drifts from 91 days to 150 days, ₹1,50,000 more cash is sitting on shelves with nothing to show for it.</p>
-        ${callout('remember', 'Use average stock (opening + closing) ÷ 2, and cost of goods sold, not sales. Comparing stock at cost with sales at selling price mixes two different measures and flatters the ratio.')}
+        <p>There is no universal good number; compare against your own past and against similar businesses. What matters is the
+        <em>direction</em>: if Noor Crafts drifts from 91 days to 150, about ₹1,50,000 more cash is sitting on shelves with nothing to show for it.</p>
+        ${callout('remember', 'Use average stock, (opening + closing) ÷ 2, and cost of goods sold, not sales. Mixing stock at cost with sales at selling price flatters the ratio.')}
       `
     },
     {
       heading: 'ABC analysis: watch the few that matter',
       short: 'ABC',
       html: `
-        <p>Not all items deserve equal attention. Sort every SKU by its annual consumption value (units sold × cost) and you will
-        find a familiar pattern: a few items carry most of the value. Those are <strong>A items</strong>: count them weekly, reorder
-        them carefully, never run out. <strong>C items</strong> are many but cheap: order in bulk twice a year and stop thinking about them.</p>
+        <p>Not all items deserve equal attention. Sort every SKU by annual consumption value (units sold × cost) and a familiar
+        pattern appears: a few items carry most of the value. Those are <strong>A items</strong>: count them weekly, reorder carefully,
+        never run out. <strong>C items</strong> are many but cheap: order in bulk twice a year and stop thinking about them.</p>
         ${table(
           ['Class', 'SKUs', 'Share of SKUs', 'Annual consumption value', 'Share of value', 'Control'],
           [
@@ -67,8 +67,8 @@ export default {
           ],
           { title: 'Annual consumption value by ABC class', caption: 'Two SKUs out of fourteen account for 71% of the money moving through stock. Control effort should follow the rupees, not the item count.' }
         )}
-        <p>Rohit at Gupta Kirana has 1,200 SKUs. His A items are atta, oil, sugar, milk and a few brands of biscuits, maybe 80 lines.
-        Those get counted every evening. The 600 slow-moving C items get a quarterly check.</p>
+        <p>Rohit at Gupta Kirana has 1,200 SKUs. His 80 or so A lines (atta, oil, sugar, milk, a few biscuit brands) are counted
+        every evening; the 600 slow C items get a quarterly check.</p>
       `
     },
     {
@@ -100,15 +100,15 @@ export default {
           ],
           result: 'Order 21 shawls whenever stock falls to 14. Stock will peak around 35 and should never hit zero even in a bad month with a slow weaver.'
         })}
-        ${callout('tip', 'EOQ balances ordering cost against holding cost. Treat it as a rough guide: if the weaver gives a better price for 25, order 25. The point is to stop ordering 5 at a time (too many trips) or 60 at a time (too much cash tied up).')}
+        ${callout('tip', 'EOQ balances ordering cost against holding cost. Treat it as a guide: if the weaver gives a better price for 25, order 25. The point is to stop ordering 5 at a time (too many trips) or 60 (too much cash tied up).')}
       `
     },
     {
       heading: 'Valuing stock: FIFO vs weighted average',
       short: 'FIFO vs WAC',
       html: `
-        <p>When you buy the same item at different prices, which price do you use for the units still on the shelf? The two methods
-        permitted in India (AS 2 and Ind AS 2 do not allow LIFO) give different closing stock, and therefore different profit, from the same facts.</p>
+        <p>When you buy the same item at different prices, which price applies to the units still on the shelf? The two methods
+        permitted in India (AS 2 and Ind AS 2 do not allow LIFO) give different closing stock, and so different profit, from the same facts.</p>
         ${terms([
           ['FIFO (first in, first out)', 'Assumes the oldest units are sold first, so closing stock is made of the <em>latest</em> purchases at the latest prices.'],
           ['Weighted average cost (WAC)', 'Pools all purchases and divides total cost by total units. Every unit, sold or unsold, carries the same average cost.']
@@ -133,7 +133,7 @@ export default {
           ],
           { align: ['l', 'r', 'r'], caption: 'Same boxes, same sales, two answers' }
         )}
-        ${callout('warning', 'Pick one method and stick with it; switching every year to flatter profit is not allowed under AS 2 and invites tax scrutiny. Tally and most software default to weighted average for traded goods. FIFO is the natural choice when you physically rotate stock, as any kirana must with dated goods.')}
+        ${callout('warning', 'Pick one method and stick with it; switching to flatter profit is not allowed under AS 2 and invites tax scrutiny. Tally and most software default to weighted average for traded goods; FIFO is natural when you physically rotate stock, as any kirana must with dated goods.')}
       `
     },
     {
@@ -141,20 +141,20 @@ export default {
       short: 'Dead stock',
       html: `
         <p>Every business grows a tail of items that stopped selling: last year\'s colour, a design the market ignored, a box with a
-        hairline crack. Dead stock is still cash, but cash that shrinks every month it sits. The rule is simple: <strong>a slow item
-        marked down today is worth more than the same item at full price next year.</strong></p>
+        hairline crack. Dead stock is still cash, but cash that shrinks every month it sits. <strong>A slow item marked down today is
+        worth more than the same item at full price next year.</strong></p>
         ${compare([
           { title: 'Dead stock signs', tone: 'e', points: ['No sale in 90 days (A/B items) or 180 days (C items)', 'Needs dusting before a photo shoot', 'You keep "meaning to" list it online', 'The carrying cost (space, insurance, obsolescence) is now more than the margin'] },
           { title: 'What to do', tone: 'a', points: ['Mark down 20-30% and feature it; then 50%', 'Bundle a slow C item free with an A item', 'Sell to a dealer at cost to recover cash', 'Write off what is unsaleable, and record it'] }
         ])}
         ${checklist([
-          'Count physically at least quarterly; A items weekly. Count in pairs: one counts, one records.',
+          'Count physically at least quarterly, A items weekly. Count in pairs: one counts, one records.',
           'Freeze movements during the count; receive or dispatch nothing until it is signed off.',
           'Compare the count with the register. Investigate every difference above a set value before adjusting the books.',
           'Tag each lot with a received date so FIFO rotation is physical, not just on paper.',
-          'Value the stock at the lower of cost and net realisable value (what it can actually be sold for, less selling costs). A ₹900 box that will fetch only ₹600 goes into the books at ₹600.'
+          'Value stock at the lower of cost and net realisable value (what it will actually fetch, less selling costs): a ₹900 box that will fetch only ₹600 goes in the books at ₹600.'
         ], { title: 'Stock-take discipline' })}
-        ${callout('india', 'When you bought stock you claimed input tax credit on it. If those goods are later lost, stolen, destroyed, written off, or given away as free samples or gifts, Section 17(5)(h) requires you to <strong>reverse that ITC</strong> in your GSTR-3B. Selling at a markdown is different: GST is charged on whatever price you actually sell at, and no ITC reversal is needed just because you sold below cost. Keep the write-off register; your CA needs it for both the GST reversal and the income-tax claim.')}
+        ${callout('india', 'You claimed input tax credit when you bought stock. If those goods are later lost, stolen, destroyed, written off, or given away as free samples or gifts, Section 17(5)(h) requires you to <strong>reverse that ITC</strong> in GSTR-3B. A markdown sale is different: GST is charged on the price you actually sell at, with no reversal for selling below cost. Keep a write-off register; your CA needs it for both the GST reversal and the income-tax claim.')}
       `
     }
   ],

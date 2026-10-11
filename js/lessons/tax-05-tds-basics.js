@@ -45,7 +45,7 @@ export default {
         (every proprietor) must deduct under the common sections only if their business turnover exceeded <strong>₹1 crore</strong>
         (or professional receipts <strong>₹50 lakh</strong>) in the <em>previous</em> financial year. Below that, a proprietor deducts only
         under special sections like 194-IB (rent above ₹50,000 a month) and 194M, using their PAN instead of a TAN.</p>
-        ${callout('india', 'To deduct you need a <strong>TAN</strong> (Tax Deduction and Collection Account Number), a 10-character code applied for on Form 49B through the TIN-NSDL (Protean) portal. It goes on every challan, return and Form 16A. Deducting without a TAN, or quoting PAN in its place, attracts a ₹10,000 penalty. Also collect the payee\'s PAN first: without it the rate jumps to 20%.')}
+        ${callout('india', 'To deduct you need a <strong>TAN</strong> (Tax Deduction and Collection Account Number), a 10-character code applied for on Form 49B. It goes on every challan, return and Form 16A. Collect each payee\'s PAN before paying: without it the rate jumps to 20%.')}
       `
     },
     {
@@ -61,13 +61,12 @@ export default {
             ['194H', 'Commission and brokerage (agents, marketplaces charging you commission)', '2%', '₹20,000'],
             ['194I', 'Rent', '10% for land and buildings; 2% for plant and machinery', '₹6,00,000'],
             ['194Q', 'Purchase of goods from one seller', '0.1% on the amount above ₹50 lakh', 'Purchases above ₹50 lakh from that seller (buyer turnover above ₹10 crore)'],
-            ['194-IB', 'Rent paid by individuals or HUFs not covered by 194I', '2%', 'Rent above ₹50,000 per month; deduct once a year, PAN instead of TAN'],
-            ['192', 'Salary', 'At the employee\'s slab rate', 'Only if the employee\'s estimated tax is above nil']
+            ['194-IB', 'Rent paid by individuals or HUFs not covered by 194I', '2%', 'Rent above ₹50,000 per month; deduct once a year, PAN instead of TAN']
           ],
           { caption: 'TDS sections a small business meets most often (thresholds after Budget 2025)' }
         )}
         ${formula('TDS = Rate × Gross bill (before GST, if GST is shown separately)', 'A ₹60,000 photographer fee billed as ₹60,000 + ₹10,800 GST: deduct 10% of ₹60,000 = ₹6,000, not 10% of ₹70,800.')}
-        ${callout('warning', 'Thresholds work on the <em>whole year</em>. Under 194C a courier company billing ₹12,000 a month never crosses the ₹30,000 single-bill limit, but by the ninth month the aggregate crosses ₹1,00,000 and TDS becomes due on <strong>everything paid so far</strong>, not just the excess. Track payee-wise totals from April.')}
+        ${callout('warning', 'Thresholds work on the <em>whole year</em>. A courier billing ₹12,000 a month never crosses the ₹30,000 single-bill limit, but by the ninth month the aggregate passes ₹1,00,000 and TDS is due on <strong>everything paid so far</strong>, not just the excess. Track payee-wise totals from April.')}
       `
     },
     {
@@ -78,22 +77,22 @@ export default {
           title: 'A year of TDS at Noor Crafts',
           scenario: 'Noor Crafts\' turnover crossed ₹1 crore in FY 2025-26, so from April 2026 Sana must deduct under the common sections. She took a TAN in April. During FY 2026-27 she makes these payments.',
           steps: [
-            { label: 'Photographer for the new catalogue, ₹60,000 (plus GST), paid 20 August.', html: 'Professional fee, 194J, above the ₹50,000 threshold. TDS 10% × ₹60,000 = <strong>₹6,000</strong>. She pays ₹54,000 + GST and deposits ₹6,000 by <strong>7 September</strong>.' },
-            { label: 'Courier company (a private limited company), ₹1,40,000 over the year in monthly bills.', html: '194C, 2% because the payee is a company. No single bill exceeds ₹30,000, but the running total crosses ₹1,00,000 in December. From the December payment she deducts 2% on the full ₹1,05,000 paid to date (₹2,100), then 2% on each later bill. Year total: 2% × ₹1,40,000 = <strong>₹2,800</strong>. December\'s deduction is deposited by <strong>7 January</strong>; March\'s by <strong>30 April</strong>.' },
-            { label: 'Workshop rent, ₹8,000 a month = ₹96,000 a year.', html: '194I threshold is ₹6,00,000 a year. ₹96,000 is far below it: <strong>no TDS</strong>. (194-IB would need rent above ₹50,000 a month, so it does not apply either.)' },
-            { label: 'Marketplace settlement: gross sales ₹2,00,000 in October.', html: 'Here Sana is the <em>payee</em>. The marketplace deducts TDS under <strong>194-O at 0.1%</strong> = ₹200 (her yearly marketplace sales exceed the ₹5 lakh exemption for individuals) and GST TCS at <strong>0.5%</strong> = ₹1,000, after its own 15% commission of ₹30,000 plus ₹5,400 GST. She receives ₹2,00,000 − ₹30,000 − ₹5,400 − ₹200 − ₹1,000 = <strong>₹1,63,400</strong>.' }
+            { label: 'Photographer for the new catalogue, ₹60,000 plus GST, paid 20 August.', html: 'Professional fee, 194J, above ₹50,000. TDS 10% × ₹60,000 = <strong>₹6,000</strong>. She pays ₹54,000 + GST and deposits ₹6,000 by <strong>7 September</strong>.' },
+            { label: 'Courier company (a private limited company), ₹1,40,000 over the year in monthly bills.', html: '194C at 2% because the payee is a company. No single bill exceeds ₹30,000, but the running total passes ₹1,00,000 in December, so from the December payment she deducts 2% on the full ₹1,05,000 paid to date (₹2,100), then 2% on each later bill. Year total 2% × ₹1,40,000 = <strong>₹2,800</strong>. December\'s deduction is deposited by <strong>7 January</strong>; March\'s by <strong>30 April</strong>.' },
+            { label: 'Workshop rent, ₹8,000 a month = ₹96,000 a year.', html: 'Far below the ₹6,00,000 threshold of 194I, and below the ₹50,000 a month of 194-IB: <strong>no TDS</strong>.' },
+            { label: 'Marketplace settlement: gross sales ₹2,00,000 in October.', html: 'Here Sana is the <em>payee</em>. The marketplace deducts TDS under <strong>194-O at 0.1%</strong> = ₹200 (her yearly marketplace sales exceed the ₹5 lakh exemption for individuals) and GST TCS at <strong>0.5%</strong> = ₹1,000, after its 15% commission of ₹30,000 plus ₹5,400 GST. She receives ₹2,00,000 − ₹30,000 − ₹5,400 − ₹200 − ₹1,000 = <strong>₹1,63,400</strong>.' }
           ],
-          result: 'Sana deducts ₹8,800 in the year (₹6,000 + ₹2,800), files four 26Q returns and issues two Form 16As. The ₹200 deducted from her appears in her Form 26AS and reduces her own income tax; the ₹1,000 of GST TCS appears on the GST portal, and once she accepts it, lands in her electronic cash ledger to pay GST with.'
+          result: 'Sana deducts ₹8,800 in the year (₹6,000 + ₹2,800), files four 26Q returns and issues two Form 16As. The ₹200 deducted from her shows in her Form 26AS and reduces her own income tax; the ₹1,000 of GST TCS shows on the GST portal and, once accepted, lands in her electronic cash ledger.'
         })}
         ${table(
-          ['Payment', 'Section', 'Rate', 'Gross', 'TDS', 'Net paid', 'Deposit by'],
+          ['Payment', 'Section', 'Rate', 'Gross', 'TDS', 'Net paid'],
           [
-            ['Photographer', '194J', '10%', inr(60000), inr(6000), inr(54000), '7 September'],
-            ['Courier company', '194C', '2%', inr(140000), inr(2800), inr(137200), '7th of each following month; 30 April for March'],
-            ['Workshop rent', '194I', '—', inr(96000), inr(0), inr(96000), 'Below threshold'],
-            ['Marketplace (deducted from Sana)', '194-O + GST TCS', '0.1% + 0.5%', inr(200000), inr(1200), inr(163400), 'Marketplace deposits it']
+            ['Photographer', '194J', '10%', inr(60000), inr(6000), inr(54000)],
+            ['Courier company', '194C', '2%', inr(140000), inr(2800), inr(137200)],
+            ['Workshop rent', '194I', '—', inr(96000), inr(0), inr(96000)],
+            ['Marketplace (deducted from Sana)', '194-O + GST TCS', '0.1% + 0.5%', inr(200000), inr(1200), inr(163400)]
           ],
-          { align: ['l', 'l', 'r', 'r', 'r', 'r', 'l'], caption: 'Noor Crafts, FY 2026-27 (net paid to the marketplace row is after its commission and GST)' }
+          { align: ['l', 'l', 'r', 'r', 'r', 'r'], caption: 'Noor Crafts, FY 2026-27 (marketplace net is after its commission and GST)' }
         )}
       `
     },
@@ -102,10 +101,10 @@ export default {
       short: 'Calendar',
       html: `
         ${terms([
-          ['Deposit', 'Pay the TDS through challan ITNS-281 on incometax.gov.in by the <strong>7th of the next month</strong>. The exception is March: deposit by <strong>30 April</strong>.'],
-          ['Quarterly return', '<strong>Form 26Q</strong> (non-salary payments; 24Q for salary) listing every deductee, PAN, amount and challan. Due <strong>31 July, 31 October, 31 January, 31 May</strong> for the four quarters. Late filing costs ₹200 a day under 234E, up to the TDS amount.'],
-          ['Form 16A', 'The certificate you download from TRACES and give each payee within 15 days of filing the quarterly return. It is their proof of credit.'],
-          ['Lower-deduction certificate', 'A payee whose real tax is far below the TDS rate (a photographer with low income, a landlord with losses) can apply on Form 13 for a certificate under section 197. Deduct at the certificate rate, and keep a copy.']
+          ['Deposit', 'Pay through challan ITNS-281 on incometax.gov.in by the <strong>7th of the next month</strong>; for March, by <strong>30 April</strong>.'],
+          ['Quarterly return', '<strong>Form 26Q</strong> (24Q for salary) listing every deductee, PAN, amount and challan, due <strong>31 July, 31 October, 31 January, 31 May</strong>. Late filing costs ₹200 a day under 234E, up to the TDS amount.'],
+          ['Form 16A', 'The certificate you download from TRACES and give each payee within 15 days of filing the quarterly return.'],
+          ['Lower-deduction certificate', 'A payee whose real tax is far below the TDS rate can apply on Form 13 for a certificate under section 197. Deduct at the certificate rate and keep a copy.']
         ])}
         ${diagrams.timeline(
           [
@@ -134,10 +133,10 @@ export default {
           ],
           { caption: 'The price of missing TDS' }
         )}
-        <p>Money also flows the other way. Marketplaces deduct <strong>194-O</strong> on your gross sales (0.1%, once your yearly sales through them exceed ₹5 lakh if you are an individual) and <strong>GST TCS at 0.5%</strong>. Business customers deduct 194C or 194J on what they pay you.
-        Each deduction is your money, parked with the government.</p>
-        ${callout('tip', 'Twice a year, open Form 26AS and AIS on incometax.gov.in and the TDS and TCS tab on the GST portal. Match every entry to a customer. Claim income-tax TDS in your ITR (it reduces advance tax too, so recompute your instalments), and accept GST TCS so it reaches your cash ledger. Credit you do not claim is a gift to the exchequer.')}
+        <p>Money also flows the other way. Marketplaces deduct <strong>194-O</strong> on your gross sales (0.1%, once your yearly sales through them exceed ₹5 lakh if you are an individual) and <strong>GST TCS at 0.5%</strong>; business customers deduct 194C or 194J on what they pay you. Each deduction is your money, parked with the government.</p>
+        ${callout('tip', 'Twice a year, open Form 26AS and AIS on incometax.gov.in and the TDS and TCS tab on the GST portal. Claim income-tax TDS in your ITR (it reduces your advance-tax instalments too) and accept GST TCS so it reaches your cash ledger. Credit you do not claim is a gift to the exchequer.')}
         ${callout('note', 'Rates, thresholds and dates here are as of FY 2026-27 (October 2026) and reflect the Budget 2025 threshold changes. TDS rates and limits change almost every Finance Act; confirm the current table on <strong>incometax.gov.in</strong> before deducting. This is educational material, not professional tax advice.')}
+        ${callout('india', 'From 1 April 2026 the <strong>Income-tax Act, 2025</strong> replaces the 1961 Act. Almost all TDS sections (194C, 194J, 194H, 194-I, 194Q and others) are consolidated into a single <strong>section 393</strong>, with each payment type as a row in its tables. This lesson keeps the familiar 194-series names because they are still how people talk about TDS. For payments from 1 April 2026, returns and challans use the new references; check the exact sub-section on incometax.gov.in or with your CA.', 'New Act, new numbers')}
       `
     }
   ],
@@ -148,7 +147,7 @@ export default {
     'Core rates: 194C contractors <strong>1% / 2%</strong> (₹30,000 single or ₹1,00,000 yearly); 194J professional <strong>10%</strong> (₹50,000); 194H commission <strong>2%</strong> (₹20,000); 194I rent <strong>10%</strong> building, 2% machinery (₹6,00,000); 194Q purchases <strong>0.1%</strong> above ₹50 lakh.',
     'Deposit by the <strong>7th</strong> of the next month (30 April for March); file 26Q by 31 July, 31 October, 31 January and 31 May; issue Form 16A within 15 days.',
     'Not deducting costs you <strong>30% of the expense</strong> under 40(a)(ia), plus interest at 1% (late deduction) or 1.5% (late deposit) a month.',
-    'Check what others deducted from you (194-O, GST TCS, customers\' TDS) in 26AS, AIS and the GST portal, and claim every rupee.'
+    'Check what others deducted from you (194-O, GST TCS, customers\' TDS) in 26AS, AIS and the GST portal, and claim it.'
   ],
 
   practice: [

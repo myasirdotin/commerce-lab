@@ -57,6 +57,7 @@ Use **Indian number grouping** via `inr(n)` → `₹1,50,000`. Use UPI, GST, kir
 - ITC conditions: tax invoice, goods/services received, supplier has filed and paid (appears in GSTR-2B), pay supplier within 180 days. Blocked: personal use, motor vehicles (mostly), food & beverages, club memberships, works contract for buildings.
 
 **Income tax (new regime is default; FY 2026-27 unchanged by Budget 2026)**
+- **Income-tax Act, 2025 replaces the 1961 Act from 1 April 2026.** Section numbers changed. Lessons use the familiar 1961 numbers and note the new ones where agreed: 87A → 156, 44AD/44ADA → ~58, 40A(3) → ~41, TDS sections → consolidated in 393. Published mappings conflict in places; always add "verify on incometax.gov.in".
 - New regime slabs: 0-4L nil, 4-8L 5%, 8-12L 10%, 12-16L 15%, 16-20L 20%, 20-24L 25%, above 24L 30%. Rebate u/s 87A up to ₹60,000 → no tax if taxable income ≤ ₹12 lakh. Standard deduction ₹75,000 (salaried). 4% cess.
 - Old regime: 0-2.5L nil, 2.5-5L 5%, 5-10L 20%, above 10L 30%; rebate ₹12,500 up to ₹5L; standard deduction ₹50,000; deductions 80C etc.
 - Presumptive: **44AD** (business) turnover ≤ ₹2 crore (₹3 crore if cash receipts ≤ 5%), deemed profit 6% of digital receipts / 8% of cash. **44ADA** (professionals) receipts ≤ ₹50L (₹75L), deemed profit 50%. No books/audit needed if opted. Must continue 5 years.

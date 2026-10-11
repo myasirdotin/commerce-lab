@@ -35,7 +35,7 @@ export default {
             { label: 'Customer pays', tone: 'a' },
             { label: 'Cash back in bank', tone: 'b' }
           ],
-          { title: 'The cash cycle', caption: 'Cash leaves at "pay supplier" and returns at "customer pays". The number of days between the two is the cash cycle, and every day of it must be funded by someone.' }
+          { title: 'The cash cycle', caption: 'Cash leaves at "pay supplier" and returns at "customer pays". The days between the two are the cash cycle, and every one of them must be funded by someone.' }
         )}
         ${formula('Cash cycle (days) = Stock days + Debtor days − Creditor days', 'Stock days: how long goods wait before sale. Debtor days: how long customers take to pay. Creditor days: how long you take to pay suppliers (which shortens the gap).')}
         ${table(
@@ -47,10 +47,10 @@ export default {
           ],
           { align: ['l', 'r', 'r', 'r', 'r'], caption: 'Three businesses, three very different cash cycles' }
         )}
-        <p>Chai Adda\'s cycle is <em>negative</em>: customers pay in cash before Meera pays the milk supplier, so growth brings cash in.
-        Noor Crafts is the opposite. Sana pays weavers early, holds shawls for months and gives dealers 60 days. Every extra dealer
-        order <strong>sucks cash out</strong> for over four months before it returns with a profit attached. That is why artisan brands
-        feel poorer the faster they grow.</p>
+        <p>Chai Adda\'s cycle is <em>negative</em>: customers pay cash before Meera pays the milk supplier, so growth brings cash in.
+        Noor Crafts is the opposite. Sana pays weavers early, holds shawls for months and gives dealers 60 days, so every dealer order
+        <strong>sucks cash out</strong> for over four months before it returns with a profit attached. That is why artisan brands feel
+        poorer the faster they grow.</p>
       `
     },
     {
@@ -60,21 +60,20 @@ export default {
         ${terms([
           ['Current assets', 'Cash, bank balance, stock, debtors, and advances you have paid. Things that are cash or will turn into cash within a year.'],
           ['Current liabilities', 'Creditors, GST and TDS payable, salaries due, the overdraft, and loan instalments due within a year.'],
-          ['Working capital', 'Current assets minus current liabilities. The cushion of short-term resources the business runs on. Positive is normal; the question is how much of it is <em>cash</em> and how much is stuck in stock and debtors.']
+          ['Working capital', 'Current assets minus current liabilities: the cushion of short-term resources the business runs on. The question is how much of it is <em>cash</em> rather than stock and debtors.']
         ])}
         ${formula('Working capital = Current assets − Current liabilities', 'Noor Crafts in October: (bank ₹1,10,000 + stock ₹2,40,000 + debtors ₹85,000) − (creditors ₹60,000 + GST payable ₹12,000) = ₹4,35,000 − ₹72,000 = ₹3,63,000.')}
-        <p>₹3,63,000 sounds healthy. But ₹3,25,000 of it is shawls on shelves and dealers who have not paid. Only ₹1,10,000 can pay
-        a bill tomorrow. Working capital tells you the size of the cushion; the cash budget tells you whether the cushion is where you need it, when you need it.</p>
-        ${callout('warning', 'The classic trap: a big order arrives, you are thrilled, you buy stock for it, you deliver, you invoice, and for 60 days you cannot pay salaries. The order was profitable. The business still nearly died. Big orders need a cash plan <em>before</em> you say yes.')}
+        <p>₹3,63,000 sounds healthy, but ₹3,25,000 of it is shawls on shelves and dealers who have not paid. Only ₹1,10,000 can pay
+        a bill tomorrow. Working capital measures the size of the cushion; the cash budget tells you whether it is where you need it, when you need it.</p>
+        ${callout('warning', 'The classic trap: a big order arrives, you buy stock for it, deliver, invoice, and for 60 days you cannot pay salaries. The order was profitable; the business still nearly died. Big orders need a cash plan <em>before</em> you say yes.')}
       `
     },
     {
       heading: 'The cash budget: seeing the gap before it arrives',
       short: 'Cash budget',
       html: `
-        <p>A cash budget is a simple table, one column per month: opening cash, plus what will come in, minus what will go out,
-        equals closing cash. The closing figure becomes next month\'s opening. Do it for the next three to six months and a shortage
-        shows up as a negative number weeks before it shows up at the bank.</p>
+        <p>A cash budget is a table with one column per month: opening cash plus receipts minus payments equals closing cash, which
+        becomes next month\'s opening. Do it for the next three to six months and a shortage shows up as a negative number weeks before it reaches the bank.</p>
         ${formula('Closing cash = Opening cash + Receipts − Payments', 'Receipts and payments are actual cash movements, not sales and expenses. A credit sale is a receipt only in the month the customer pays.')}
         ${example({
           title: 'Noor Crafts takes a ₹3,50,000 dealer order',
@@ -82,8 +81,7 @@ export default {
           steps: [
             { label: 'Cost the order.', html: '50 shawls × ₹4,000 = ₹2,00,000; 100 boxes × ₹900 = ₹90,000; bulk transport ₹6,000. Total cash out <strong>₹2,96,000</strong>. Gross profit on the order: ₹3,50,000 − ₹2,96,000 = ₹54,000.' },
             { label: 'Time the payments.', html: 'The weaver and carpenter want 50% advance on 1 June (₹1,00,000 + ₹45,000 = ₹1,45,000) and the balance on delivery, 1 July (₹1,45,000 + ₹6,000 transport = ₹1,51,000).' },
-            { label: 'Time the receipt.', html: 'Goods dispatched and invoiced 5 July. Payment due 60 days later: <strong>3 September</strong>.' },
-            { label: 'Build the budget.', html: 'Put it all in the table below, month by month, and look at the closing line.' }
+            { label: 'Time the receipt.', html: 'Goods dispatched and invoiced 5 July. Payment due 60 days later: <strong>3 September</strong>.' }
           ],
           result: 'Closing cash goes negative in July (−₹1,14,600) and stays negative through August. A profitable order has created a two-month hole of over a lakh. Sana must fund it or refuse the order.'
         })}
@@ -107,8 +105,8 @@ export default {
           ],
           { title: 'Closing cash by month', caption: 'The hole opens when the balance is paid to the artisans and closes only when the dealer pays. Two months of negative cash must be funded.' }
         )}
-        ${callout('india', 'The gap is actually bigger. GST on the July invoice goes into Sana\'s GSTR-3B for July, payable by 20 August, whether or not the dealer has paid her. At 18% on ₹3,50,000 that is ₹63,000 of tax (less whatever ITC she has), out of her pocket a fortnight before the dealer\'s money arrives. Always put GST payments in the cash budget as a separate line. Verify the rate for your product; shawls above ₹2,500 per piece attract 18%.')}
-        ${callout('tip', 'For tight months, switch to a <strong>13-week cash forecast</strong>: the same table with weekly columns for the next quarter. Salaries, GST, EMIs and big supplier payments land on specific dates, and a monthly view can hide a week where you are short. Roll it forward every Monday: drop the week that passed, add a new one at the end.')}
+        ${callout('india', 'The gap is actually bigger. GST on the July invoice goes into Sana\'s GSTR-3B for July, due 20 August, whether or not the dealer has paid her: at 18% on ₹3,50,000 that is ₹63,000 (less any ITC), a fortnight before the dealer\'s money arrives. Show GST payments as a separate line in the cash budget, and verify the rate for your product; shawls above ₹2,500 per piece attract 18%.')}
+        ${callout('tip', 'For tight months, switch to a <strong>13-week cash forecast</strong>: the same table with weekly columns for the next quarter, because salaries, GST, EMIs and big supplier payments land on specific dates that a monthly view can hide. Roll it forward every Monday.')}
       `
     },
     {
@@ -117,13 +115,12 @@ export default {
       html: `
         <p>Borrowing should be the last step, because every other lever is cheaper. Each one attacks one of the three numbers in the cash cycle.</p>
         ${checklist([
-          '<strong>Collect faster (debtor days).</strong> Ask for a 30% advance with the order; Sana\'s ₹1,05,000 advance would shrink the July gap to under ₹10,000. Offer 2% off for payment within 10 days. Invoice on the day of dispatch, not at month end. Send a reminder three days before the due date, not three weeks after.',
-          '<strong>Negotiate credit (creditor days).</strong> Ask regular suppliers for 15 or 30 days. Even moving the artisans from 50% advance to 25% advance would free ₹72,500 in June.',
+          '<strong>Collect faster (debtor days).</strong> Ask for a 30% advance with the order; Sana\'s ₹1,05,000 advance would shrink the July gap to under ₹10,000. Offer 2% off for payment within 10 days. Invoice on the day of dispatch and remind three days before the due date.',
+          '<strong>Negotiate credit (creditor days).</strong> Ask regular suppliers for 15 or 30 days. Even moving the artisans from 50% advance to 25% would free ₹72,500 in June.',
           '<strong>Reduce stock (stock days).</strong> Make to order for slow designs; keep only fast sellers in stock. Every ₹1,00,000 of stock that does not need to exist is ₹1,00,000 of free financing.',
-          '<strong>Deposits from dealers.</strong> A refundable security deposit, or shipping the first order against full payment, protects you from new dealers you do not yet trust.',
-          '<strong>Match the terms.</strong> If your customers pay in 60 days, your suppliers must not demand cash in 0 days. Mismatched terms are the root of most cash crises.'
-        ], { title: 'Five levers, cheapest first' })}
-        ${callout('india', 'Section 43B(h) of the Income-tax Act works in your favour as a micro or small enterprise. A buyer who does not pay a Udyam-registered micro or small supplier within 15 days (45 days with a written agreement) loses the tax deduction for that purchase until paid. Mention your Udyam number on the invoice; many larger buyers now pay MSMEs faster because of it.')}
+          '<strong>Deposits from dealers.</strong> A refundable security deposit, or shipping the first order against full payment, protects you from new dealers you do not yet trust.'
+        ], { title: 'Four levers, cheapest first' })}
+        ${callout('india', 'Section 43B(h) of the Income-tax Act works for you as a micro or small enterprise: a buyer who does not pay a Udyam-registered supplier within 15 days (45 with a written agreement) loses the tax deduction for that purchase until it is paid. Print your Udyam number on the invoice; many larger buyers now pay MSMEs faster because of it.')}
       `
     },
     {
@@ -145,11 +142,11 @@ export default {
           title: 'Two ways to fund the ₹1,14,600 hole',
           scenario: 'Sana compares a cash-credit limit from J&K Bank with discounting the dealer invoice.',
           steps: [
-            { label: 'Option A: cash credit of ₹1,50,000 at 11% a year.', html: 'Draw about ₹1,20,000 on 1 July, repay on 3 September when the dealer pays. Interest for two months: ₹1,20,000 × 11% × 2 ÷ 12 = <strong>₹2,200</strong>, plus a one-time processing fee of around ₹1,000. Needs a sanctioned limit in place <em>before</em> the order; takes two to four weeks to set up.' },
+            { label: 'Option A: cash credit of ₹1,50,000 at 11% a year.', html: 'Draw about ₹1,20,000 on 1 July and repay on 3 September when the dealer pays. Interest for two months: ₹1,20,000 × 11% × 2 ÷ 12 = <strong>₹2,200</strong>, plus a processing fee of around ₹1,000. The limit must be sanctioned <em>before</em> the order; that takes two to four weeks.' },
             { label: 'Option B: discount the invoice at 1.5% a month.', html: 'On 5 July the financier advances 80% of ₹3,50,000 = ₹2,80,000. July closing becomes ₹20,700 + ₹1,00,000 + ₹2,80,000 − ₹2,35,300 = ₹1,65,400: no gap at all. Cost: ₹2,80,000 × 1.5% × 2 months = <strong>₹8,400</strong>. On 3 September the financier collects ₹3,50,000 and pays Sana the balance ₹70,000 − ₹8,400 = ₹61,600.' },
-            { label: 'Compare with the order\'s profit.', html: 'Gross profit on the order is ₹54,000. Option A eats 4% of it, Option B about 16%. Both beat refusing the order, and both beat a late GST payment at 18% interest plus ₹50 a day late fee.' }
+            { label: 'Compare with the order\'s profit.', html: 'Gross profit on the order is ₹54,000. Option A eats 4% of it, Option B about 16%. Both beat refusing the order, and both beat paying GST late at 18% interest plus ₹50 a day.' }
           ],
-          result: 'A cash-credit limit is cheaper but must exist in advance. Invoice discounting is costlier but can be arranged in days against a good buyer. The best answer is Option A set up now, with a 30% dealer advance negotiated on top, so the limit is barely used.',
+          result: 'A cash-credit limit is cheaper but must exist in advance; invoice discounting costs more but can be arranged in days against a good buyer. Best: set up Option A now and negotiate a 30% dealer advance on top, so the limit is barely used.',
           tone: 'b'
         })}
         ${callout('remember', 'Cash problems are solved before they happen, not during. A sanctioned limit you never use costs almost nothing. A loan you need by Friday costs whatever the lender wants.')}
