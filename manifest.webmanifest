@@ -1,0 +1,21 @@
+{
+  "name": "Commerce Lab",
+  "short_name": "Commerce Lab",
+  "description": "Short lessons and interactive labs for accounting, business, GST, income tax and starting a business in India.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#059669",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "shortcuts": [
+    { "name": "Learn", "url": "./learn/index.html" },
+    { "name": "Quick revision", "url": "./learn/revise.html" },
+    { "name": "Glossary", "url": "./learn/glossary.html" }
+  ]
+}

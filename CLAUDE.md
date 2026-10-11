@@ -38,6 +38,8 @@ Local: `C:\xampp\htdocs\commerce-lab` → `http://localhost/commerce-lab/`. Also
 | Lesson rules | `docs/LESSON-AUTHORING.md` | Shape, length, style, running examples, verified facts. **Follow it for every lesson.** Exemplar: `acc-02-accounting-equation.js`. |
 | Labs / tools | `accounting-lab/`, `business-lab/`, `tax-lab/`, `excel-lab/`, `mis-lab/`, `calculators/`, `islamic-standards/`, `textbooks/`, `cheatsheets/`, `projects/`, `quiz/`, `teacher-hub/`, `dashboard/` | Each is one `index.html` + engine in `js/*-engine.js` + data in `js/data/`. |
 | Tax data | `js/data/tax-rules.js` | GST slabs 0/5/18/40% (since 22 Sept 2025), FY `2026-27`. |
+| Glossary & revision | `learn/glossary.html`, `learn/revise.html?hub=<id>` | Built automatically from every lesson's `glossary` and `keyPoints`. No separate data to maintain. |
+| Installable app / offline | `manifest.webmanifest`, `sw.js`, `icons/` | Service worker registered from `js/core.js`. Network first, cache as fallback. |
 
 **Six journeys:** Start a Business (`start-*`), Accounting Foundations (`acc-*`), Final Accounts (`fin-*`),
 Business & Management (`biz-*`), Tax & GST (`tax-*`), Excel & MIS (`mis-*`). 36 lessons, all complete.
@@ -53,7 +55,9 @@ so the site works both under `/commerce-lab/` and at a Vercel root. Never use `/
 - **Nav item:** edit `NAV` in `js/nav.js` only.
 - **Lesson:** create `js/lessons/<id>.js` per LESSON-AUTHORING, add it to `HUBS` in `registry.js`, run tests.
 - **New page:** copy an existing lab page's `<head>` (viewport meta with `viewport-fit=cover`, theme-color,
-  the CSS links) and the empty header/footer placeholders, and load `js/core.js` as a module.
+  the manifest/icon links, the CSS links) and the empty header/footer placeholders, and load `js/core.js` as a module.
+  Add the page to `PRECACHE` in `sw.js` so it works offline.
+- **Renamed or removed a file?** Bump `VERSION` in `sw.js` so phones drop the old cache.
 
 ## 5. Record keeping (do this after every change)
 
@@ -77,13 +81,10 @@ Look at the screenshots, not just the JSON. `THEME=dark` checks dark mode.
 
 _Last updated 2026-10-11._
 
-- Done: mobile-first CSS, shared nav, lesson system, all 36 lessons; all 15 pages + lessons render at 390px with
-  no overflow or console errors; 61/61 tests pass. Stale FY 2024-25 labels updated to 2026-27.
+- Done: mobile-first CSS, shared nav, lesson system, all 36 lessons; searchable A–Z glossary (194 terms) and
+  per-journey quick revision pages; installable app with offline reading (checked: lessons open with no network);
+  all 17 pages render at 390px with no overflow or console errors; 61/61 tests pass. Stale FY 2024-25 labels
+  updated to 2026-27; unused Vite/TypeScript files removed.
 - Open — facts flagged uncertain: walnut-box HSN/GST rate; trademark class for wooden boxes; Income-tax Act 2025
   section numbers (hedged callouts in `tax-04`, `tax-05`).
-- Open — not started: glossary page (collect every lesson's `glossary` into one searchable page), revision /
-  quick-recall pages per journey.
-- Cleanup candidates: `vite.config.ts`, `tsconfig.json`, `tsconfig.node.json` are leftover React/Vite scaffolding
-  that nothing uses (there is no `src/`). Do not build on them; delete when the user agrees.
-- Ideas: make the site an installable PWA (manifest + service worker) for offline reading on a phone; lesson
-  search; a "recently viewed" list on the Learn hub.
+- Ideas: lesson search across full text; a "recently viewed" list on the Learn hub; printable revision sheets.

@@ -226,6 +226,15 @@ export function initPathwaySelector() {
   });
 }
 
+// ─── Offline support (installable app) ───────────────────────────
+// sw.js sits at the site root, so its scope covers every page.
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register(new URL('../sw.js', import.meta.url), { scope: new URL('../', import.meta.url).pathname })
+      .catch(err => console.warn('Service worker not registered:', err));
+  });
+}
+
 // ─── Initialize on DOM Ready ──────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   renderSiteChrome();

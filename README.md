@@ -118,7 +118,13 @@ Every calculator displays the mathematical formula, arithmetic steps, and plain-
 - **Authentic Halal Alternatives:** Provides Shariah-compliant alternatives such as *Murabahah* (Cost-plus asset sale), *Musharakah* (Equity joint venture), *Mudarabah* (Trust financing), *Ijarah* (Lease), *Salam* (Forward sale), and *Qard Hasan* (Benevolent interest-free loan) according to **AAOIFI Shariah Standards**.
 - **Business Zakat Calculator (AAOIFI FAS 9):** Computes mandatory 2.5% Zakat on commercial inventory, trade receivables, and cash, with Nisab threshold checking against 85g gold benchmark.
 
-### 7. Textbooks with Embedded SVG Models (`/textbooks/`)
+### 7. Glossary, Quick Revision & Offline Use
+- **Glossary A–Z** (`/learn/glossary.html`): every term from every lesson, searchable, linked back to its lesson.
+- **Quick Revision** (`/learn/revise.html`): the key points of a whole journey on one page.
+- **Installable app:** add Commerce Lab to your phone's home screen; lessons you have opened (and every lesson,
+  once the glossary has been opened) can be read offline.
+
+### 8. Textbooks with Embedded SVG Models (`/textbooks/`)
 - 17 structured chapters.
 - Embedded vector SVG diagrams (Accounting Equation balance scale, 5-stage accounting cycle, Break-even curves).
 - Built-in Web Speech API Text-to-Speech narration for accessible audio listening.
