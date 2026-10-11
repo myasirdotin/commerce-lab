@@ -1,7 +1,7 @@
 /**
  * Commerce Lab - Compliance updates ("What's New")
  *
- * Maintained by the compliance-checker agent (.claude/agents/compliance-checker.md).
+ * Maintained by the compliance check in docs/COMPLIANCE-CHECK.md (any AI tool; Claude: compliance-checker agent).
  * Rendered by updates/index.html and validated by tests/compliance.test.js.
  *
  * Dates are ISO strings (YYYY-MM-DD). Every update must cite an official source.

@@ -1,6 +1,6 @@
 # CLAUDE.md — Commerce Lab
 
-**Read this whole file before making any change.** It is the briefing for any agent working on this project:
+**Read this whole file before making any change.** It is the briefing for any AI agent (Claude or another tool) working on this project:
 what is being built, for whom, how it is put together, and what must stay true.
 
 ## 1. What this is
@@ -39,7 +39,7 @@ Local: `C:\xampp\htdocs\commerce-lab` → `http://localhost/commerce-lab/`. Also
 | Labs / tools | `accounting-lab/`, `business-lab/`, `tax-lab/`, `excel-lab/`, `mis-lab/`, `calculators/`, `islamic-standards/`, `textbooks/`, `cheatsheets/`, `projects/`, `quiz/`, `teacher-hub/`, `dashboard/` | Each is one `index.html` + engine in `js/*-engine.js` + data in `js/data/`. |
 | Tax data | `js/data/tax-rules.js` | GST slabs 0/5/18/40% (since 22 Sept 2025), FY `2026-27`. |
 | Glossary & revision | `learn/glossary.html`, `learn/revise.html?hub=<id>` | Built automatically from every lesson's `glossary` and `keyPoints`. No separate data to maintain. |
-| What's New (compliance tracker) | `updates/index.html` ← `js/data/compliance-updates.js` | Dated, officially-sourced rule changes + a filing calendar generated from rules. Maintained by the **compliance-checker** agent (`.claude/agents/compliance-checker.md`); validated by `tests/compliance.test.js`. |
+| What's New (compliance tracker) | `updates/index.html` ← `js/data/compliance-updates.js` | Dated, officially-sourced rule changes + a filing calendar generated from rules. Maintained by the compliance check in `docs/COMPLIANCE-CHECK.md` (tool-neutral; Claude runs it as the `compliance-checker` agent, other tools via `AGENTS.md` / `GEMINI.md`); validated by `tests/compliance.test.js`. |
 | Installable app / offline | `manifest.webmanifest`, `sw.js`, `icons/` | Service worker registered from `js/core.js`. Network first, cache as fallback. |
 
 **Six journeys:** Start a Business (`start-*`), Accounting Foundations (`acc-*`), Final Accounts (`fin-*`),
@@ -58,7 +58,8 @@ so the site works both under `/commerce-lab/` and at a Vercel root. Never use `/
 - **New page:** copy an existing lab page's `<head>` (viewport meta with `viewport-fit=cover`, theme-color,
   the manifest/icon links, the CSS links) and the empty header/footer placeholders, and load `js/core.js` as a module.
   Add the page to `PRECACHE` in `sw.js` so it works offline.
-- **Refresh compliance info:** ask for the compliance-checker agent ("run the compliance checker"). It sweeps the
+- **Refresh compliance info:** say "run the compliance check" (Claude: the compliance-checker agent; any other AI tool:
+  point it at `docs/COMPLIANCE-CHECK.md`). It sweeps the
   official sites, updates `js/data/compliance-updates.js` and LESSON-AUTHORING §4, and lists lessons that need rewriting.
   Run it at least monthly; the page warns visitors when the last check is over 30 days old.
 - **Renamed or removed a file?** Bump `VERSION` in `sw.js` so phones drop the old cache.
