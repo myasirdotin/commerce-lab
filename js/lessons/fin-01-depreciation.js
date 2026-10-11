@@ -31,9 +31,9 @@ export default {
       heading: 'What depreciation is, and what it is not',
       short: 'The idea',
       html: `
-        <p>When Sana buys an embroidery machine for Noor Crafts, she swaps one asset (bank) for another (machinery). No expense yet.
-        But the machine will wear out, and in five years it will be worth little. The <strong>matching principle</strong> says the cost
-        should be charged against the revenue of each year the machine helps earn. That yearly charge is depreciation.</p>
+        <p>When Sana buys an embroidery machine, she swaps one asset (bank) for another (machinery). No expense yet. But the machine will
+        wear out, and the <strong>matching principle</strong> says its cost should be charged against the revenue of each year it helps earn.
+        That yearly charge is depreciation.</p>
         ${diagrams.flow(
           [
             { label: 'Cost ₹1,20,000', sub: 'paid once, an asset', tone: 'b' },
@@ -47,7 +47,7 @@ export default {
         whatever a buyer would pay. It is a <strong>non-cash expense</strong>: the cash left when the machine was bought, so the yearly charge
         reduces profit but not the bank balance. And land is not depreciated, because it does not wear out.</p>
         ${terms([
-          ['Causes', 'Wear and tear from use; passage of time (a lease, a patent); obsolescence when a better machine makes yours uneconomic; depletion for mines and quarries.'],
+          ['Causes', 'Wear and tear; passage of time (a lease, a patent); obsolescence when a better machine arrives; depletion for mines and quarries.'],
           ['Residual (scrap) value', 'What you expect to get for the asset at the end of its useful life. Under SLM it is deducted before spreading the cost.'],
           ['Useful life', 'The years you expect to use the asset, not how long it could physically last.']
         ])}
@@ -60,10 +60,10 @@ export default {
         ${formula('SLM depreciation per year = (Cost − Residual value) ÷ Useful life', 'Same amount every year. Noor Crafts: (1,20,000 − 20,000) ÷ 5 = ₹20,000.')}
         ${formula('WDV depreciation = Opening book value × Rate', 'A fixed percentage of a shrinking base, so the charge falls every year. Noor Crafts: 1,20,000 × 20% = ₹24,000 in year 1; 96,000 × 20% = ₹19,200 in year 2.')}
         ${compare([
-          { title: 'Straight-line (SLM)', tone: 'a', points: ['Equal charge each year; simple to budget', 'Ends exactly at residual value', 'Fits assets that give even service: furniture, leases, patents, buildings', 'Common in company accounts under Schedule II of the Companies Act 2013'] },
-          { title: 'Written-down value (WDV)', tone: 'd', points: ['Heavy charge early, lighter later', 'Fits assets that lose value fast: machines, vehicles, computers', 'Repairs rise as the asset ages, so depreciation plus repairs stays roughly level', 'Required for income tax in India, so many small businesses use it in the books too'] }
+          { title: 'Straight-line (SLM)', tone: 'a', points: ['Equal charge each year; simple to budget', 'Ends exactly at residual value', 'Fits assets that give even service: furniture, leases, patents, buildings', 'Usual in company accounts (Schedule II, Companies Act 2013)'] },
+          { title: 'Written-down value (WDV)', tone: 'd', points: ['Heavy charge early, lighter later', 'Fits assets that lose value fast: machines, vehicles, computers', 'Depreciation plus rising repairs stays roughly level', 'Required for income tax in India, so many small businesses use it in the books too'] }
         ])}
-        ${callout('remember', 'Under WDV the book value never mathematically reaches zero; you keep taking 20% of a smaller number until the asset is sold or written off. Under SLM the schedule ends exactly at the residual value.')}
+        ${callout('remember', 'Under WDV the book value never mathematically reaches zero; the asset is eventually sold or written off. Under SLM the schedule ends exactly at the residual value.')}
       `
     },
     {
@@ -72,13 +72,13 @@ export default {
       html: `
         ${example({
           title: 'A ₹1,20,000 machine, five years, two methods',
-          scenario: 'On 1 April Sana buys a computerised embroidery machine for ₹1,20,000. She expects to use it for five years and sell it for ₹20,000. Her CA shows her the schedule under SLM and under WDV at 20%.',
+          scenario: 'On 1 April Sana buys a computerised embroidery machine for ₹1,20,000, expecting to use it for five years and sell it for ₹20,000. Her CA shows the schedule under SLM and under WDV at 20%.',
           steps: [
-            { label: 'SLM:', html: '(₹1,20,000 − ₹20,000) ÷ 5 = <strong>₹20,000 every year</strong>. Book value falls ₹1,00,000, ₹80,000, ₹60,000, ₹40,000, ₹20,000.' },
+            { label: 'SLM:', html: '(₹1,20,000 − ₹20,000) ÷ 5 = <strong>₹20,000 every year</strong>. Book value falls to ₹20,000 after year 5.' },
             { label: 'WDV year 1:', html: '₹1,20,000 × 20% = ₹24,000. Book value ₹96,000.' },
-            { label: 'WDV year 2:', html: '₹96,000 × 20% = ₹19,200. Book value ₹76,800. Years 3 to 5: ₹15,360, ₹12,288, ₹9,830 (rounded). Book value after year 5: ₹39,322.' },
-            { label: 'Effect on profit, year 1:', html: 'WDV charges ₹4,000 more than SLM, so year-1 profit is <strong>₹4,000 lower</strong> under WDV.' },
-            { label: 'Effect on profit, year 5:', html: 'WDV charges ₹9,830 against SLM\'s ₹20,000, so year-5 profit is <strong>₹10,170 higher</strong> under WDV.' }
+            { label: 'WDV year 2 onwards:', html: '₹96,000 × 20% = ₹19,200, then ₹15,360, ₹12,288, ₹9,830 (rounded). Book value after year 5: ₹39,322.' },
+            { label: 'Profit, year 1:', html: 'WDV charges ₹4,000 more than SLM, so profit is <strong>₹4,000 lower</strong> under WDV.' },
+            { label: 'Profit, year 5:', html: 'WDV charges ₹9,830 against SLM\'s ₹20,000, so profit is <strong>₹10,170 higher</strong> under WDV.' }
           ],
           result: 'Over five years SLM charges ₹1,00,000 and WDV ₹80,678. The machine costs the same whichever method you use; the methods only decide <em>which year</em> bears how much. If Sana sells at ₹20,000 in year 5, the WDV books show a ₹19,322 loss on sale to catch up.'
         })}
@@ -95,7 +95,7 @@ export default {
             { label: 'Y4 SLM', value: SLM[3], tone: 'a' }, { label: 'Y4 WDV', value: WDV[3], tone: 'd' },
             { label: 'Y5 SLM', value: SLM[4], tone: 'a' }, { label: 'Y5 WDV', value: WDV[4], tone: 'd' }
           ],
-          { title: 'Yearly depreciation: SLM (green) vs WDV (purple)', caption: 'SLM is a flat line. WDV starts above it and crosses below in year 2, which is why WDV shows lower profit early and higher profit later.' }
+          { title: 'Yearly depreciation: SLM (green) vs WDV (purple)', caption: 'SLM is flat. WDV starts above it and drops below from year 2, so WDV shows lower profit early and higher profit later.' }
         )}
       `
     },
@@ -140,9 +140,8 @@ export default {
           ],
           { caption: 'Common income-tax depreciation blocks (Appendix I, Income-tax Rules). Verify current rates on the portal before filing.' }
         )}
-        ${callout('india', '<strong>Half-rate rule:</strong> an asset put to use for <strong>less than 180 days</strong> in the financial year gets only half the rate that year. Sana\'s machine bought on 1 April earns the full 15% (₹18,000 in the tax computation); bought on 15 November it would get 7.5% (₹9,000). An asset sold is deducted from its block, and no profit or loss is computed asset by asset unless the block empties. Check the rates on the Income-tax portal each year.')}
-        <p>So Noor Crafts can charge ₹20,000 (SLM) or ₹24,000 (WDV) in its own books while the tax return allows ₹18,000. That is a normal
-        <em>book versus tax</em> timing gap; your CA adjusts for it in the computation of taxable income.</p>
+        ${callout('india', '<strong>Half-rate rule:</strong> an asset put to use for <strong>less than 180 days</strong> in the financial year gets half the rate that year. Sana\'s machine bought on 1 April earns the full 15% (₹18,000); bought on 15 November it would get 7.5% (₹9,000). A sold asset is deducted from its block; no profit or loss is computed asset by asset unless the block empties. Check the rates on the Income-tax portal each year.')}
+        <p>So the books may charge ₹20,000 or ₹24,000 while the tax return allows ₹18,000: a normal book-versus-tax timing gap your CA adjusts in the computation.</p>
       `
     },
     {
@@ -159,7 +158,7 @@ export default {
             { label: 'Under SLM:', html: 'Book value = ₹1,20,000 − ₹60,000 = ₹60,000. Profit on sale = ₹65,000 − ₹60,000 = <strong>₹5,000</strong>.' },
             { label: 'Under WDV:', html: 'Book value = ₹61,440. Profit on sale = ₹65,000 − ₹61,440 = <strong>₹3,560</strong>.' },
             { label: 'Entry (SLM, direct method):', html: 'Bank A/c Dr ₹65,000; To Machinery A/c ₹60,000; To Profit on Sale of Machinery A/c ₹5,000.' },
-            { label: 'Entry (SLM, provision method):', html: 'Bank A/c Dr ₹65,000 and Provision for Depreciation A/c Dr ₹60,000; To Machinery A/c ₹1,20,000; To Profit on Sale of Machinery A/c ₹5,000. The asset and its provision are both removed.' }
+            { label: 'Provision method:', html: 'see the table below; the asset and its provision are both removed.' }
           ],
           result: 'Net charge over three years: SLM ₹60,000 − ₹5,000 gain = ₹55,000; WDV ₹58,560 − ₹3,560 gain = ₹55,000. Either way the machine cost ₹1,20,000 − ₹65,000 = ₹55,000 to own. The method only changed the timing.',
           tone: 'c'
@@ -182,7 +181,7 @@ export default {
   keyPoints: [
     'Depreciation allocates a fixed asset\'s cost over its useful life. It is not a valuation and not a cash outflow.',
     'SLM: (Cost − Residual) ÷ Life, a flat charge. WDV: Rate × opening book value, a falling charge. The total over the asset\'s life is the same; only the timing differs.',
-    'Noor Crafts\' ₹1,20,000 machine: SLM ₹20,000 a year; WDV at 20% gives ₹24,000 in year 1 falling to ₹9,830 in year 5. Year-1 profit is ₹4,000 lower under WDV; year-5 profit ₹10,170 higher.',
+    'Noor Crafts\' ₹1,20,000 machine: SLM ₹20,000 a year; WDV at 20% gives ₹24,000 in year 1 falling to ₹9,830 in year 5. Year-1 profit is ₹4,000 lower under WDV, year-5 profit ₹10,170 higher.',
     'Entry: Depreciation A/c Dr, To Asset A/c (direct) or To Provision for Depreciation A/c. Debit side of the P&L; book value on the balance sheet.',
     'Income tax uses WDV block rates (furniture 10%, plant and machinery 15%, computers 40%, buildings 10%), halved if the asset was used under 180 days in the year of purchase.',
     'On sale: profit or loss = sale price − book value at the date of sale. Remove the asset and its provision from the books.'

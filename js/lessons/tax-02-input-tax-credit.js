@@ -10,9 +10,8 @@ export default {
   title: 'Input tax credit (ITC)',
 
   intro: `<p>Input tax credit is the reason GST does not tax the same shawl three times on its way from weaver to customer.
-    It is also the part of GST where small businesses <strong>lose the most money</strong>: credit missed because a supplier
-    did not file, a bill was paid in cash, or the wrong head was used in set-off. This lesson shows the mechanism, the
-    conditions, and the set-off order with real numbers.</p>`,
+    It is also where small businesses <strong>lose the most money</strong>: credit missed because a supplier did not file,
+    or the wrong head was used in set-off. This lesson shows the mechanism, the conditions and the set-off order with real numbers.</p>`,
 
   outcomes: [
     'Explain ITC as <em>output tax minus input tax</em> and list the four conditions plus the 180-day rule.',
@@ -28,7 +27,7 @@ export default {
         <p>When Noor Crafts buys shawls from a weaver, the GST on his invoice is Sana's <strong>input tax</strong>. When she sells
         them, the GST she charges is her <strong>output tax</strong>. She deposits output tax <em>minus</em> input tax, and the
         input tax she subtracts is her <strong>input tax credit (ITC)</strong>.</p>
-        ${formula('Net GST payable in cash = Output tax − Input tax credit', 'If ITC exceeds output tax in a month, the excess sits in your electronic credit ledger and rolls forward. It is not refunded, except for exports and inverted-duty cases.')}
+        ${formula('Net GST payable in cash = Output tax − Input tax credit', 'If ITC exceeds output tax, the excess sits in your electronic credit ledger and rolls forward; refunds exist only for exports and inverted-duty cases.')}
         ${diagrams.flow(
           [
             { label: 'Purchase invoice', sub: 'GST paid to supplier', tone: 'b' },
@@ -77,10 +76,10 @@ export default {
           ],
           { caption: 'Blocked credits under section 17(5)' }
         )}
-        <p>Two related rules. <strong>Capital goods</strong> (a laptop, an embroidery frame, a business-only e-rickshaw) get
-        <strong>full credit in the month of purchase</strong>, provided you do not also claim income-tax depreciation on the GST part of the cost.
-        And when purchases serve both <strong>taxable and exempt</strong> sales, say a kirana selling 18% soap and 0% loose atta from one shop,
-        common credits like rent and electricity are allowed only <strong>in proportion</strong> to taxable turnover (Rules 42 and 43).</p>
+        <p>Two related rules. <strong>Capital goods</strong> (a laptop, an embroidery frame) get <strong>full credit in the month of purchase</strong>,
+        provided you do not also claim income-tax depreciation on the GST part of the cost. And when purchases serve both
+        <strong>taxable and exempt</strong> sales, say a kirana selling 18% soap and 0% loose atta, common credits like rent are allowed
+        only <strong>in proportion</strong> to taxable turnover (Rules 42 and 43).</p>
       `
     },
     {
@@ -112,15 +111,15 @@ export default {
         })}
         ${example({
           title: 'Noor Crafts: one month of GST, start to finish',
-          scenario: 'In a busy month Sana buys shawls worth ₹3,00,000 at 5% from weavers in J&K (CGST + SGST), packaging worth ₹20,000 at 18% from a Srinagar vendor (CGST + SGST), and courier services worth ₹15,000 at 18% billed by the courier\'s Delhi office (IGST). She sells shawls worth ₹6,00,000 at 18%: half to customers in J&K, half to boutiques in Delhi and Mumbai.',
+          scenario: 'In one month Sana buys shawls worth ₹3,00,000 at 5% from weavers in J&K (CGST + SGST), packaging worth ₹20,000 at 18% from a Srinagar vendor (CGST + SGST), and courier services worth ₹15,000 at 18% billed by the courier\'s Delhi office (IGST). She sells shawls worth ₹6,00,000 at 18%: half within J&K, half to boutiques in Delhi and Mumbai.',
           steps: [
-            { label: 'Output tax.', html: 'Intra-state ₹3,00,000 × 18% = ₹54,000 as CGST ₹27,000 + SGST ₹27,000. Inter-state ₹3,00,000 × 18% = IGST ₹54,000. Total output tax <strong>₹1,08,000</strong>.' },
-            { label: 'ITC by head.', html: 'Shawls: ₹3,00,000 × 5% = ₹15,000 as CGST ₹7,500 + SGST ₹7,500. Packaging: ₹20,000 × 18% = ₹3,600 as CGST ₹1,800 + SGST ₹1,800. Courier: ₹15,000 × 18% = IGST ₹2,700. Credit: IGST ₹2,700, CGST ₹9,300, SGST ₹9,300, total <strong>₹21,300</strong>.' },
-            { label: 'Set off IGST credit first.', html: 'IGST credit ₹2,700 against IGST payable ₹54,000. IGST still due: ₹51,300. No IGST credit is left to move to CGST or SGST.' },
-            { label: 'Set off CGST and SGST credit.', html: 'CGST ₹27,000 − ₹9,300 = ₹17,700 due. SGST ₹27,000 − ₹9,300 = ₹17,700 due.' },
-            { label: 'Net cash payment.', html: 'IGST ₹51,300 + CGST ₹17,700 + SGST ₹17,700 = <strong>₹86,700</strong>, paid through a PMT-06 challan into the electronic cash ledger before filing GSTR-3B.' }
+            { label: 'Output tax.', html: 'Intra-state ₹3,00,000 × 18% = CGST ₹27,000 + SGST ₹27,000. Inter-state ₹3,00,000 × 18% = IGST ₹54,000. Total <strong>₹1,08,000</strong>.' },
+            { label: 'ITC by head.', html: 'Shawls ₹3,00,000 × 5% = CGST ₹7,500 + SGST ₹7,500. Packaging ₹20,000 × 18% = CGST ₹1,800 + SGST ₹1,800. Courier ₹15,000 × 18% = IGST ₹2,700. Credit: IGST ₹2,700, CGST ₹9,300, SGST ₹9,300, total <strong>₹21,300</strong>.' },
+            { label: 'Set off IGST credit first.', html: 'IGST ₹54,000 − ₹2,700 = ₹51,300 still due. No IGST credit is left to move to CGST or SGST.' },
+            { label: 'Set off CGST and SGST credit.', html: 'CGST ₹27,000 − ₹9,300 = ₹17,700. SGST ₹27,000 − ₹9,300 = ₹17,700.' },
+            { label: 'Net cash payment.', html: 'IGST ₹51,300 + CGST ₹17,700 + SGST ₹17,700 = <strong>₹86,700</strong>, paid by PMT-06 challan into the electronic cash ledger before filing GSTR-3B.' }
           ],
-          result: 'Output ₹1,08,000 − ITC ₹21,300 = ₹86,700 in cash. The 5% rate on shawl purchases against 18% on sales is why Sana\'s credit covers only a fifth of her output tax: she adds a lot of value, and GST taxes exactly that.'
+          result: 'Output ₹1,08,000 − ITC ₹21,300 = ₹86,700 in cash. Buying at 5% and selling at 18% is why Sana\'s credit covers only a fifth of her output tax: she adds a lot of value, and GST taxes exactly that.'
         })}
         ${table(
           ['Head', 'Output tax', 'ITC available', 'Credit used', 'Cash payable'],
@@ -138,10 +137,9 @@ export default {
       heading: 'What this means for a business owner',
       short: 'For owners',
       html: `
-        <p>ITC is money. Every ₹100 of credit you fail to claim is ₹100 of cost that a competitor who did claim it does not carry.
+        <p>ITC is money. Every ₹100 of credit you fail to claim is ₹100 of cost that a competitor who claimed it does not carry.
         Four habits protect it: give your GSTIN to every supplier and insist on a tax invoice, not a cash memo; reconcile purchases
-        with GSTR-2B before filing GSTR-3B; pay suppliers within 180 days; and buy capital goods in the business name, because that
-        credit is often the biggest single credit of the year.</p>
+        with GSTR-2B before filing GSTR-3B; pay suppliers within 180 days; buy capital goods in the business name.</p>
         ${callout('tip', 'When choosing between two suppliers, compare the price <em>after</em> credit. A registered weaver at ₹4,000 + 5% GST costs you ₹4,000 once you claim the ₹200. An unregistered weaver at ₹4,100 with no GST costs more, because there is nothing to claim.')}
         ${callout('note', 'Rates, rules and dates here are as of FY 2026-27 (October 2026). ITC rules change by amendment and circular, so verify on <strong>gst.gov.in</strong> and in your own GSTR-2B before claiming. This is educational material, not professional tax advice.')}
       `

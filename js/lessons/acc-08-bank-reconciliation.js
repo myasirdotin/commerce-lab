@@ -124,10 +124,9 @@ export default {
           'Pass the entries for bank charges, interest, direct credits, dishonoured cheques and auto-debits. Chase any unidentified credit until you know which customer paid.',
           'Prepare the BRS from the adjusted balance. Sign and date it, and keep it with the statement; your CA and any auditor will ask for it.'
         ], { title: 'Five steps' })}
-        <p><strong>How often?</strong> Monthly is the minimum for any business with a bank account. A shop or café that takes fifty UPI payments
-        a day should do it <strong>weekly</strong>, because the settlement from the UPI app or payment gateway arrives in the bank as one lump,
-        net of fees, a day or two after the sales, and a missing day is invisible until you reconcile. An unpresented cheque older than three
-        months is stale and should be reversed in the cash book.</p>
+        <p><strong>How often?</strong> Monthly is the minimum. A shop or café taking fifty UPI payments a day should do it <strong>weekly</strong>,
+        because gateway settlements arrive as one lump, net of fees, a day or two late, and a missing day is invisible until you reconcile.
+        An unpresented cheque older than three months is stale and should be reversed in the cash book.</p>
       `
     },
     {

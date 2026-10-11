@@ -10,9 +10,9 @@ export default {
   title: 'Cash book & petty cash',
 
   intro: `<p>Money is the one thing every business touches every day, so it gets its own book. The <strong>cash book</strong> records
-    every rupee received and paid, in cash and through the bank, and because it is written in ledger form it is the only book that is
-    both a journal and a ledger at once. The <strong>petty cash book</strong> is its small cousin for the ₹40 auto fare and the ₹85 speed post,
-    kept so those tiny payments do not clutter the main book.</p>`,
+    every rupee received and paid, in cash and through the bank, and because it is written in ledger form it is both a journal and
+    a ledger at once. The <strong>petty cash book</strong> is its small cousin for the ₹40 auto fare and the ₹85 speed post, so tiny
+    payments do not clutter the main book.</p>`,
 
   outcomes: [
     'Write up a single, double or triple column cash book and balance it at the end of a period.',
@@ -25,9 +25,8 @@ export default {
       heading: 'Money in, money out: one book for cash and bank',
       short: 'The picture',
       html: `
-        <p>Think of two pockets. One is the cash drawer at the counter; the other is the bank account that receives UPI and NEFT.
-        Receipts go in, payments come out, and sometimes money just moves from one pocket to the other. The cash book tracks both pockets
-        side by side.</p>
+        <p>Think of two pockets: the cash drawer at the counter and the bank account that receives UPI and NEFT. Receipts go in,
+        payments come out, and sometimes money just moves from one pocket to the other. The cash book tracks both side by side.</p>
         ${diagrams.flow(
           [
             { label: 'Receipts', sub: 'sales, debtors, UPI', tone: 'a' },
@@ -40,7 +39,7 @@ export default {
         )}
         <p>The cash book is a <strong>journal</strong> because transactions are first recorded here, in date order, with a narration.
         It is a <strong>ledger</strong> because the Cash column <em>is</em> the Cash account and the Bank column <em>is</em> the Bank account;
-        no separate Cash A/c or Bank A/c exists in the ledger. The balance of a cash column is always a debit (you cannot pay out cash you do not have);
+        no separate Cash A/c or Bank A/c exists. A cash column always balances as a debit (you cannot pay out cash you do not have);
         a bank column can show a credit balance, which means an overdraft.</p>
       `
     },

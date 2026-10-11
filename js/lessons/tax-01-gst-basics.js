@@ -83,7 +83,7 @@ export default {
         )}
         ${example({
           title: 'Noor Crafts bills a shawl two ways, and a walnut box',
-          scenario: 'Sana sells one pashmina shawl (list price ₹7,000, 18%) to a walk-in customer in Srinagar and an identical one to a boutique in Delhi. She also sells a walnut box (₹1,500, 5%) to the Srinagar customer. Prices are before tax.',
+          scenario: 'Sana sells a pashmina shawl (₹7,000 before tax, 18%) to a walk-in customer in Srinagar and an identical one to a boutique in Delhi, plus a walnut box (₹1,500, 5%) to the Srinagar customer.',
           steps: [
             { label: 'Shawl to the Srinagar customer (intra-state).', html: 'CGST 9% × ₹7,000 = <strong>₹630</strong>; SGST 9% × ₹7,000 = <strong>₹630</strong>. Invoice total ₹7,000 + ₹1,260 = <strong>₹8,260</strong>.' },
             { label: 'Shawl to the Delhi boutique (inter-state).', html: 'IGST 18% × ₹7,000 = <strong>₹1,260</strong>. Invoice total <strong>₹8,260</strong>. The boutique will claim ₹1,260 as IGST credit.' },
@@ -98,7 +98,7 @@ export default {
             ['Shawl, Delhi', inr(7000), '18%', '—', '—', inr(1260), inr(8260)],
             ['Box, Srinagar', inr(1500), '5%', '₹37.50', '₹37.50', '—', inr(1575)]
           ],
-          { align: ['l', 'r', 'r', 'r', 'r', 'r', 'r'], caption: 'Three invoices from Noor Crafts' }
+          { align: ['l', 'r', 'r', 'r', 'r', 'r', 'r'] }
         )}
       `
     },
@@ -117,7 +117,7 @@ export default {
             ${svg.box(370, 20, 80, 60, '1', { tone: 'c', sub: 'Entity no. (1)', size: 18 })}
             ${svg.box(460, 20, 80, 60, 'Z', { tone: 'n', sub: 'Default (1)', size: 18 })}
             ${svg.box(550, 20, 80, 60, '5', { tone: 'd', sub: 'Check digit', size: 18 })}
-            ${svg.text(320, 115, '2 + 10 + 1 + 1 + 1 = 15 characters. One PAN can hold one GSTIN per state; the entity number counts them.', { size: 11, tone: 'muted' })}
+            ${svg.text(320, 115, '2 + 10 + 1 + 1 + 1 = 15 characters. One PAN, one GSTIN per state; the entity number counts them.', { size: 11, tone: 'muted' })}
           `
         })}
         <p>Whether you <em>must</em> register depends on <strong>aggregate turnover</strong>: all your taxable, exempt and
@@ -161,7 +161,7 @@ export default {
     'Same state: <strong>CGST + SGST</strong>, half each. Different state: <strong>IGST</strong> at the full rate. Place of supply decides; the total is identical.',
     'A GSTIN is <strong>15 characters</strong>: state code (2) + PAN (10) + entity number + Z + check digit.',
     'Registration is compulsory above ₹40 lakh (goods) or ₹20 lakh (services), and <strong>from the first sale</strong> if you sell inter-state or online.',
-    'Tax = taxable value × rate. Under <strong>reverse charge</strong> the buyer pays the tax directly, in cash, then claims it as credit.'
+    'Under <strong>reverse charge</strong> the buyer pays the tax directly, in cash, then claims it as credit.'
   ],
 
   practice: [
