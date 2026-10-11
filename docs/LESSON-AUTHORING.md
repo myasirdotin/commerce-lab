@@ -66,7 +66,7 @@ Use **Indian number grouping** via `inr(n)` → `₹1,50,000`. Use UPI, GST, kir
 
 **TDS (thresholds after Budget 2025)**
 - 194C contractors: 1% (individual/HUF) / 2% (others); single bill > ₹30,000 or yearly aggregate > ₹1,00,000.
-- 194J professional/technical fees: 10% (2% technical); threshold ₹50,000/yr. 194H commission: 2%; threshold ₹20,000. 194I rent: 10% building, 2% machinery; threshold ₹6,00,000/yr. 194Q purchase of goods > ₹50L/yr: 0.1%.
+- 194J professional/technical fees: 10% (2% technical); threshold ₹50,000/yr. 194H commission: 2%; threshold ₹20,000. 194I rent: 10% building, 2% machinery; threshold ₹6,00,000/yr. 194Q purchase of goods > ₹50L/yr: 0.1%. 194-O e-commerce operator on seller payouts: 0.1% (cut from 1% w.e.f. 1 Oct 2024). GST TCS by e-commerce operators (section 52): 0.5%.
 - Individuals/HUF must deduct only if their turnover exceeded ₹1 crore (business) / ₹50L (profession) in the previous year (except 194M/194-IB). Need a TAN. Deposit by 7th of next month (30 April for March). Quarterly return 26Q: 31 Jul, 31 Oct, 31 Jan, 31 May. Issue Form 16A.
 
 **Registrations & structure**
