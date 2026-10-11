@@ -59,7 +59,7 @@ export default {
             ['194C', 'Contractors and sub-contractors: job work, courier, printing, catering, advertising', '1% if payee is an individual or HUF; 2% for others', 'Single bill above ₹30,000, or yearly total above ₹1,00,000'],
             ['194J', 'Professional fees (CA, lawyer, photographer, designer); technical services', '10% professional; 2% technical', '₹50,000'],
             ['194H', 'Commission and brokerage (agents, marketplaces charging you commission)', '2%', '₹20,000'],
-            ['194I', 'Rent', '10% for land and buildings; 2% for plant and machinery', '₹6,00,000'],
+            ['194I', 'Rent', '10% for land and buildings; 2% for plant and machinery', '₹50,000 per month or part of a month'],
             ['194Q', 'Purchase of goods from one seller', '0.1% on the amount above ₹50 lakh', 'Purchases above ₹50 lakh from that seller (buyer turnover above ₹10 crore)'],
             ['194-IB', 'Rent paid by individuals or HUFs not covered by 194I', '2%', 'Rent above ₹50,000 per month; deduct once a year, PAN instead of TAN']
           ],
@@ -79,7 +79,7 @@ export default {
           steps: [
             { label: 'Photographer for the new catalogue, ₹60,000 plus GST, paid 20 August.', html: 'Professional fee, 194J, above ₹50,000. TDS 10% × ₹60,000 = <strong>₹6,000</strong>. She pays ₹54,000 + GST and deposits ₹6,000 by <strong>7 September</strong>.' },
             { label: 'Courier company (a private limited company), ₹1,40,000 over the year in monthly bills.', html: '194C at 2% because the payee is a company. No single bill exceeds ₹30,000, but the running total passes ₹1,00,000 in December, so from the December payment she deducts 2% on the full ₹1,05,000 paid to date (₹2,100), then 2% on each later bill. Year total 2% × ₹1,40,000 = <strong>₹2,800</strong>. December\'s deduction is deposited by <strong>7 January</strong>; March\'s by <strong>30 April</strong>.' },
-            { label: 'Workshop rent, ₹8,000 a month = ₹96,000 a year.', html: 'Far below the ₹6,00,000 threshold of 194I, and below the ₹50,000 a month of 194-IB: <strong>no TDS</strong>.' },
+            { label: 'Workshop rent, ₹8,000 a month = ₹96,000 a year.', html: 'Well below the ₹50,000-a-month threshold of both 194I and 194-IB: <strong>no TDS</strong>.' },
             { label: 'Marketplace settlement: gross sales ₹2,00,000 in October.', html: 'Here Sana is the <em>payee</em>. The marketplace deducts TDS under <strong>194-O at 0.1%</strong> = ₹200 (her yearly marketplace sales exceed the ₹5 lakh exemption for individuals) and GST TCS at <strong>0.5%</strong> = ₹1,000, after its 15% commission of ₹30,000 plus ₹5,400 GST. She receives ₹2,00,000 − ₹30,000 − ₹5,400 − ₹200 − ₹1,000 = <strong>₹1,63,400</strong>.' }
           ],
           result: 'Sana deducts ₹8,800 in the year (₹6,000 + ₹2,800), files four 26Q returns and issues two Form 16As. The ₹200 deducted from her shows in her Form 26AS and reduces her own income tax; the ₹1,000 of GST TCS shows on the GST portal and, once accepted, lands in her electronic cash ledger.'
@@ -144,7 +144,7 @@ export default {
   keyPoints: [
     'TDS is the <strong>payee\'s</strong> tax, deducted by the <strong>payer</strong> and deposited against the payee\'s PAN; the payee claims it through Form 26AS.',
     'A proprietor deducts under the common sections only if last year\'s turnover exceeded <strong>₹1 crore</strong> (₹50 lakh for professionals). Companies and firms always deduct. You need a TAN.',
-    'Core rates: 194C contractors <strong>1% / 2%</strong> (₹30,000 single or ₹1,00,000 yearly); 194J professional <strong>10%</strong> (₹50,000); 194H commission <strong>2%</strong> (₹20,000); 194I rent <strong>10%</strong> building, 2% machinery (₹6,00,000); 194Q purchases <strong>0.1%</strong> above ₹50 lakh.',
+    'Core rates: 194C contractors <strong>1% / 2%</strong> (₹30,000 single or ₹1,00,000 yearly); 194J professional <strong>10%</strong> (₹50,000); 194H commission <strong>2%</strong> (₹20,000); 194I rent <strong>10%</strong> building, 2% machinery (above ₹50,000 a month); 194Q purchases <strong>0.1%</strong> above ₹50 lakh.',
     'Deposit by the <strong>7th</strong> of the next month (30 April for March); file 26Q by 31 July, 31 October, 31 January and 31 May; issue Form 16A within 15 days.',
     'Not deducting costs you <strong>30% of the expense</strong> under 40(a)(ia), plus interest at 1% (late deduction) or 1.5% (late deposit) a month.',
     'Check what others deducted from you (194-O, GST TCS, customers\' TDS) in 26AS, AIS and the GST portal, and claim it.'

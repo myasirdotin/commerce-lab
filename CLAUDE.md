@@ -92,6 +92,6 @@ _Last updated 2026-10-11._
 - Open — facts flagged uncertain: walnut-box HSN/GST rate; trademark class for wooden boxes; Income-tax Act 2025
   section numbers (hedged callouts in `tax-04`, `tax-05`).
 - Compliance check 2026-10-11: re-verified 7 seeded entries (sources made specific), added 5 changes + 2 due-date extensions to `js/data/compliance-updates.js`.
-- Open — lessons out of date after that check: `start-08`, `tax-04`, `start-02` (non-audit business ITR is now 31 Aug, not 31 July);
-  `tax-05` (194I rent threshold is ₹50,000 per month, not ₹6,00,000 a year); `tax-02` blocked-ITC list once the 57th Council changes are notified.
+- 2026-10-11: lessons `start-08`, `tax-04`, `start-02`, `tax-05` updated (business ITR due 31 Aug; 194I rent threshold ₹50,000/month; new section numbers).
+- Open — `tax-02` blocked-ITC list needs revisiting once the 57th GST Council changes are notified.
 - Ideas: lesson search across full text; a "recently viewed" list on the Learn hub; printable revision sheets.

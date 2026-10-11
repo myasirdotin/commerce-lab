@@ -161,12 +161,12 @@ export default {
         ${terms([
           ['Advance tax', 'If the year\'s tax (after TDS) exceeds <strong>₹10,000</strong>, pay in instalments: <strong>15% by 15 June, 45% by 15 September, 75% by 15 December, 100% by 15 March</strong>; presumptive taxpayers pay it all by 15 March. Shortfalls cost 1% a month under 234B (less than 90% paid in advance) and 234C (instalment missed).'],
           ['ITR form', '<strong>ITR-3</strong> for business income computed normally; <strong>ITR-4 (Sugam)</strong> for 44AD or 44ADA with total income up to ₹50 lakh. ITR-5 for firms and LLPs, ITR-6 for companies.'],
-          ['Due dates', '<strong>31 July</strong> without audit; <strong>31 October</strong> with a tax audit. A belated return is allowed until 31 December with a fee and loss of some carry-forwards.'],
+          ['Due dates', '<strong>31 August</strong> for business or professional income without audit (31 July for ITR-1/ITR-2, which a business cannot use); <strong>31 October</strong> with a tax audit. The government sometimes extends these: for FY 2025-26 audit cases were extended to 21 November 2026. A belated return is allowed until 31 December with a fee and loss of some carry-forwards.'],
           ['Tax audit (44AB)', 'Compulsory if turnover exceeds <strong>₹1 crore</strong> (₹10 crore when cash receipts and payments are each 5% or less), professional receipts exceed ₹50 lakh, or you declare below the presumptive rate while above the basic exemption.'],
           ['Form 26AS and AIS', 'Download both from incometax.gov.in before filing. 26AS lists TDS and TCS credited to your PAN; AIS lists what banks, marketplaces and the GST system reported about you. Anything there but missing from your return invites a notice.']
         ])}
         ${callout('note', 'Slabs, rebate, presumptive limits and due dates here are for FY 2026-27 (assessment year 2027-28), as of October 2026. The Finance Act changes these almost every year; verify on <strong>incometax.gov.in</strong> and the tax calculator there before filing. This is educational material, not professional tax advice.')}
-        ${callout('india', 'From 1 April 2026 the <strong>Income-tax Act, 2025</strong> replaces the 1961 Act, and section numbers changed even where the rule stayed the same. This lesson uses the familiar 1961 numbers because CAs, software and older guides still use them. Commonly cited mappings: rebate 87A is now section 156, presumptive 44AD/44ADA are grouped around section 58, and cash-expense limit 40A(3) is around section 41. Published mappings still disagree in places, so confirm the new number on incometax.gov.in before quoting it in a return.', 'New Act, new numbers')}
+        ${callout('india', 'From 1 April 2026 the <strong>Income-tax Act, 2025</strong> replaces the 1961 Act, and section numbers changed even where the rule stayed the same. This lesson uses the familiar 1961 numbers because CAs, software and older guides still use them. Commonly cited mappings: rebate 87A is now section 156, presumptive 44AD/44ADA are section 58, TDS sections are consolidated into a table in section 393, and cash-expense limit 40A(3) is around section 41. Returns for FY 2025-26 are still filed under the 1961 Act. Published mappings still disagree in places, so confirm the new number on incometax.gov.in before quoting it in a return.', 'New Act, new numbers')}
       `
     }
   ],
@@ -176,7 +176,7 @@ export default {
     'New regime FY 2026-27: nil to ₹4L, 5% to ₹8L, 10% to ₹12L, 15% to ₹16L, 20% to ₹20L, 25% to ₹24L, 30% above. <strong>Rebate 87A makes tax nil up to ₹12 lakh</strong> total income; 4% cess on the tax.',
     'Taxable business income = book profit + disallowed items (personal, <strong>cash above ₹10,000 per person per day</strong>, fines, unpaid 43B items) − Income-tax depreciation instead of book depreciation.',
     '44AD deems profit at <strong>6% digital / 8% cash</strong> of turnover up to ₹2 crore (₹3 crore); 44ADA deems 50% for professionals up to ₹50 lakh. No books or audit, but a five-year lock if you leave.',
-    'Advance tax by 15 June, 15 September, 15 December, 15 March (all by 15 March under presumptive). ITR-3 normal, ITR-4 presumptive; file by 31 July, or 31 October with audit. Check 26AS and AIS first.'
+    'Advance tax by 15 June, 15 September, 15 December, 15 March (all by 15 March under presumptive). ITR-3 normal, ITR-4 presumptive; file by 31 August, or 31 October with audit. Check 26AS and AIS first.'
   ],
 
   practice: [
@@ -206,9 +206,9 @@ export default {
     },
     {
       q: 'Which form and due date apply to a proprietor computing business income normally, with turnover of ₹70 lakh and no tax audit?',
-      options: ['ITR-4 by 31 July', 'ITR-3 by 31 July', 'ITR-3 by 31 October', 'ITR-1 by 31 July'],
+      options: ['ITR-4 by 31 August', 'ITR-3 by 31 August', 'ITR-3 by 31 October', 'ITR-1 by 31 July'],
       answer: 1,
-      why: 'Normal computation of business income uses ITR-3. ITR-4 is for presumptive income. 31 October applies only when a tax audit is required, which starts above ₹1 crore (₹10 crore with low cash).'
+      why: 'Normal computation of business income uses ITR-3. ITR-4 is for presumptive income. Business returns without audit are due 31 August (since Budget 2026); 31 October applies only when a tax audit is required, which starts above ₹1 crore (₹10 crore with low cash).'
     },
     {
       q: 'Sana used 44AD for three years and then switched to normal computation to claim a loss. What follows?',

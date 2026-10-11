@@ -87,7 +87,7 @@ export default {
         ${table(
           ['Structure', 'Typical setup cost', 'Time', 'Every year, without fail'],
           [
-            ['Sole proprietorship', '₹0 to ₹3,000 (Udyam and GST are free; Shop and Establishment fee varies by state)', 'Same day to 1 week', 'ITR-3 or ITR-4 by 31 July; GST returns if registered; tax audit only above ₹1 crore turnover (₹10 crore if cash is under 5%)'],
+            ['Sole proprietorship', '₹0 to ₹3,000 (Udyam and GST are free; Shop and Establishment fee varies by state)', 'Same day to 1 week', 'ITR-3 or ITR-4 by 31 August; GST returns if registered; tax audit only above ₹1 crore turnover (₹10 crore if cash is under 5%)'],
             ['Partnership', '₹3,000 to ₹10,000 (stamp duty on the deed by state, Registrar fee, drafting)', '1 to 2 weeks', 'ITR-5; each partner\'s own ITR; GST returns; audit above the same turnover limits'],
             ['LLP', '₹8,000 to ₹20,000 (two DSCs, FiLLiP fee, agreement stamp duty, professional fee)', '2 to 3 weeks', 'Form 11 by 30 May, Form 8 by 30 October, ITR-5, DIR-3 KYC for designated partners; audit above ₹40 lakh turnover'],
             ['OPC / Pvt Ltd', '₹10,000 to ₹25,000 (DSCs, state stamp duty, professional fee; MCA waives its fee for authorised capital up to ₹15 lakh)', '1 to 2 weeks', 'Statutory audit regardless of size, AOC-4 and MGT-7 or MGT-7A, ITR-6 by 31 October, board meetings, DIR-3 KYC, INC-20A within 180 days of incorporation']

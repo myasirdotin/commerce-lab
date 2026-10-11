@@ -61,7 +61,7 @@ export default {
             ['GSTR-3B quarterly (QRMP)', '22nd / 24th of month after quarter (24th for J&K)', 'Yes'],
             ['TDS deposit; Form 26Q', '7th of next month (30 April for March); 26Q by 31 Jul, 31 Oct, 31 Jan, 31 May', 'Not yet: individuals deduct only if last year\'s turnover was above ' + inr(10000000)],
             ['Advance tax', '15 Jun 15%, 15 Sep 45%, 15 Dec 75%, 15 Mar 100% (44AD: all by 15 Mar)', 'Yes, if tax for the year exceeds ' + inr(10000)],
-            ['ITR (income tax return)', '31 July (no audit); 31 October (audit cases)', 'Yes, 31 July'],
+            ['ITR (income tax return)', '31 August for a business without audit (ITR-1/ITR-2 filers: 31 July); 31 October with a tax audit', 'Yes, 31 August'],
             ['GSTR-9 annual return', '31 December', 'Optional below ' + inr(20000000) + ' turnover; still worth filing'],
             ['Udyam profile', 'Review once a year; it refreshes turnover and investment from ITR and GST data', 'Yes, check after filing the ITR'],
             ['Shop &amp; Establishment', 'Renewal period set by the state; check the validity date on the certificate', 'Yes'],
@@ -83,7 +83,7 @@ export default {
           [
             { at: '15 Jun', label: 'Advance tax 15%', tone: 'c' },
             { at: '13 / 24 Jul', label: 'Q1 GSTR-1 and 3B', tone: 'a' },
-            { at: '31 Jul', label: 'ITR for FY 2025-26', tone: 'e' },
+            { at: '31 Aug', label: 'ITR for FY 2025-26', tone: 'e' },
             { at: '15 Sep', label: 'Advance tax 45%', tone: 'c' },
             { at: '13 / 24 Oct', label: 'Q2 GSTR-1 and 3B', tone: 'a' },
             { at: '15 Dec', label: 'Advance tax 75%', tone: 'c' },
@@ -91,7 +91,7 @@ export default {
             { at: '13 / 24 Jan', label: 'Q3 GSTR-1 and 3B', tone: 'a' },
             { at: '15 Mar', label: 'Advance tax 100%', tone: 'c' }
           ],
-          { title: 'FY 2026-27 for Noor Crafts', caption: 'Q4 (January to March) closes in April 2027 with GSTR-1 by 13 April and GSTR-3B by 24 April, and the ITR for this year follows on 31 July 2027.' }
+          { title: 'FY 2026-27 for Noor Crafts', caption: 'Q4 (January to March) closes in April 2027 with GSTR-1 by 13 April and GSTR-3B by 24 April, and the ITR for this year follows on 31 August 2027.' }
         )}
         ${table(
           ['Month', 'What Sana does', 'Due dates'],
@@ -99,8 +99,8 @@ export default {
             ['April 2026', 'File Q4 FY 2025-26 returns; confirm QRMP option for Q1; year-end stock count written up', 'GSTR-1 13 Apr; GSTR-3B 24 Apr'],
             ['May', 'IFF for April; pay April GST', 'IFF 13 May; PMT-06 25 May'],
             ['June', 'IFF for May; pay May GST; first advance tax', 'IFF 13 Jun; advance tax 15 Jun; PMT-06 25 Jun'],
-            ['July', 'Q1 returns; file ITR for FY 2025-26 with the CA', 'GSTR-1 13 Jul; GSTR-3B 24 Jul; ITR 31 Jul'],
-            ['August', 'IFF for July; pay July GST; review Udyam profile after ITR', 'IFF 13 Aug; PMT-06 25 Aug'],
+            ['July', 'Q1 returns; send FY 2025-26 books to the CA for the ITR', 'GSTR-1 13 Jul; GSTR-3B 24 Jul'],
+            ['August', 'IFF for July; pay July GST; file ITR for FY 2025-26; review Udyam profile after ITR', 'IFF 13 Aug; PMT-06 25 Aug; ITR 31 Aug'],
             ['September', 'IFF for August; pay August GST; second advance tax', 'IFF 13 Sep; advance tax 15 Sep; PMT-06 25 Sep'],
             ['October', 'Q2 returns; pre-festival stock means bigger PMT-06 payments ahead', 'GSTR-1 13 Oct; GSTR-3B 24 Oct'],
             ['November', 'IFF for October; pay October GST', 'IFF 13 Nov; PMT-06 25 Nov'],
@@ -142,7 +142,7 @@ export default {
           ],
           { align: ['r', 'r', 'r', 'r'], caption: 'The same missed return at 7, 30 and 90 days (before any late-fee cap)' }
         )}
-        ${callout('warning', 'Income tax has its own meter. Filing the ITR after 31 July costs a late fee of ' + inr(5000) + ' (' + inr(1000) + ' if total income is up to ' + inr(500000) + ') under Section 234F, plus 1% a month interest on unpaid tax, and you lose the right to carry forward business losses. Missing advance tax instalments adds 1% a month under 234B/234C even if the return itself is on time.')}
+        ${callout('warning', 'Income tax has its own meter. Filing the ITR after its due date (31 August for a business without audit) costs a late fee of ' + inr(5000) + ' (' + inr(1000) + ' if total income is up to ' + inr(500000) + ') under Section 234F, plus 1% a month interest on unpaid tax, and you lose the right to carry forward business losses. Missing advance tax instalments adds 1% a month under 234B/234C even if the return itself is on time.')}
       `
     },
     {
@@ -164,7 +164,7 @@ export default {
 
   keyPoints: [
     'QRMP (turnover up to ' + inr(50000000) + '): IFF by the 13th, PMT-06 by the 25th, quarterly GSTR-1 by the 13th and GSTR-3B by the 22nd/24th after the quarter. Monthly filers: GSTR-1 11th, GSTR-3B 20th.',
-    'Advance tax is cumulative: 15% by 15 June, 45% by 15 September, 75% by 15 December, 100% by 15 March (all by 15 March under 44AD). ITR by 31 July.',
+    'Advance tax is cumulative: 15% by 15 June, 45% by 15 September, 75% by 15 December, 100% by 15 March (all by 15 March under 44AD). Business ITR by 31 August (31 October with audit).',
     'TDS deposit by the 7th and 26Q quarterly apply only once an individual\'s previous-year turnover crosses ' + inr(10000000) + '.',
     'Annual housekeeping: GSTR-9 by 31 December (optional below ' + inr(20000000) + '), Udyam review, Shop &amp; Establishment validity, trademark renewal every 10 years.',
     'A 30-day late GSTR-3B with ' + inr(20000) + ' due costs ' + inr(1500) + ' late fee + ' + inr(296) + ' interest = ' + inr(1796) + ', plus your dealers\' delayed ITC. Put every date in your phone.'
@@ -203,7 +203,7 @@ export default {
     },
     {
       q: 'Which of these does NOT apply to a sole proprietor with turnover of ' + inr(6000000) + ' and no TDS obligation?',
-      options: ['ITR by 31 July', 'Advance tax instalments', 'Form 26Q every quarter', 'Reviewing the Udyam profile yearly'],
+      options: ['ITR by 31 August', 'Advance tax instalments', 'Form 26Q every quarter', 'Reviewing the Udyam profile yearly'],
       answer: 2,
       why: 'Form 26Q is the quarterly TDS return; it exists only if you deduct TDS, and individuals must deduct only once the previous year\'s turnover exceeded ' + inr(10000000) + '. The other three apply.'
     }
