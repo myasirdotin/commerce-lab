@@ -57,16 +57,16 @@ Use **Indian number grouping** via `inr(n)` → `₹1,50,000`. Use UPI, GST, kir
 - ITC conditions: tax invoice, goods/services received, supplier has filed and paid (appears in GSTR-2B), pay supplier within 180 days. Blocked: personal use, motor vehicles (mostly), food & beverages, club memberships, works contract for buildings.
 
 **Income tax (new regime is default; FY 2026-27 unchanged by Budget 2026)**
-- **Income-tax Act, 2025 replaces the 1961 Act from 1 April 2026.** Section numbers changed. Lessons use the familiar 1961 numbers and note the new ones where agreed: 87A → 156, 44AD/44ADA → ~58, 40A(3) → ~41, TDS sections → consolidated in 393. Published mappings conflict in places; always add "verify on incometax.gov.in".
+- **Income-tax Act, 2025 replaces the 1961 Act from 1 April 2026.** Section numbers changed. Lessons use the familiar 1961 numbers and note the new ones where agreed: 87A → 156, 44AD/44ADA → 58, TDS sections → consolidated in the section 393 table (these three checked in the Act's gazette text, 11 Oct 2026); 40A(3) → ~41 (not yet checked). Assent 21 Aug 2025; Income-tax Rules, 2026 notified 20 Mar 2026. Returns for FY 2025-26 (AY 2026-27) still follow the 1961 Act. Always add "verify on incometax.gov.in".
 - New regime slabs: 0-4L nil, 4-8L 5%, 8-12L 10%, 12-16L 15%, 16-20L 20%, 20-24L 25%, above 24L 30%. Rebate u/s 87A up to ₹60,000 → no tax if taxable income ≤ ₹12 lakh. Standard deduction ₹75,000 (salaried). 4% cess.
 - Old regime: 0-2.5L nil, 2.5-5L 5%, 5-10L 20%, above 10L 30%; rebate ₹12,500 up to ₹5L; standard deduction ₹50,000; deductions 80C etc.
 - Presumptive: **44AD** (business) turnover ≤ ₹2 crore (₹3 crore if cash receipts ≤ 5%), deemed profit 6% of digital receipts / 8% of cash. **44ADA** (professionals) receipts ≤ ₹50L (₹75L), deemed profit 50%. No books/audit needed if opted. Must continue 5 years.
-- Advance tax if liability > ₹10,000: 15 Jun 15%, 15 Sep 45%, 15 Dec 75%, 15 Mar 100% (44AD/44ADA taxpayers: 100% by 15 Mar). ITR for non-audit cases due 31 July; audit cases 31 Oct.
+- Advance tax if liability > ₹10,000: 15 Jun 15%, 15 Sep 45%, 15 Dec 75%, 15 Mar 100% (44AD/44ADA taxpayers: 100% by 15 Mar). ITR due dates (staggered by Budget 2026): ITR-1/ITR-2 31 July; non-audit business cases 31 August (ITR-4 for AY 2026-27 was due 31 Aug 2026); audit cases 31 Oct, tax audit report 30 Sep. For AY 2026-27 CBDT Circular 07/2026 extended audit cases to 21 Nov 2026 and the audit report to 21 Oct 2026. (Updated 11 Oct 2026.)
 - Tax audit (44AB): turnover > ₹1 crore (₹10 crore if cash ≤ 5%); professionals > ₹50L.
 
 **TDS (thresholds after Budget 2025)**
 - 194C contractors: 1% (individual/HUF) / 2% (others); single bill > ₹30,000 or yearly aggregate > ₹1,00,000.
-- 194J professional/technical fees: 10% (2% technical); threshold ₹50,000/yr. 194H commission: 2%; threshold ₹20,000. 194I rent: 10% building, 2% machinery; threshold ₹6,00,000/yr. 194Q purchase of goods > ₹50L/yr: 0.1%. 194-O e-commerce operator on seller payouts: 0.1% (cut from 1% w.e.f. 1 Oct 2024). GST TCS by e-commerce operators (section 52): 0.5%.
+- 194J professional/technical fees: 10% (2% technical); threshold ₹50,000/yr. 194H commission: 2%; threshold ₹20,000. 194I rent: 10% building, 2% machinery; threshold ₹50,000 per month or part of a month (the Budget described this as ₹6 lakh a year; corrected 11 Oct 2026). 194Q purchase of goods > ₹50L/yr: 0.1%. 194-O e-commerce operator on seller payouts: 0.1% (cut from 1% w.e.f. 1 Oct 2024). GST TCS by e-commerce operators (section 52): 0.5%.
 - Individuals/HUF must deduct only if their turnover exceeded ₹1 crore (business) / ₹50L (profession) in the previous year (except 194M/194-IB). Need a TAN. Deposit by 7th of next month (30 April for March). Quarterly return 26Q: 31 Jul, 31 Oct, 31 Jan, 31 May. Issue Form 16A.
 
 **Registrations & structure**

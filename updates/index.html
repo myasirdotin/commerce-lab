@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#059669">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../icons/icon-192.png">
+  <title>What's New in Compliance - Commerce Lab</title>
+  <meta name="description" content="Latest changes in GST, income tax, TDS, MSME, company law and other business compliance in India, each with its date and official source, plus upcoming filing due dates.">
+  <link rel="stylesheet" href="../css/commerce-core.css">
+  <link rel="stylesheet" href="../css/commerce-labs.css">
+  <link rel="stylesheet" href="../css/lessons.css">
+</head>
+<body>
+  <!-- Header, mobile drawer, tab bar and footer are rendered by js/nav.js -->
+  <header class="site-header" id="siteHeader"></header>
+
+  <main class="py-4">
+    <div class="container lesson-wrap">
+      <div class="lab-header hub-intro">
+        <div class="badge-tag">Compliance tracker</div>
+        <h1>What's New</h1>
+        <p class="text-muted">Changes in GST, income tax, TDS, MSME, company law and other rules a small business in India must follow. Every item has its date and an official source.</p>
+      </div>
+
+      <div id="checkedBanner"></div>
+
+      <section class="upd-section" aria-labelledby="dueHead">
+        <h2 id="dueHead">📅 Due in the next 45 days</h2>
+        <p class="text-xs text-muted">Usual due dates. The government sometimes extends them; extensions we know of are shown. Always confirm on the portal.</p>
+        <ul class="due-list" id="dueList"></ul>
+      </section>
+
+      <section class="upd-section" aria-labelledby="newHead">
+        <h2 id="newHead">🆕 Rule changes</h2>
+        <nav class="hub-jump" id="areaFilter" aria-label="Filter by area"></nav>
+        <div id="updList"></div>
+      </section>
+
+      <section class="upd-section" aria-labelledby="srcHead">
+        <h2 id="srcHead">🔎 Official sources we check</h2>
+        <ul class="src-list" id="srcList"></ul>
+        <div class="callout callout-warning mt-3"><p>For learning only, not legal or tax advice. Rules change; confirm on the official portal or with your CA before you file.</p></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer mt-5" id="siteFooter"></footer>
+
+  <script type="module">
+    import '../js/core.js';
+    import { COMPLIANCE_META, COMPLIANCE_UPDATES, COMPLIANCE_CALENDAR, SOURCES, AREAS } from '../js/data/compliance-updates.js';
+    import { findLesson } from '../js/lessons/registry.js';
+    import { esc } from '../js/lesson-kit.js';
+
+    const ROOT = new URL('../', location.href);
+    const lessonUrl = (id) => new URL(`learn/lesson.html?id=${encodeURIComponent(id)}`, ROOT).href;
+    const DAY = 86400000;
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const parse = (iso) => { const [y, m, d] = iso.split('-').map(Number); return new Date(y, m - 1, d); };
+    const fmt = (dt) => dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+    const iso = (dt) => `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, '0')}-${String(dt.getDate()).padStart(2, '0')}`;
+
+    // "New since your last visit" marker, kept on this device only.
+    let lastVisit = null;
+    try { lastVisit = localStorage.getItem('commerce_lab_updates_seen'); localStorage.setItem('commerce_lab_updates_seen', iso(today)); } catch (e) { /* ignore */ }
+
+    // ─── Last-checked banner ───
+    const checked = parse(COMPLIANCE_META.lastChecked);
+    const age = Math.round((today - checked) / DAY);
+    const stale = age > COMPLIANCE_META.checkEveryDays;
+    document.getElementById('checkedBanner').innerHTML = `
+      <div class="checked-banner ${stale ? 'stale' : ''}">
+        <span class="cb-ico" aria-hidden="true">${stale ? '⚠️' : '✅'}</span>
+        <div><strong>Last checked: ${fmt(checked)}</strong> <span class="text-muted">(${age === 0 ? 'today' : age === 1 ? 'yesterday' : `${age} days ago`})</span><br>
+        <span class="text-xs text-muted">${stale ? 'This list may be out of date. Check the official sources below before relying on it.' : `${COMPLIANCE_UPDATES.length} changes tracked across ${SOURCES.length} official sources.`}</span></div>
+      </div>`;
+
+    // ─── Upcoming due dates (generated from the calendar rules) ───
+    const horizon = new Date(today.getTime() + 45 * DAY);
+    const due = [];
+    for (let m = 0; m < 3; m++) {
+      const y = today.getFullYear(), mo = today.getMonth() + m;
+      for (const r of COMPLIANCE_CALENDAR.monthly) {
+        const dt = new Date(y, mo, r.day);
+        if (!r.months || r.months.includes(dt.getMonth() + 1)) due.push({ ...r, dt });
+      }
+    }
+    for (const r of COMPLIANCE_CALENDAR.annual) {
+      for (const y of [today.getFullYear(), today.getFullYear() + 1]) due.push({ ...r, dt: new Date(y, r.month - 1, r.day) });
+    }
+    for (const x of COMPLIANCE_CALENDAR.extensions) {
+      const dt = parse(x.date);
+      if (x.replaces) {
+        for (let i = due.length - 1; i >= 0; i--) if (due[i].title === x.replaces && Math.abs(due[i].dt - dt) < 120 * DAY) due.splice(i, 1);
+      }
+      due.push({ ...x, dt, extended: true });
+    }
+    const upcoming = due.filter(d => d.dt >= today && d.dt <= horizon).sort((a, b) => a.dt - b.dt);
+    document.getElementById('dueList').innerHTML = upcoming.length ? upcoming.map(d => {
+      const days = Math.round((d.dt - today) / DAY);
+      return `
+        <li class="due-item ${days <= 7 ? 'soon' : ''}">
+          <div class="due-date"><span class="dd-day">${d.dt.getDate()}</span><span class="dd-mon">${d.dt.toLocaleDateString('en-IN', { month: 'short' })}</span></div>
+          <div class="due-body">
+            <strong>${esc(d.title)}</strong>${d.extended ? ' <span class="badge-xs badge-emerald">Extended</span>' : ''}
+            <span class="text-xs text-muted">${esc(d.area)} · ${esc(d.who)} · ${days === 0 ? 'today' : days === 1 ? 'tomorrow' : `in ${days} days`}</span>
+          </div>
+        </li>`;
+    }).join('') : '<li class="empty-note">Nothing due in the next 45 days.</li>';
+
+    // ─── Rule changes feed ───
+    const updates = [...COMPLIANCE_UPDATES].sort((a, b) => b.date.localeCompare(a.date));
+    const used = AREAS.filter(a => updates.some(u => u.area === a));
+    let area = 'All';
+
+    function renderFilter() {
+      document.getElementById('areaFilter').innerHTML = ['All', ...used].map(a =>
+        `<a href="#" data-area="${esc(a)}"${a === area ? ' class="active" aria-current="true"' : ''}>${esc(a)}</a>`).join('');
+    }
+
+    function renderList() {
+      const shown = updates.filter(u => area === 'All' || u.area === area);
+      document.getElementById('updList').innerHTML = shown.map(u => {
+        const isNew = lastVisit && u.date > lastVisit;
+        const lessons = (u.lessons || []).map(findLesson).filter(Boolean);
+        const statusLabel = { 'in-force': 'In force', upcoming: 'Coming', proposed: 'Proposed' }[u.status] || u.status;
+        return `
+          <article class="upd-card" id="${esc(u.id)}">
+            <div class="upd-tags">
+              <span class="badge-xs">${esc(u.area)}</span>
+              <span class="badge-xs status-${esc(u.status)}">${statusLabel}</span>
+              ${isNew ? '<span class="badge-xs badge-emerald">New for you</span>' : ''}
+              ${u.verified ? '' : '<span class="badge-xs status-proposed">Being verified</span>'}
+            </div>
+            <h3>${esc(u.title)}</h3>
+            <p class="upd-dates text-xs text-muted">Announced ${fmt(parse(u.date))} · ${u.effectiveFrom ? `Applies from ${fmt(parse(u.effectiveFrom))}` : 'Start date not yet notified'}</p>
+            <p>${esc(u.summary)}</p>
+            <p class="upd-action"><strong>What to do:</strong> ${esc(u.action)}</p>
+            <p class="text-xs text-muted">Who: ${esc(u.who)}</p>
+            <div class="upd-links">
+              <a href="${esc(u.source.url)}" target="_blank" rel="noopener">Source: ${esc(u.source.name)} ↗</a>
+              ${lessons.map(l => `<a href="${lessonUrl(l.id)}">📘 ${l.number} ${esc(l.title)}</a>`).join('')}
+            </div>
+          </article>`;
+      }).join('');
+    }
+
+    document.getElementById('areaFilter').addEventListener('click', (e) => {
+      const a = e.target.closest('a[data-area]');
+      if (!a) return;
+      e.preventDefault();
+      area = a.dataset.area;
+      renderFilter(); renderList();
+    });
+    renderFilter(); renderList();
+
+    // ─── Sources ───
+    document.getElementById('srcList').innerHTML = SOURCES.map(s =>
+      `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)} ↗</a> <span class="text-xs text-muted">${esc(s.area)}</span></li>`).join('');
+
+    if (location.hash) { const el = document.querySelector(location.hash); el && el.scrollIntoView(); }
+  </script>
+</body>
+</html>

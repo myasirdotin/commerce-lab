@@ -39,6 +39,7 @@ Local: `C:\xampp\htdocs\commerce-lab` → `http://localhost/commerce-lab/`. Also
 | Labs / tools | `accounting-lab/`, `business-lab/`, `tax-lab/`, `excel-lab/`, `mis-lab/`, `calculators/`, `islamic-standards/`, `textbooks/`, `cheatsheets/`, `projects/`, `quiz/`, `teacher-hub/`, `dashboard/` | Each is one `index.html` + engine in `js/*-engine.js` + data in `js/data/`. |
 | Tax data | `js/data/tax-rules.js` | GST slabs 0/5/18/40% (since 22 Sept 2025), FY `2026-27`. |
 | Glossary & revision | `learn/glossary.html`, `learn/revise.html?hub=<id>` | Built automatically from every lesson's `glossary` and `keyPoints`. No separate data to maintain. |
+| What's New (compliance tracker) | `updates/index.html` ← `js/data/compliance-updates.js` | Dated, officially-sourced rule changes + a filing calendar generated from rules. Maintained by the **compliance-checker** agent (`.claude/agents/compliance-checker.md`); validated by `tests/compliance.test.js`. |
 | Installable app / offline | `manifest.webmanifest`, `sw.js`, `icons/` | Service worker registered from `js/core.js`. Network first, cache as fallback. |
 
 **Six journeys:** Start a Business (`start-*`), Accounting Foundations (`acc-*`), Final Accounts (`fin-*`),
@@ -57,6 +58,9 @@ so the site works both under `/commerce-lab/` and at a Vercel root. Never use `/
 - **New page:** copy an existing lab page's `<head>` (viewport meta with `viewport-fit=cover`, theme-color,
   the manifest/icon links, the CSS links) and the empty header/footer placeholders, and load `js/core.js` as a module.
   Add the page to `PRECACHE` in `sw.js` so it works offline.
+- **Refresh compliance info:** ask for the compliance-checker agent ("run the compliance checker"). It sweeps the
+  official sites, updates `js/data/compliance-updates.js` and LESSON-AUTHORING §4, and lists lessons that need rewriting.
+  Run it at least monthly; the page warns visitors when the last check is over 30 days old.
 - **Renamed or removed a file?** Bump `VERSION` in `sw.js` so phones drop the old cache.
 
 ## 5. Record keeping (do this after every change)
@@ -87,4 +91,7 @@ _Last updated 2026-10-11._
   updated to 2026-27; unused Vite/TypeScript files removed.
 - Open — facts flagged uncertain: walnut-box HSN/GST rate; trademark class for wooden boxes; Income-tax Act 2025
   section numbers (hedged callouts in `tax-04`, `tax-05`).
+- Compliance check 2026-10-11: re-verified 7 seeded entries (sources made specific), added 5 changes + 2 due-date extensions to `js/data/compliance-updates.js`.
+- Open — lessons out of date after that check: `start-08`, `tax-04`, `start-02` (non-audit business ITR is now 31 Aug, not 31 July);
+  `tax-05` (194I rent threshold is ₹50,000 per month, not ₹6,00,000 a year); `tax-02` blocked-ITC list once the 57th Council changes are notified.
 - Ideas: lesson search across full text; a "recently viewed" list on the Learn hub; printable revision sheets.

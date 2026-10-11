@@ -23,7 +23,8 @@ export const NAV = {
   // Shown as top-level links on desktop and as the first drawer group on mobile.
   primary: [
     { key: 'home',  label: 'Home',  icon: '🏠', href: 'index.html',       desc: 'Platform overview & pathway picker' },
-    { key: 'learn', label: 'Learn', icon: '🎓', href: 'learn/index.html', desc: '6 structured learning pathways' }
+    { key: 'learn', label: 'Learn', icon: '🎓', href: 'learn/index.html', desc: '6 structured learning pathways' },
+    { key: 'updates', label: "What's New", icon: '🆕', href: 'updates/index.html', desc: 'Compliance changes & due dates' }
   ],
 
   groups: [
@@ -70,6 +71,7 @@ export const NAV = {
   pageSubtitles: {
     'home': 'Practical Accounting & Business',
     'learn': 'Curriculum & Pathways',
+    'updates': 'Compliance Tracker',
     'accounting-lab': 'Accounting Simulator',
     'business-lab': 'Business & Unit Economics',
     'tax-lab': 'India Taxation Lab',

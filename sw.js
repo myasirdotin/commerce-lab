@@ -13,7 +13,7 @@ const PRECACHE = [
   './', 'index.html', 'manifest.webmanifest', 'icons/icon-192.png',
   'css/commerce-core.css', 'css/commerce-labs.css', 'css/lessons.css',
   'js/core.js', 'js/nav.js', 'js/lesson-kit.js', 'js/lessons/registry.js',
-  'learn/index.html', 'learn/lesson.html', 'learn/glossary.html', 'learn/revise.html',
+  'learn/index.html', 'learn/lesson.html', 'learn/glossary.html', 'learn/revise.html', 'updates/index.html', 'js/data/compliance-updates.js',
   'accounting-lab/index.html', 'business-lab/index.html', 'tax-lab/index.html', 'excel-lab/index.html',
   'mis-lab/index.html', 'calculators/index.html', 'cheatsheets/index.html', 'projects/index.html',
   'quiz/index.html', 'teacher-hub/index.html', 'dashboard/index.html', 'islamic-standards/index.html'
