@@ -9,7 +9,7 @@
 export const TAX_CONFIG = {
   currentFinancialYear: '2026-27',
   currentAssessmentYear: '2027-28',
-  legalDisclaimer: 'Disclaimer: Commerce Lab provides educational simulations designed strictly for conceptual learning. It does not constitute chartered accountancy or tax advice. For actual statutory compliance and return filing, consult a registered tax professional and refer to official government portals (cbic.gov.in / incometax.gov.in).',
+  legalDisclaimer: 'Commerce Lab provides educational simulations designed strictly for conceptual learning. It does not constitute chartered accountancy or tax advice. For actual statutory compliance and return filing, consult a registered tax professional and refer to official government portals (cbic.gov.in / incometax.gov.in).',
   lastReviewedDate: '2026-10-10'
 };
 

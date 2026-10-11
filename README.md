@@ -43,6 +43,7 @@ commerce-lab/
 ├── learn/
 │   ├── index.html               # Learning Journeys hub (progress, continue-where-you-left-off)
 │   └── lesson.html?id=<id>      # Lesson reader: sections, figures, key points, practice links, quiz, glossary
+├── js/ (engines & data)
 │   ├── accounting-engine.js     # Real double-entry ledger & financial statement generator
 │   ├── excel-engine.js          # In-browser formula parser (SUM, AVERAGE, SUMIF, COUNTIF, XLOOKUP)
 │   ├── mis-engine.js            # Business intelligence & executive KPI summary aggregations
@@ -50,9 +51,8 @@ commerce-lab/
 │   └── data/
 │       ├── accounting-data.js   # 8 realistic Indian commercial transactions with dual-aspect rules
 │       ├── excel-datasets.js    # Sales & expense registers + formula challenges
-│       ├── tax-rules.js         # Versioned FY 2024-25 GST slabs & statutory knowledge base
+│       ├── tax-rules.js         # Versioned FY 2026-27 GST slabs & statutory knowledge base
 │       └── quizzes-data.js      # Master multiple-choice conceptual questions
-├── learn/                       # 6 Master Learning Pathways
 ├── accounting-lab/              # Interactive double-entry simulator with T-accounts & equation bar
 ├── business-lab/                # Break-even simulator, unit economics & small business case studies
 ├── tax-lab/                     # India GST pipeline simulator (ITC offset) & statutory citations
@@ -85,7 +85,7 @@ commerce-lab/
 - **Commercial Insights:** Automatic computation of Unit Contribution Margin, Break-Even Units, Break-Even Turnover, and Margin of Safety.
 
 ### 3. India Taxation & GST Lab (`/tax-lab/`)
-- **Statutory Decoupling:** Tax rules, rate slabs (0%, 5%, 12%, 18%, 28%), and thresholds are explicitly versioned for **Financial Year 2024-25** and cite official government sources ([cbic-gst.gov.in](https://cbic-gst.gov.in) and [incometax.gov.in](https://incometax.gov.in)).
+- **Statutory Decoupling:** Tax rules, rate slabs (0%, 5%, 18%, 40% — the structure in force since 22 Sept 2025), and thresholds are explicitly versioned for **Financial Year 2026-27** and cite official government sources ([cbic-gst.gov.in](https://cbic-gst.gov.in) and [incometax.gov.in](https://incometax.gov.in)).
 - **Input Tax Credit (ITC) Simulator:** Visual pipeline demonstrating purchase taxes paid (Input Tax), sales taxes collected (Output Tax), and net liability payable without cascading.
 - **Statutory Disclaimer:** Clearly states that all calculations are for educational and conceptual instruction, not professional tax advice.
 

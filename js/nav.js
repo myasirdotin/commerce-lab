@@ -32,7 +32,7 @@ export const NAV = {
       items: [
         { key: 'accounting-lab',  icon: '⚖️', href: 'accounting-lab/index.html',  title: 'Accounting Simulator',    desc: 'Double-entry, T-Accounts & equation bar' },
         { key: 'business-lab',    icon: '🏬', href: 'business-lab/index.html',    title: 'Business & BEP Lab',      desc: 'Break-even simulator & unit economics' },
-        { key: 'tax-lab',         icon: '🏛️', href: 'tax-lab/index.html',         title: 'India Tax & GST Lab',     desc: 'Input Tax Credit pipeline (FY 24-25)' },
+        { key: 'tax-lab',         icon: '🏛️', href: 'tax-lab/index.html',         title: 'India Tax & GST Lab',     desc: 'Input Tax Credit pipeline (FY 26-27)' },
         { key: 'excel-lab',       icon: '📊', href: 'excel-lab/index.html',       title: 'Excel Formula Studio',    desc: 'SUMIF, XLOOKUP & data challenges' },
         { key: 'mis-lab',         icon: '📈', href: 'mis-lab/index.html',         title: 'MIS Executive Dashboard', desc: 'KPI metric cards & receivables aging' },
         { key: 'calculators',     icon: '🧮', href: 'calculators/index.html',     title: '16 Financial Calculators', desc: 'Formulas & step-by-step working' }
@@ -103,7 +103,7 @@ export const NAV = {
       ]},
       { heading: 'Compliance & Standards', links: [
         ['islamic-standards/index.html', 'Islamic Standards (AAOIFI)'],
-        ['tax-lab/index.html#disclaimer', 'Tax FY 2024-25 Notes'],
+        ['tax-lab/index.html#disclaimer', 'Tax Rules & Disclaimer'],
         ['https://cbic-gst.gov.in', 'CBIC GST Portal ↗', true],
         ['https://incometax.gov.in', 'Income Tax Portal ↗', true],
         ['dashboard/index.html', 'Student Progress Portal']
