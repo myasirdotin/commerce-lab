@@ -1527,3 +1527,22 @@ a.has-new::after {
   width: 8px; height: 8px; border-radius: 50%; background: #dc2626;
 }
 .tab-item.has-new::after { top: 4px; right: calc(50% - 16px); }
+
+/* ─── Education-only notice (top banner, scrolls away) ────────────── */
+.edu-notice {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.45rem 0.5rem 0.45rem 1rem;
+  background: var(--brand-amber-light); border-bottom: 1px solid rgba(217, 119, 6, 0.35);
+  color: var(--text-primary); font-size: 0.82rem; line-height: 1.4;
+}
+.edu-notice p { margin: 0; flex: 1; min-width: 0; }
+.edu-notice a { color: inherit; font-weight: 700; text-decoration: underline; }
+.edu-notice-ico { font-size: 1rem; flex-shrink: 0; }
+.edu-notice-close {
+  flex-shrink: 0; width: var(--tap, 44px); height: var(--tap, 44px);
+  border: 0; background: transparent; color: var(--text-secondary);
+  font-size: 1rem; border-radius: var(--radius-full); cursor: pointer;
+}
+.edu-notice-close:hover { background: rgba(217, 119, 6, 0.12); }
+@media (min-width: 900px) { .edu-notice { justify-content: center; font-size: 0.86rem; } .edu-notice p { flex: 0 1 auto; } }
+.footer-disclaimer { max-width: 760px; margin-left: auto; margin-right: auto; }

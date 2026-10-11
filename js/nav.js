@@ -296,10 +296,42 @@ function buildFooter() {
         ${cols}
       </div>
       <div class="footer-bottom">
-        <p>&copy; ${new Date().getFullYear()} Commerce Lab. All educational materials are provided for learning and conceptual instruction.</p>
+        <p class="footer-disclaimer"><strong>For education only.</strong> Commerce Lab is not legal, tax or financial advice. Rules, rates and due dates change; always cross-check with the official government portal or a qualified CA / tax professional before you act.</p>
+        <p>&copy; ${new Date().getFullYear()} Commerce Lab.</p>
         <p class="footer-sub-links"><span>Zero-tracking</span> &bull; <span>Local-first storage</span> &bull; <span>Deployable to Vercel</span></p>
       </div>
     </div>`;
+}
+
+// ─── Education-only notice (top banner) ──────────────────────────
+// Shown on every page until dismissed; comes back NOTICE_DAYS later. The footer carries the same notice permanently.
+const NOTICE_KEY = 'commerce_lab_notice_dismissed';
+const NOTICE_DAYS = 30;
+
+function noticeDismissed() {
+  try {
+    const at = Number(localStorage.getItem(NOTICE_KEY));
+    return at && (Date.now() - at) < NOTICE_DAYS * 86400000;
+  } catch (e) { return false; }
+}
+
+function buildNotice() {
+  return `
+    <div class="edu-notice" id="eduNotice" role="note" aria-label="Disclaimer">
+      <span class="edu-notice-ico" aria-hidden="true">📚</span>
+      <p><strong>For education only.</strong> Rules and rates change: cross-check with the
+        <a href="${url('updates/index.html#srcHead')}">official sources</a> or a qualified CA before you act.</p>
+      <button type="button" class="edu-notice-close" id="eduNoticeClose" aria-label="Dismiss notice">✕</button>
+    </div>`;
+}
+
+function initNotice() {
+  const btn = document.getElementById('eduNoticeClose');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    try { localStorage.setItem(NOTICE_KEY, String(Date.now())); } catch (e) { /* ignore */ }
+    document.getElementById('eduNotice').remove();
+  });
 }
 
 // ─── Behaviour ────────────────────────────────────────────────────
@@ -404,12 +436,14 @@ export function renderSiteChrome() {
   const footer = document.getElementById('siteFooter') || document.querySelector('footer.site-footer');
 
   if (header) {
+    if (!noticeDismissed()) header.insertAdjacentHTML('beforebegin', buildNotice());
     header.innerHTML = buildHeader(page);
     header.insertAdjacentHTML('afterend', buildDrawer(page));
   }
   if (footer) footer.innerHTML = buildFooter();
   document.body.insertAdjacentHTML('beforeend', buildTabBar(page));
 
+  initNotice();
   initDrawer();
   initDesktopDropdowns();
   wrapTables();
