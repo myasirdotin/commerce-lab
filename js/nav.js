@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Commerce Lab - Site Chrome (header, mobile drawer, bottom tab bar, footer)
  *
  * SINGLE SOURCE OF TRUTH FOR NAVIGATION.
@@ -442,6 +442,14 @@ export function renderSiteChrome() {
   }
   if (footer) footer.innerHTML = buildFooter();
   document.body.insertAdjacentHTML('beforeend', buildTabBar(page));
+
+  // Local Web Space Hub integration (runs only on localhost)
+  if (typeof window !== 'undefined' && (location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+    const hubScript = document.createElement('script');
+    hubScript.src = '/hub-nav.js';
+    hubScript.defer = true;
+    document.head.appendChild(hubScript);
+  }
 
   initNotice();
   initDrawer();
