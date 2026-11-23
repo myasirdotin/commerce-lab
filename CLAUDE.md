@@ -83,6 +83,14 @@ node tools/render-check.mjs .render 390 844 1 http://localhost/commerce-lab/inde
 the viewport, and saves screenshots to `.render/` (git-ignored). Needs Apache running and Chrome installed.
 Look at the screenshots, not just the JSON. `THEME=dark` checks dark mode.
 
+**The check before every push (owner, 24/11/2026).** The owner wants nothing that costs money, so there is no GitHub
+robot and no agent for this: `.githooks/pre-push` is run by git itself, on this PC, before every `git push`. A push to
+`main` is a publish, so it runs `npm test` first and is refused if a test fails. It skips other branches and a push
+whose changes are only notes (the `SAFE` list at its top: keep it true), and it refuses when the folder is not exactly
+what is being pushed. It does **not** check the phone layout: `render-check` and a look at the screenshots are still
+done by hand. Switched on once per copy of the project with `git config core.hooksPath .githooks`. Never push with
+`--no-verify` without the owner's yes, and say so when you do.
+
 ## 7. Status & open items (keep this current)
 
 _Last updated 2026-10-11._
