@@ -20,6 +20,12 @@ Do **not** edit lessons, pages, CSS or nav. Report lessons that need rewriting i
 
 ## Procedure
 
+0. **Start from the weekly watch, if it has run.** `tools/compliance-watch.mjs` (free, no AI; a Windows task runs it
+   every Monday) lists new official items in `.compliance-watch/report-<date>.md` and `.compliance-watch/latest.json`.
+   Read that list first and open **those** links: it saves most of the searching in step 3. The list holds titles
+   only and judges nothing, so every item still has to be read on its official page, and step 3 still applies to the
+   three sites the watcher cannot read (named at the end of each report) and to anything it may have missed. If the
+   list is missing or older than ten days, run `node tools/compliance-watch.mjs` first.
 1. Read `js/data/compliance-updates.js` and note `COMPLIANCE_META.lastChecked`. Read `docs/LESSON-AUTHORING.md` §4.
 2. **Re-verify** every update with `verified: false`. Open its official source. If it is confirmed, set `verified: true` and correct
    the dates or URL if needed. If the source contradicts it, fix the entry. If you cannot confirm it, leave it `false`.
