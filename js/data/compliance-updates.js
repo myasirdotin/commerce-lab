@@ -9,10 +9,10 @@
  */
 
 export const COMPLIANCE_META = {
-  lastChecked: '2026-10-11',          // date the agent last swept all sources
+  lastChecked: '2026-11-24',          // date the agent last swept all sources
   checkedBy: 'compliance-checker agent',
   checkEveryDays: 30,                 // the page warns when lastChecked is older than this
-  notes: 'First full sweep: re-verified the 7 seeded entries on official sources, added 5 changes and 2 due-date extensions (CBDT Circular 07/2026).'
+  notes: 'Sweep of 12 Oct to 24 Nov 2026 plus the last 12 months: added 6 changes, each read on its official page (GST rules of 26 Oct 2026: rule 14B and e-invoicing for reverse charge; EPF wage ceiling; FSSAI limits; director KYC; MSME Act amendment). No ITR extension beyond 21 Nov 2026 was found. Not reached: the GST portal advisories page and mca.gov.in (both blocked), so an MCA filing extension reported for FY 2025-26 was left out as unconfirmed.'
 };
 
 export const AREAS = ['GST', 'Income tax', 'TDS/TCS', 'Company & LLP', 'MSME', 'Labour', 'Trademark & IP', 'Import/Export', 'Food (FSSAI)', 'Other'];
@@ -48,11 +48,31 @@ export const SOURCES = [
  */
 export const COMPLIANCE_UPDATES = [
   {
+    id: 'gst-ecommerce-registration-rule-14b-2026',
+    date: '2026-10-26', effectiveFrom: '2026-11-01', area: 'GST', status: 'in-force', verified: true,
+    title: 'Marketplace sellers can register in other states more simply',
+    summary: 'Notification No. 05/2026-Central Tax (26 October 2026) made the CGST (Amendment) Rules, 2026, in force from 1 November 2026. New rule 14B lets a seller who is already registered in a home state take a GST registration in another state where they have no premises, by declaring a marketplace warehouse there as the place of business, if the output tax on sales to registered buyers stays within ₹2.5 lakh a month and the marketplace consents. New rule 19 also amends a registration automatically on submission and online validation when the change is to anything other than the principal place of business.',
+    action: 'If a marketplace asks you to store stock in its warehouse in another state, ask it about a rule 14B registration (applied for in FORM GST REG-01) before renting premises there. Report any change in your registration details within 15 days in FORM GST REG-14.',
+    who: 'GST-registered sellers on Amazon, Flipkart and other marketplaces; anyone amending a GST registration',
+    source: { name: 'Gazette of India - Notification No. 05/2026-Central Tax, G.S.R. 919(E)', url: 'https://egazette.gov.in/WriteReadData/2026/277451.pdf' },
+    lessons: ['start-03-registrations', 'biz-05-channels-and-margins']
+  },
+  {
+    id: 'gst-einvoice-reverse-charge-2027',
+    date: '2026-10-26', effectiveFrom: '2027-01-01', area: 'GST', status: 'upcoming', verified: true,
+    title: 'E-invoicing extends to reverse-charge purchases from January 2027',
+    summary: 'Notification No. 04/2026-Central Tax (26 October 2026) widens the e-invoicing notification (No. 13/2020-Central Tax) from 1 January 2027. Besides sales to registered persons and exports, it will also cover supplies received from an unregistered person where the recipient pays the tax under reverse charge, and import of services.',
+    action: 'If your business already has to issue e-invoices, ask your billing software provider to add e-invoicing for reverse-charge self-invoices before 1 January 2027.',
+    who: 'Businesses already covered by e-invoicing that buy from unregistered suppliers under reverse charge or import services',
+    source: { name: 'Gazette of India - Notification No. 04/2026-Central Tax, G.S.R. 918(E)', url: 'https://egazette.gov.in/WriteReadData/2026/277451.pdf' },
+    lessons: ['start-05-invoicing']
+  },
+  {
     id: 'gst-council-57-2026',
     date: '2026-10-08', effectiveFrom: null, area: 'GST', status: 'proposed', verified: true,
     title: '57th GST Council: easier compliance for small businesses',
-    summary: 'The Council recommended (not yet law): no late fee on a delayed GST return for turnover up to ₹5 crore if it is filed by the end of the month it was due; no show cause notice where the tax involved is below ₹10,000; maximum general penalty cut from ₹25,000 to ₹10,000; fewer blocked ITC items (e.g. outdoor catering, health and life insurance, free samples); automatic registration for small e-commerce sellers who declare the marketplace warehouse in another state. Start dates will come with the law and rule amendments; the new return-correction mechanism is planned from the April 2027 return.',
-    action: 'Nothing to do yet. Keep filing on time and watch for CBIC notifications that give the start dates.',
+    summary: 'The Council recommended (not yet law): no late fee on a delayed GST return for turnover up to ₹5 crore if it is filed by the end of the month it was due; no show cause notice where the tax involved is below ₹10,000; maximum general penalty cut from ₹25,000 to ₹10,000; fewer blocked ITC items (e.g. outdoor catering, health and life insurance, free samples); automatic registration for small e-commerce sellers who declare the marketplace warehouse in another state. Update, 24 November 2026: the e-commerce seller registration is now law from 1 November 2026 (rule 14B, see the entry above). Start dates for the rest will come with the law and rule amendments; the new return-correction mechanism is planned from the April 2027 return.',
+    action: 'Nothing to do yet for the items still proposed. Keep filing on time and watch for CBIC notifications that give the start dates.',
     who: 'GST-registered small businesses and e-commerce sellers',
     source: { name: 'GST Council - 57th meeting press release', url: 'https://www.gstcouncil.gov.in/sites/default/files/2026-10/press_release.pdf' },
     lessons: ['tax-02-input-tax-credit', 'tax-03-returns-and-composition', 'start-03-registrations']
@@ -68,6 +88,36 @@ export const COMPLIANCE_UPDATES = [
     lessons: ['tax-04-income-tax-for-business', 'start-08-compliance-calendar']
   },
   {
+    id: 'epf-wage-ceiling-25000-2026',
+    date: '2026-09-17', effectiveFrom: '2026-09-17', area: 'Labour', status: 'in-force', verified: true,
+    title: 'EPF wage ceiling raised from ₹15,000 to ₹25,000',
+    summary: 'The statutory wage ceiling for compulsory EPF cover went up from ₹15,000 to ₹25,000 a month from 17 September 2026 (Gazette Notification S.O. 5109(E)), the first change since September 2014. Employees earning between ₹15,000 and ₹25,000 now come under compulsory EPF, pension (EPS) and insurance (EDLI) cover. The maximum employer pension contribution at 8.33% rises from ₹1,250 to ₹2,083 a month.',
+    action: 'If your establishment is covered by EPFO, enrol staff earning up to ₹25,000 a month and work out contributions on the new ceiling from 17 September 2026. Check the details with EPFO or your payroll provider.',
+    who: 'Employers registered with EPFO',
+    source: { name: 'PIB - EPFO raises wage ceiling from Rs. 15,000 to Rs. 25,000', url: 'https://www.pib.gov.in/PressReleasePage.aspx?PRID=2313829' },
+    lessons: ['biz-04-managing-the-business']
+  },
+  {
+    id: 'msmed-amendment-2026',
+    date: '2026-08-07', effectiveFrom: null, area: 'MSME', status: 'proposed', verified: true,
+    title: 'MSME Act amended: faster recovery of delayed payments',
+    summary: 'Parliament passed the MSME Development (Amendment) Bill, 2026 (Rajya Sabha 3 August, Lok Sabha 7 August 2026). Mediation of a delayed-payment dispute must finish within 90 days, the matter is then referred to arbitration within 30 days, and the award is due within 90 days of pleadings. An award can be recovered as an arrear of land revenue, and Udyam stays a free, voluntary registration. This check did not find the date the changes start, so the entry is shown as proposed.',
+    action: 'Nothing to do yet. Keep your Udyam registration current and keep written proof of delivery and invoice dates, which a delayed-payment claim needs.',
+    who: 'Micro and small enterprises that sell on credit',
+    source: { name: 'PIB - MSME Development (Amendment) Bill, 2026 passed by Parliament', url: 'https://www.pib.gov.in/PressReleasePage.aspx?PRID=2296358' },
+    lessons: ['start-03-registrations', 'biz-02-working-capital-cash']
+  },
+  {
+    id: 'fssai-thresholds-perpetual-2026',
+    date: '2026-03-13', effectiveFrom: '2026-04-01', area: 'Food (FSSAI)', status: 'in-force', verified: true,
+    title: 'FSSAI: basic registration now up to ₹1.5 crore turnover',
+    summary: 'From 1 April 2026 the turnover limit for basic FSSAI registration rose from ₹12 lakh to ₹1.5 crore. A State licence now covers turnover above ₹1.5 crore and up to ₹50 crore, and a Central licence applies above that. FSSAI registrations and licences also get perpetual validity, so periodic renewal is no longer needed. Street food vendors registered under the Street Vendors Act, 2014 are treated as registered with FSSAI.',
+    action: 'If you run a food business, check on FoSCoS whether you now need only a registration instead of a State licence, and how the change applies to a licence you already hold.',
+    who: 'Food businesses',
+    source: { name: 'PIB - Health Ministry approves FSSAI regulatory reforms', url: 'https://www.pib.gov.in/PressReleasePage.aspx?PRID=2239834' },
+    lessons: ['start-03-registrations']
+  },
+  {
     id: 'itr-non-audit-31-aug-2026',
     date: '2026-02-01', effectiveFrom: '2026-04-01', area: 'Income tax', status: 'in-force', verified: true,
     title: 'Non-audit business ITR now due 31 August',
@@ -76,6 +126,16 @@ export const COMPLIANCE_UPDATES = [
     who: 'Proprietors and firms whose accounts need no audit',
     source: { name: 'Income Tax e-filing portal - ITR-4 FAQs', url: 'https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/itr%204-faqs' },
     lessons: ['tax-04-income-tax-for-business', 'start-08-compliance-calendar']
+  },
+  {
+    id: 'director-kyc-three-years-2026',
+    date: '2025-12-31', effectiveFrom: '2026-03-31', area: 'Company & LLP', status: 'in-force', verified: true,
+    title: 'Director KYC now once in three years, not yearly',
+    summary: 'MCA amended rule 12A of the Companies (Appointment and Qualification of Directors) Rules, 2014 by notification G.S.R. 943(E) dated 31 December 2025, effective 31 March 2026. The yearly director KYC filing is replaced by a simpler KYC intimation once every three years. Directors who had already completed their KYC next file by 30 June 2028.',
+    action: 'Company directors: note 30 June 2028 for your next KYC if yours was up to date. Use the same form sooner if your mobile number, email or address changes.',
+    who: 'Directors of private limited companies and OPCs',
+    source: { name: 'PIB - MCA replaces annual KYC with KYC once in three years', url: 'https://www.pib.gov.in/PressReleasePage.aspx?PRID=2210552' },
+    lessons: ['start-02-choose-structure']
   },
   {
     id: 'small-company-thresholds-2025',
