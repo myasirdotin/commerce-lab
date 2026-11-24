@@ -110,7 +110,7 @@ export default {
             ['Shop and Establishment', 'Any shop, office or workshop; within 30 days of opening', 'State labour department portal', '₹200 to ₹5,000 by state and headcount', '1 to 2 weeks'],
             ['GST', 'Above ₹40L goods / ₹20L services, or mandatory cases (inter-state, e-commerce)', 'gst.gov.in (REG-01)', 'Free', '7 working days (up to 30 with verification)'],
             ['Trademark', 'Anyone building a brand name', 'ipindia.gov.in', '₹4,500 per class (MSME / individual), ₹9,000 others', 'Filing instant; registration 12 to 18 months'],
-            ['FSSAI', 'Food businesses only', 'foscos.fssai.gov.in', 'Basic registration ₹100 a year (turnover up to ₹12L); state licence ₹2,000 to ₹5,000 a year', '1 to 4 weeks'],
+            ['FSSAI', 'Food businesses only', 'foscos.fssai.gov.in', 'Basic registration for turnover up to ₹1.5 crore; state licence above that, up to ₹50 crore (limits from 1 April 2026). No renewal now. Check the current fee on FoSCoS', '1 to 4 weeks'],
             ['IEC', 'Only if you import or export', 'dgft.gov.in', 'Free', 'Same day to 3 days'],
             ['Professional tax', 'Employers and professionals in states that levy it (Maharashtra, Karnataka, West Bengal and others; not Delhi or J&K)', 'State commercial tax portal', 'Up to ₹2,500 a year per person', '1 to 2 weeks']
           ],
