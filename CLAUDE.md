@@ -63,6 +63,16 @@ so the site works both under `/commerce-lab/` and at a Vercel root. Never use `/
   point it at `docs/COMPLIANCE-CHECK.md`). It sweeps the
   official sites, updates `js/data/compliance-updates.js` and LESSON-AUTHORING §4, and lists lessons that need rewriting.
   Run it at least monthly; the page warns visitors when the last check is over 30 days old.
+- **The weekly watch (owner, 24/11/2026: a reminder that costs nothing).** `tools/compliance-watch.mjs` reads the official
+  list pages a plain script can open (PIB's English releases day by day with their ministry, the income tax portal's news, the
+  GST Council's documents), keeps the titles that look relevant to a small business, and writes them to `.compliance-watch/`
+  (git-ignored, this PC only). No AI, no keys, no cost. The Windows task "Commerce Lab compliance watch" runs it every Monday at
+  17:30 through `tools/compliance-watch.vbs` (when the PC was off, at its next start). An item stays on the list until a
+  compliance check is recorded after it was found. Dev To-do's daily scan turns the list into a to-do, and adds one when the
+  check itself is overdue (`devtodo/lib/compliance.php`). The watch only lists: nothing reaches "What's New" without the
+  compliance check reading the official page. It cannot read the GST portal's advisories, mca.gov.in or incometaxindia.gov.in
+  (they refuse scripts); each report names them as links to open by hand. Its word filters (`KEYWORDS`, `NOISE`) are at the top
+  of the script: widen them when it misses something, narrow them when it lists noise.
 - **Renamed or removed a file?** Bump `VERSION` in `sw.js` so phones drop the old cache.
 
 ## 5. Record keeping (do this after every change)

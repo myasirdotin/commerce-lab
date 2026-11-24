@@ -1,2 +1,5 @@
 node_modules/
 .render/
+
+# The weekly compliance watch keeps its lists and its memory here (this PC only)
+/.compliance-watch/
